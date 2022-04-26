@@ -69,7 +69,22 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
             }
         }
 
+        public void CollideMovingObstacle(List<MovingObstacle> movingObstacleList)
+        {
+            foreach(MovingObstacle movingObstacle in movingObstacleList)
+            {
+                int x = movingObstacle.GetPosition().GetX();
+                int y = movingObstacle.GetPosition().GetY();
+                int height = movingObstacle.GetSkin().GetHeight();
+                int width = movingObstacle.GetSkin().GetWidth();
 
+                if(CheckCollision(x, y, height, width))
+                {
+                    Die();
+                    break;
+                }
+            }
+        }
 
         private bool CheckCollision(int x, int y, int height, int width)
         {
