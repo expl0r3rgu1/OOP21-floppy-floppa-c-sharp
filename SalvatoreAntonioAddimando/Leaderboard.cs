@@ -1,25 +1,30 @@
 using System.IO;
 
-class Leaderboard
+namespace LeaderboardSpace
 {
-    private const string leaderboardFilePath = "savings";
-    private ArrayList<Player> leaderboard;
-
-    public ArrayList<Player> Leaderboard
+    class Leaderboard
     {
-        get { return leaderboard; }
-    }
+        private const string leaderboardFilePath = "savings";
+        private ArrayList<Player> leaderboard;
 
-    public Leaderboard()
-    {
-        if(!File.Exists(leaderboardFilePath))
+        public ArrayList<Player> Leaderboard
         {
-            createLeaderboardFile();
+            get { return leaderboard; }
         }
-    }
 
-    private void createLeaderboardFile()
-    {
-        File.Create(leaderboardFilePath);
+        public Leaderboard()
+        {
+            if(!File.Exists(leaderboardFilePath))
+            {
+                createLeaderboardFile();
+            }
+
+            leaderboard = new ArrayList<Player>();
+        }
+
+        private void createLeaderboardFile()
+        {
+            File.Create(leaderboardFilePath);
+        }
     }
 }
