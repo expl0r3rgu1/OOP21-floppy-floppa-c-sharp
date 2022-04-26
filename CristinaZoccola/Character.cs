@@ -120,6 +120,19 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
             }
         }
 
+        public void CollideBorders()
+        {
+            int characterY = GetPosition().GetY();
+            int characterLowerY = characterY + _skin.GetHeight();
+            int upperBorder = 0;
+            int lowerBorder = 1080;
+
+            if (characterY <= upperBorder || characterLowerY >= lowerBorder)
+            {
+                Die();
+            }
+        }
+
         private bool CheckCollision(int x, int y, int height, int width)
         {
             int characterX = GetPosition().GetX();
