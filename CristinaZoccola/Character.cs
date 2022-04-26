@@ -31,6 +31,16 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 
         public Skin GetSkin() => _skin;
 
+        public void Jump()
+        {
+            if (!_jumping)
+            {
+                _timer.Start();
+                _jumping = true;
+            }
+            _timer.Start();
+        }
+
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
         {
             throw new System.NotImplementedException();
