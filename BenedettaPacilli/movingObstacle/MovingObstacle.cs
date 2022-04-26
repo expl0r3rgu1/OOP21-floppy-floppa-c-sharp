@@ -1,5 +1,5 @@
 using System.Timers;
-using System.Windows.Controls;
+using System.Drawing;
 
 public class MovingObstacle
 {
@@ -21,4 +21,9 @@ public class MovingObstacle
 		};
 		_timer.Start;
 	}
+
+	public GetSkin()
+    {
+		return _skin;
+    }
 }
