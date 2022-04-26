@@ -41,4 +41,9 @@ public class MovingObstacle
 		MovingObstacle other = (MovingObstacle)obj;
         return this._x == other._x & this._y == other._y & this._skin = other._skin;
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }
