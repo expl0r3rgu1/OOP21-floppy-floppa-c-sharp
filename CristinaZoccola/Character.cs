@@ -86,6 +86,23 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
             }
         }
 
+        public void CollideMalus(List<Malus> malusList)
+        {
+            foreach(Malus malus in malusList)
+            {
+                int x = malus.GetPosition().GetX();
+                int y = malus.GetPosition().GetY();
+                int height = malus.GetSkin().GetHeight();
+                int width = malus.GetSkin().GetWidth();
+
+                if (CheckCollision(x, y, height, width))
+                {
+                    Die();
+                    break;
+                }
+            }
+        }
+
         private bool CheckCollision(int x, int y, int height, int width)
         {
             int characterX = GetPosition().GetX();
