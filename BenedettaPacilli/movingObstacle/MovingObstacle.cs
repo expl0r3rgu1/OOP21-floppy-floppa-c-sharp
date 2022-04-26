@@ -9,4 +9,16 @@ public class MovingObstacle
 	private int _y;
 	private int _direction = -1;
 
+	public MovingObstacle(int x, int y, Image skin) //Position and Skin
+	{
+		_x = x;
+		_y = y;
+		_skin = skin;
+
+		_timer = new Timer
+		{
+			Interval = 1000
+		};
+		_timer.Start;
+	}
 }
