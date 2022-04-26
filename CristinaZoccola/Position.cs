@@ -45,23 +45,16 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
-		{
-			Position other = (Position)obj;
-
-			if (other == null)
-			{
-				return false;
-			}
-
-			return _x == other.GetX && _y == other.GetY;
-
-		}
+        {
+            return obj is Position position &&
+                   _x == position._x &&
+                   _y == position._y;
+        }
 
 		/// <inheritdoc />
 		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
-
-	}
+        {
+            return HashCode.Combine(_x, _y);
+        }
+    }
 }
