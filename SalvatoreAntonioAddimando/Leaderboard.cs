@@ -1,3 +1,5 @@
+using System.IO;
+
 class Leaderboard
 {
     private const string leaderboardFilePath = "savings";
@@ -6,5 +8,10 @@ class Leaderboard
     public ArrayList<Player> Leaderboard
     {
         get { return leaderboard; }
+    }
+
+    private void createLeaderboardFile()
+    {
+        File.Create(leaderboardFilePath);
     }
 }
