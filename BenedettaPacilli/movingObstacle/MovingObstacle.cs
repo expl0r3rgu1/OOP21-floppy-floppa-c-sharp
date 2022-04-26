@@ -30,7 +30,7 @@ public class MovingObstacle
 		return _skin;
     }
 
-	private void _updatePosition()
+	private void UpdatePosition()
     {
 		_x = _x - 3 * MovingFactor;
 		_y = _y + _direction * MovingFactor;
