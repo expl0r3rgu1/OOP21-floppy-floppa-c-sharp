@@ -59,7 +59,7 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
                 if((characterY >= obstacleX && characterX <= obstacleWiderX) 
                     || (characterWiderX >= obstacleUpperY && characterLowerY <= obstacleWiderX))
                 {
-                    if ((characterY >= obstacleUpperY || characterY <= obstacleLowerY) 
+                    if((characterY >= obstacleUpperY || characterY <= obstacleLowerY) 
                         || (characterLowerY >= obstacleUpperY || characterLowerY <= obstacleLowerY))
                     {
                         Die();
@@ -67,6 +67,28 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
                     }
                 }
             }
+        }
+
+
+
+        private bool CheckCollision(int x, int y, int height, int width)
+        {
+            int characterX = GetPosition().GetX();
+            int characterWiderX = characterX + _skin.GetWidth();
+            int characterY = GetPosition().GetY();
+            int characterLowerY = characterY + _skin.GetHeight();
+            int entityWiderX = x + width;
+            int entityLowerY = y + height;
+
+            if((characterX >= x && characterX <= entityWiderX) 
+                || (characterWiderX >= x && characterWiderX <= entityWiderX))
+            {
+                if((characterY >= y && characterY <= entityLowerY) || (characterLowerY >= y && characterLowerY <= entityLowerY))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
