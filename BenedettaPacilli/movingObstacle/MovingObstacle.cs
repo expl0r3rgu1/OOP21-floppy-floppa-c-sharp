@@ -35,4 +35,10 @@ public class MovingObstacle
 		_x = _x - 3 * MovingFactor;
 		_y = _y + _direction * MovingFactor;
     }
+
+    public override bool Equals(object obj)
+    {
+		MovingObstacle other = (MovingObstacle)obj;
+        return this._x == other._x & this._y == other._y & this._skin = other._skin;
+    }
 }
