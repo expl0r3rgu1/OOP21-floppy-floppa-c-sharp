@@ -97,7 +97,7 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 
                 if (CheckCollision(x, y, height, width))
                 {
-                    Die();
+                    malus.ChangeState();
                     break;
                 }
             }
@@ -114,7 +114,7 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 
                 if (CheckCollision(x, y, height, width))
                 {
-                    Die();
+                    booster.ChangeState();
                     break;
                 }
             }
