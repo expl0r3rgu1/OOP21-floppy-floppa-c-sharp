@@ -10,4 +10,13 @@ public class Position
 		_x = x;
 		_y = y;
 	}
+
+	public int GetX() => _x;
+
+	public void SetX(int x) => _x = x;
+
+	public int GetY() => _y;
+
+	public void SetY(int y) => _y = y;
+
 }
