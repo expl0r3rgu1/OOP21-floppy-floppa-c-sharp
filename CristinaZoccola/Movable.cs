@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OOP21-floppy-floppa-c-sharp.CristinaZoccola 
+namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola 
 {
 	public abstract class Movable
 	{
@@ -13,5 +13,6 @@ namespace OOP21-floppy-floppa-c-sharp.CristinaZoccola
 	public void SetPosition(Position position) => _position = position;
 
 	public abstract void Animate(PaintEventArgs paintEventArgs);
+
 	}
 }
