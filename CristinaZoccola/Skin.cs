@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 {
@@ -71,6 +73,22 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 		/// </summary>
 		/// <param name="height">the new height of the skin</param>
 		public void SetHeight(int height) => _height = height;
-	}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+        {
+            return obj is Skin skin &&
+                   _name == skin._name &&
+                   EqualityComparer<Image>.Default.Equals(_image, skin._image) &&
+                   _width == skin._width &&
+                   _height == skin._height;
+        }
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+        {
+            return HashCode.Combine(_name, _image, _width, _height);
+        }
+    }
 }
 
