@@ -103,6 +103,23 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
             }
         }
 
+        public void CollideBooster(List<Booster> boosterList)
+        {
+            foreach(Booster booster in boosterList)
+            {
+                int x = booster.GetPosition().GetX();
+                int y = booster.GetPosition().GetY();
+                int height = booster.GetSkin().GetHeight();
+                int width = booster.GetSkin().GetWidth();
+
+                if (CheckCollision(x, y, height, width))
+                {
+                    Die();
+                    break;
+                }
+            }
+        }
+
         private bool CheckCollision(int x, int y, int height, int width)
         {
             int characterX = GetPosition().GetX();
