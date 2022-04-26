@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola 
 {
@@ -33,20 +34,14 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            Movable other = (Movable)obj;
-
-            if(other == null)
-            {
-                return false;
-            }
-
-            return _position.Equals(other.GetPosition);
+            return obj is Movable movable &&
+                   EqualityComparer<Position>.Default.Equals(_position, movable._position);
         }
 
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return HashCode.Combine(_position);
         }
     }
 }
