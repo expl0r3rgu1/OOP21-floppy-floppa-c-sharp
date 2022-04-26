@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola 
 {
@@ -29,7 +30,7 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
         /// A method that will be used to animate all the entities on the map
         /// </summary>
         /// <param name="paintEventArgs">the object that will draw the entities on the map</param>
-	    public abstract void Animate(PaintEventArgs paintEventArgs);
+	    public abstract void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs);
 
         /// <inheritdoc />
         public override bool Equals(object obj)
