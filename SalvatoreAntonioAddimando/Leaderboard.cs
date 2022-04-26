@@ -10,6 +10,14 @@ class Leaderboard
         get { return leaderboard; }
     }
 
+    public Leaderboard()
+    {
+        if(!File.Exists(leaderboardFilePath))
+        {
+            createLeaderboardFile();
+        }
+    }
+
     private void createLeaderboardFile()
     {
         File.Create(leaderboardFilePath);
