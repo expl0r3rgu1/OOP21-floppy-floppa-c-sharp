@@ -21,6 +21,16 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
             _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
         }
 
+        public bool IsDead() => _dead;
+
+        public void Die() => _dead = immortal ? false : true;
+
+        public static void SetImmortal() => immortal = true;
+
+        public static void UnSetImmortal() => immortal = false;
+
+        public Skin GetSkin() => _skin;
+
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
         {
             throw new System.NotImplementedException();
