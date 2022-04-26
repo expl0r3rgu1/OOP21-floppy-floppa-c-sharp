@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Timers;
 using System;
+using System.Collections.Generic;
 
 namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 {
@@ -39,6 +40,33 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
                 _jumping = true;
             }
             _timer.Start();
+        }
+
+        public void CollideFixedObstacle(List<FixedObstacle> fixedObstacleList)
+        {
+            int space_between_pipes = 300;
+            foreach(FixedObstacle fixedObstacle in fixedObstacleList)
+            {
+                int characterX = GetPosition().GetX();
+                int characterWiderX = characterX + _skin.GetWidth();
+                int characterY = GetPosition().GetY();
+                int characterLowerY = characterY + _skin.GetHeight();
+                int obstacleX = fixedObstacle.GetPosition().GetX();
+                int obstacleWiderX = obstacleX + fixedObstacle.GetSkin().GetWidth();
+                int obstacleUpperY = fixedObstacle.GetPosition().GetY() + (int)space_between_pipes / 2;
+                int obstacleLowerY = fixedObstacle.GetPosition().GetY() + (int)space_between_pipes / 2;
+
+                if((characterY >= obstacleX && characterX <= obstacleWiderX) 
+                    || (characterWiderX >= obstacleUpperY && characterLowerY <= obstacleWiderX))
+                {
+                    if ((characterY >= obstacleUpperY || characterY <= obstacleLowerY) 
+                        || (characterLowerY >= obstacleUpperY || characterLowerY <= obstacleLowerY))
+                    {
+                        Die();
+                        break;
+                    }
+                }
+            }
         }
 
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
