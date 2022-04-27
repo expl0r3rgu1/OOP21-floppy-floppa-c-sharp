@@ -24,4 +24,9 @@ public class PricedBackground : Background
         PricedBackground other = (PricedBackground)obj;
         return base.Equals(other) & _price == other._price;
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }
