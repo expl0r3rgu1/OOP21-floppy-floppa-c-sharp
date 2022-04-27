@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
+namespace Utilities
 {
 	/// <summary>
 	///  A class that implements an object to keep track of the position of the

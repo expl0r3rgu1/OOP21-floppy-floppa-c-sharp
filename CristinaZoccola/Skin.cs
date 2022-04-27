@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
+namespace Utilities
 {
 	/// <summary>
 	/// A class that represents the entity appearance on the map
