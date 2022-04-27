@@ -13,5 +13,24 @@ namespace InfiniteMap
             backOne = new Background(name, image);
             backTwo = new Background(name, image, new Position(1920, 0));
         }
+
+        public void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+        {
+            backOne.Animate(ribbonPaintEventArgs);
+            backTwo.Animate(ribbonPaintEventArgs);
+
+            backOne.UpdatePosition();
+            backTwo.UpdatePosition();
+
+            if (backOne.IsOffStageLeft())
+            {
+                backOne.MoveToRightScreenEdge();
+            }
+
+            if (backTwo.IsOffStageLeft())
+            {
+                backTwo.MoveToRightScreenEdge();
+            }
+        }
     }
 }
