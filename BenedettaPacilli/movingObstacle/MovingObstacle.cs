@@ -27,6 +27,19 @@ public class MovingObstacle : Movable
 		Position.Y = Position.Y + _direction * _movingFactor;
     }
 
+	private override Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
+	{
+		ribbonElementPaintEventArgs.Graphics.DrawImage(_skin.Image, Position.X, Position.Y, _skin.Width, _skin.Height);
+
+		UpdatePosition();
+	}
+	
+	//TODO
+	/*@Override
+	public void actionPerformed(ActionEvent e) {
+		this.direction = -this.direction;
+	}*/
+
     public override bool Equals(object obj)
     {
 		MovingObstacle other = (MovingObstacle)obj;
@@ -37,5 +50,6 @@ public class MovingObstacle : Movable
     {
         return base.GetHashCode();
     }
+
 }
 }
