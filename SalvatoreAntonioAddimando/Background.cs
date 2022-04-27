@@ -11,16 +11,14 @@ namespace InfiniteMap
         public string Name { get => name; }
         public Image Image { get => image; }
 
-        public Background(string name, Image image)
+        public Background(string name, Image image) : base(new Position(0,0))
         {
-            super(new Position(0, 0));
             this.name = name;
             this.image = image;
         }
 
-        public Background(string name, Image image, Position position)
+        public Background(string name, Image image, Position position) : base(position)
         {
-            super(position);
             this.name = name;
             this.image = image;
         }
