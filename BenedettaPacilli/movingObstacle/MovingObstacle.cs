@@ -9,14 +9,15 @@ public class MovingObstacle
 	private int _x;
 	private int _y;
 	private int _direction = -1;
-	public const int MovingFactor = 2;
-		//(int) Math.floor(SCREEN_SIZE.getWidth() / (double)1000) * 2;
+	public const int MovingFactor = 2; //(int) Math.floor(SCREEN_SIZE.getWidth() / (double)1000) * 2;
 
-	public MovingObstacle(int x, int y, Image skin) //Position and Skin
+    public Image Skin { get => _skin; set => _skin = value; }
+
+    public MovingObstacle(int x, int y, Image skin) //Position and Skin
 	{
 		_x = x;
 		_y = y;
-		_skin = skin;
+		Skin = skin;
 
 		_timer = new Timer
 		{
@@ -24,11 +25,6 @@ public class MovingObstacle
 		};
 		_timer.Start;
 	}
-
-	public GetSkin()
-    {
-		return _skin;
-    }
 
 	private void UpdatePosition()
     {
@@ -39,7 +35,7 @@ public class MovingObstacle
     public override bool Equals(object obj)
     {
 		MovingObstacle other = (MovingObstacle)obj;
-        return this._x == other._x & this._y == other._y & this._skin = other._skin;
+        return this._x == other._x & this._y == other._y & this.Skin = other.Skin;
     }
 
     public override int GetHashCode()
