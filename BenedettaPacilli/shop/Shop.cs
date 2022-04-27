@@ -13,10 +13,14 @@ public class Shop
 	private sealed List<PurchaseStatus<PricedBackground>> _sceneries;
 	private sealed File _savingsFile;
 	public int Coins { get => _coins; set => _coins = (value < 0) ? 0 : value; }
-    public int SkinsNum { get => _skinsNum; set => _skinsNum = value; }
-    public int SceneriesNum { get => _sceneriesNum; set => _sceneriesNum = value; }
-    public List<PurchaseStatus<PricedSkin>> Skins { get => _skins; set => _skins = value; }
-    public List<PurchaseStatus<PricedBackground>> Sceneries { get => _sceneries; set => _sceneries = value; }
+
+	public List<PricedSkin> GetSkins() { return _skins; }
+    
+	public List<PricedBackground> GetScenaries(){ return _sceneries; }
+
+	public int GetSkinsNum(){ return _skinsNum; }
+
+	public int GetBackgroundNum(){ return _backgroundNum; }
 
     public Shop()
     {
