@@ -27,7 +27,7 @@ namespace InfiniteMap
 
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
         {
-            ribbonPaintEventArgs.Graphics.DrawImage(image, Position().X(), Position().Y(), 1920, 1080);
+            ribbonPaintEventArgs.Graphics.DrawImage(image, Position.X, Position.Y, 1920, 1080);
         }
     }
 }
