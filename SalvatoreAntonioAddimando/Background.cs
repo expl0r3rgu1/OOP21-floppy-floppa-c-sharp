@@ -11,7 +11,7 @@ namespace InfiniteMap
         public string Name { get => name; }
         public Image Image { get => image; }
 
-        public Background(string name, Image image) : base(new Position(0,0))
+        public Background(string name, Image image) : base(new Position(0, 0))
         {
             this.name = name;
             this.image = image;
@@ -36,6 +36,11 @@ namespace InfiniteMap
         public bool IsOffStageLeft()
         {
             return (Position.X <= -1 * 1920);
+        }
+
+        public void MoveToRightScreenEdge()
+        {
+            Position.X = Position.X + 1920 * 2;
         }
     }
 }
