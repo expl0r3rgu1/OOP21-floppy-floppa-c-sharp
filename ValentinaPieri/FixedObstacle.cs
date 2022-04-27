@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ObstacleFactory
 {
-    public class FixedObstacle
+    public class FixedObstacle : Movable
 	{
 		private readonly Skin skin;
 		public const int MovingFactor = 2;
