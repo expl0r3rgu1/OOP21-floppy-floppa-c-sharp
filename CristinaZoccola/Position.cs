@@ -11,50 +11,35 @@ namespace Utilities
 		private int x;
 		private int y;
 
-		/// <param name="x">the x coordinate on the map</param>
-		/// <param name="y">the y coordinate on the map</param>
-		public Position(int x, int y)
+		/// <summary>
+		/// The x coordinate
+		/// </summary>
+        public int X { get => x; set => x = value; }
+		/// <summary>
+		/// The y coordinate
+		/// </summary>
+        public int Y { get => y; set => y = value; }
+
+        /// <param name="x">the x coordinate on the map</param>
+        /// <param name="y">the y coordinate on the map</param>
+        public Position(int x, int y)
 		{
-			this.x = x;
-			this.y = y;
+			X = x;
+			Y = y;
 		}
-
-		/// <summary>
-		/// Getter of the x coordinate
-		/// </summary>
-		/// <returns>the current x coordinate</returns>
-		public int GetX() => x;
-
-		/// <summary>
-		/// Setter of the x coordinate
-		/// </summary>
-		/// <param name="x">the new x coordinate</param>
-		public void SetX(int x) => this.x = x;
-
-		/// <summary>
-		/// Getter of the y coordinate
-		/// </summary>
-		/// <returns>the current y coordinate</returns>
-		public int GetY() => y;
-
-		/// <summary>
-		/// Setter of the y coordinate
-		/// </summary>
-		/// <param name="y">the new y coordinate</param>
-		public void SetY(int y) => this.y = y;
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
         {
             return obj is Position position &&
-                   x == position.x &&
-                   y == position.y;
+                   X == position.X &&
+                   Y == position.Y;
         }
 
 		/// <inheritdoc />
 		public override int GetHashCode()
         {
-            return HashCode.Combine(x, y);
+            return HashCode.Combine(X, Y);
         }
     }
 }
