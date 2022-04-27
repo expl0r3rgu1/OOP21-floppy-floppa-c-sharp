@@ -60,11 +60,32 @@ namespace LeaderboardSpace
             }
         }
 
+        public void update(Player newPlayer)
+        {
+            int playerIndexInLeaderboard = leaderboard.IndexOf(newPlayer);
+            bool playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
+
+            if (playerAlreadyPresent)
+            {
+                if (newPlayer.PersonalBest > leaderboard[playerIndexInLeaderboard].PersonalBest)
+                {
+                    leaderboard.RemoveAt(playerIndexInLeaderboard);
+
+                    binarySearchInsert(newPlayer);
+                }
+            }
+            else
+            {
+                binarySearchInsert(newPlayer);
+            }
+        }
+
         private void binarySearchInsert(Player newPlayer)
         {
             int index = leaderboard.BinarySearch(newPlayer);
 
-            if(index < 0) {
+            if (index < 0)
+            {
                 index = ~index;
             }
 
