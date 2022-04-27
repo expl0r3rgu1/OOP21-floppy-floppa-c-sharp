@@ -17,14 +17,14 @@ namespace LeaderboardSpace
         {
             if (!File.Exists(leaderboardFilePath))
             {
-                createLeaderboardFile();
+                CreateLeaderboardFile();
             }
 
             leaderboard = new ArrayList<Player>();
 
             StreamReader leaderboardStreamReader = new StreamReader(leaderboardFilePath);
 
-            skipToLeaderboardStart(leaderboardStreamReader);
+            SkipToLeaderboardStart(leaderboardStreamReader);
 
             while ((line = leaderboardStreamReader.ReadLine()) != null)
             {
@@ -37,7 +37,7 @@ namespace LeaderboardSpace
             leaderboardStreamReader.Close();
         }
 
-        private void skipToLeaderboardStart(StreamReader streamReader)
+        private void SkipToLeaderboardStart(StreamReader streamReader)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -45,12 +45,12 @@ namespace LeaderboardSpace
             }
         }
 
-        private void createLeaderboardFile()
+        private void CreateLeaderboardFile()
         {
             File.Create(leaderboardFilePath);
         }
 
-        public void writeToFile()
+        public void WriteToFile()
         {
             StreamWriter leaderboardStreamWriter = File.AppendText(leaderboardFilePath);
 
@@ -60,7 +60,7 @@ namespace LeaderboardSpace
             }
         }
 
-        public void update(Player newPlayer)
+        public void Update(Player newPlayer)
         {
             int playerIndexInLeaderboard = leaderboard.IndexOf(newPlayer);
             bool playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
@@ -71,16 +71,16 @@ namespace LeaderboardSpace
                 {
                     leaderboard.RemoveAt(playerIndexInLeaderboard);
 
-                    binarySearchInsert(newPlayer);
+                    BinarySearchInsert(newPlayer);
                 }
             }
             else
             {
-                binarySearchInsert(newPlayer);
+                BinarySearchInsert(newPlayer);
             }
         }
 
-        private void binarySearchInsert(Player newPlayer)
+        private void BinarySearchInsert(Player newPlayer)
         {
             int index = leaderboard.BinarySearch(newPlayer);
 
@@ -92,7 +92,7 @@ namespace LeaderboardSpace
             leaderboard.Insert(index, newPlayer);
         }
 
-        public void clearLeaderboard()
+        public void ClearLeaderboard()
         {
             leaderboard.Clear();
         }
