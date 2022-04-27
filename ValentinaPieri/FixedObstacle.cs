@@ -10,14 +10,14 @@ namespace ObstacleFactory
 		private int y;
 		public const int MovingFactor = 2;
 
+		public Skin Skin => skin;
+
 		public FixedObstacle(int x, int y, Image skin)
 		{
 			x = x;
 			y = y;
 			skin = skin;
 		}
-
-        public GetSkin() => skin;
 
         private void updatePosition()
 		{
