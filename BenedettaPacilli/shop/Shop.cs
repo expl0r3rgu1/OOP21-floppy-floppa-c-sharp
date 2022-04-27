@@ -8,6 +8,7 @@ public class Shop
     private int _sceneriesNum;
     private int _coins;
     private sealed const string _savingsFileName = "savings";
+	private File _savings;
     private sealed List<string> _skinInitialize;
     private sealed List<string> _backgroundInitialize;
     private sealed List<int> _prices;
@@ -17,13 +18,13 @@ public class Shop
 
     public int Coins { get => _coins; set => _coins = (value < 0) ? 0 : value; }
 
-    public List<PricedSkin> GetSkins() { return _skins; }
+    public List<PurchaseStatus<PricedSkin>> Skins { get => _skins; private set => _skins = value; }
 
-    public List<PricedBackground> GetScenaries() { return _sceneries; }
+    public List<PurchaseStatus<PricedBackground>> Sceneries { get => _sceneries; private set => _sceneries = value; }
 
-    public int GetSkinsNum() { return _skinsNum; }
+    public int SkinsNum { get => _skinsNum; private set => _skinsNum = value; }
 
-    public int GetBackgroundNum() { return _backgroundNum; }
+    public int SceneriesNum { get => _sceneriesNum; private set => _sceneriesNum = value; }
 
     public Shop()
     {
@@ -47,6 +48,8 @@ public class Shop
             0, 50, 100, 200, 500,
         };
 
+		_savings = File.Create(_savingsFileName);
+
         GetFileInfo();
     }
 
@@ -54,11 +57,11 @@ public class Shop
     {
         if (o.getType().Name == "PricedSkin")
         {
-            FindAndBuySkins(o, _skins);
+            FindAndBuySkins(o, Skins);
         }
         else
         {
-            FindAndBuySceneries(o, _sceneries);
+            FindAndBuySceneries(o, Sceneries);
         }
     }
 
@@ -113,11 +116,11 @@ public class Shop
             }
             else if (counter == 1)
             {
-				GetSkinsInfo(line, _skins);
+				GetSkinsInfo(line, Skins);
             }
             else if (counter == 2)
             {
-				GetSceneriesInfo(line, _sceneries);
+				GetSceneriesInfo(line, Sceneries);
                 break;
             }
 
@@ -132,7 +135,7 @@ public class Shop
 
         string[] lineWords = line.split(",");
 
-        for (int i = 0; i < _skinsNum; i++)
+        for (int i = 0; i < SkinsNum; i++)
         {
             PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 				new PricedSkin(_skinInitialize.get(i), _imagePlaceholder, 100, 100, _prices.get(i)), false);
@@ -164,4 +167,52 @@ public class Shop
 			purchaseStatusList.add(purchaseStatus);
 		}
     }
+	
+	public void FileUpdate()
+	{
+		string[] lines = File.ReadAllLines(_savings);
+
+		if(!_skins.isEmpty() && !_sceneries.isEmpty())
+		{
+			lines[0] = _coins;
+			lines[1] = OverwritePurchaseStatusLine(_skins);
+			lines[2] = OverwritePurchaseStatusLine(_sceneries);
+		}else 
+		{
+			lines[0] = "0";
+			lines[1] = "1,0,0,0,0";
+			lines[2] = "1,0,0,0,0";
+		}
+
+		File.WriteAllLines(_savings, lines);
+	}
+
+	private string OverwritePurchaseStatusLine(List<PurchaseStatus<X>> purchaseStatusList)
+	{
+		string line = "";
+
+		foreach (var purchaseStatus in purchaseStatusList)
+		{
+			if(purchaseStatus.Purchased)
+			{
+				if (line.isEmpty())
+				{
+					line += "1";
+				}else
+				{
+					line += ",1";
+				}
+			} else
+			{
+				if (line.isEmpty())
+				{
+					line += "0";
+				} else 
+				{
+					line += ",0";
+				}
+			}
+		}
+		return line;
+	}
 }
