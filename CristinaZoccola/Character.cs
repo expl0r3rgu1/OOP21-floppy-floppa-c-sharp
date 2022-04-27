@@ -219,7 +219,7 @@ namespace Character
         }
 
         /// <inheritdoc />
-        public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+        public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
         {
             int x = GetPosition().GetX();
             int y = GetPosition().GetY();
@@ -227,7 +227,7 @@ namespace Character
             int height = _skin.GetHeight();
             Image image = _skin.GetImage();
 
-            ribbonPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
+            ribbonElementPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
 
             UpdatePosition();
         }
