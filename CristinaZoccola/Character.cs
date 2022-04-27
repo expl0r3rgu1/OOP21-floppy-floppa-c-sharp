@@ -3,8 +3,7 @@ using System.Timers;
 using System.Collections.Generic;
 using System.Drawing;
 using Utilities;
-//using namespace of FixedObstacle
-//using namespace of MovingObstacle
+using ObstacleFactory;
 //using namespace of Malus
 //using namespace of Booster
 
