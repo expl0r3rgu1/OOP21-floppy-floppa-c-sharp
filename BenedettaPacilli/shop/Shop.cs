@@ -12,12 +12,17 @@ public class Shop
 	private sealed List<PurchaseStatus<PricedSkin>> _skins;
 	private sealed List<PurchaseStatus<PricedBackground>> _sceneries;
 	private sealed File _savingsFile;
+	public int Coins { get => _coins; set => _coins = (value < 0) ? 0 : value; }
+    public int SkinsNum { get => _skinsNum; set => _skinsNum = value; }
+    public int SceneriesNum { get => _sceneriesNum; set => _sceneriesNum = value; }
+    public List<PurchaseStatus<PricedSkin>> Skins { get => _skins; set => _skins = value; }
+    public List<PurchaseStatus<PricedBackground>> Sceneries { get => _sceneries; set => _sceneries = value; }
 
-	public Shop()
+    public Shop()
     {
-		_coins = 0;
-		_skins = new List<PurchaseStatus<PricedSkin>>();
-		_sceneries = new List<PurchaseStatus<PricedBackground>>();
+		Coins = 0;
+		Skins = new List<PurchaseStatus<PricedSkin>>();
+		Sceneries = new List<PurchaseStatus<PricedBackground>>();
 		_skinInitialize = new List<string>
 		{
 			"Floppa", "Sogga", "Capibara", "Quokka", "Buding",
@@ -27,8 +32,8 @@ public class Shop
 			"Classic", "Beach", "Woods", "Space", "NeonCity",
 		};
 
-		_skinsNum = _skinInitialize.Count;
-		_sceneriesNum = _backgroundInitialize.Count;
+		SkinsNum = _skinInitialize.Count;
+		SceneriesNum = _backgroundInitialize.Count;
 
 		_prices = new List<int>
 		{
@@ -38,4 +43,6 @@ public class Shop
 		_savingsFile = new File(); //TODO
 
 	}
+
+   
 }
