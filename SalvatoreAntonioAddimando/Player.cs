@@ -2,7 +2,7 @@
 {
 	public class Player
 	{
-		private const string nickname;
+		private sealed string nickname;
 		private int personalBest;
 
 		public string Nickname
