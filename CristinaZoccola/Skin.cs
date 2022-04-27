@@ -14,81 +14,51 @@ namespace Utilities
 		private int _width;
 		private int _height;
 
-		/// <param name="name">the name of the skin</param>
-		/// <param name="image">the image of the skin</param>
-		/// <param name="width">the width of the skin</param>
-		/// <param name="height">the height of the skin</param>
-		public Skin(string name, Image image, int width, int height)
+		/// <summary>
+		/// The name of the skin
+		/// </summary>
+        public string Name { get => _name; set => _name = value; }
+		/// <summary>
+		/// The image of the skin
+		/// </summary>
+        public Image Image { get => _image; set => _image = value; }
+		/// <summary>
+		/// The width of the skin
+		/// </summary>
+        public int Width { get => _width; set => _width = value; }
+		/// <summary>
+		/// The height of the skin
+		/// </summary>
+        public int Height { get => _height; set => _height = value; }
+
+        /// <param name="name">the name of the skin</param>
+        /// <param name="image">the image of the skin</param>
+        /// <param name="width">the width of the skin</param>
+        /// <param name="height">the height of the skin</param>
+        public Skin(string name, Image image, int width, int height)
 		{
-			_name = name;
-			_image = image;
-			_width = width;
-			_height = height;
+			Name = name;
+			Image = image;
+			Width = width;
+			Height = height;
 		}
-
-		/// <summary>
-		/// Getter of the skin name
-		/// </summary>
-		/// <returns>the name of the skin</returns>
-		public string GetName() => _name;
-
-		/// <summary>
-		/// Setter of the skin name
-		/// </summary>
-		/// <param name="name">name the new name of the skin</param>
-		public void SetName(string name) => _name = name;
-
-		/// <summary>
-		/// Getter of the skin image
-		/// </summary>
-		/// <returns>the image of the skin</returns>
-		public Image GetImage() => _image;
-
-		/// <summary>
-		/// Setter of the skin image
-		/// </summary>
-		/// <param name="image">the new image of the skin</param>
-		public void SetImage(Image image) => _image = image;
-
-		/// <summary>
-		/// Getter of the skin width
-		/// </summary>
-		/// <returns>the width of the skin</returns>
-		public int GetWidth() => _width;
-
-		/// <summary>
-		/// Setter of the skin width
-		/// </summary>
-		/// <param name="width">the new width of the skin</param>
-		public void SetWidth(int width) => _width = width;
-
-		/// <summary>
-		/// Getter of the skin height
-		/// </summary>
-		/// <returns>the height of the skin</returns>
-		public int GetHeight() => _height;
-
-		/// <summary>
-		/// Setter of the skin height
-		/// </summary>
-		/// <param name="height">the new height of the skin</param>
-		public void SetHeight(int height) => _height = height;
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
         {
             return obj is Skin skin &&
-                   _name == skin._name &&
-                   EqualityComparer<Image>.Default.Equals(_image, skin._image) &&
-                   _width == skin._width &&
-                   _height == skin._height;
+                   Name == skin.Name &&
+                   EqualityComparer<Image>.Default.Equals(Image, skin.Image) &&
+                   Width == skin.Width &&
+                   Height == skin.Height;
         }
 
 		/// <inheritdoc />
 		public override int GetHashCode()
         {
-            return HashCode.Combine(_name, _image, _width, _height);
+            return HashCode.Combine(Name, Image, Width, Height);
         }
+
     }
 }
 
