@@ -6,6 +6,7 @@ public class Shop
 	private int _skinsNum;
 	private int _sceneriesNum;
 	private int _coins;
+	private sealed const string _savingsFileName = "savings";
 	private sealed List<string> _skinInitialize;
 	private sealed List<string> _backgroundInitialize;
 	private sealed List<int> _prices;
@@ -48,5 +49,45 @@ public class Shop
 
 	}
 
-   
+   public bool Buy(Object o)
+   {
+	   if (o.getType().Name == "PricedSkin"){
+		   FindAndBuySkins(o, _skins);
+	   }else {
+		   FindAndBuySceneries(o, _sceneries);
+	   }
+   }
+
+	private bool FindAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
+	{
+		bool state = false;
+		foreach(var status in purchaseStatusList) {
+			if (status.X.Equals(o)) {
+				if (!status.Purchased && status.X.Price <= _coins){
+					status.Purchased = true;
+					_coins = _coins - status.X.Price;
+					state = true;
+					break;
+				}
+			}
+		}
+		return state;
+	}
+
+	private bool FindAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
+	{
+		bool state = false;
+		foreach(var status in purchaseStatusList) {
+			if (status.X.Equals(o)) {
+				if (!status.Purchased && status.X.Price <= _coins){
+					status.Purchased = true;
+					_coins = _coins - status.X.Price;
+					state = true;
+					break;
+				}
+			}
+		}
+		return state;
+	}
+
 }
