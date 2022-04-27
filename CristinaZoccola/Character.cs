@@ -3,6 +3,10 @@ using System.Timers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+//using namespace of FixedObstacle
+//using namespace of MovingObstacle
+//using namespace of Malus
+//using namespace of Booster
 
 namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 {
