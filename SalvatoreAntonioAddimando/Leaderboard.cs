@@ -25,11 +25,11 @@ namespace LeaderboardSpace
 
             skipToLeaderboardStart(leaderboardStreamReader);
 
-            while ((string line = leaderboardStreamReader.ReadLine()) != null)
+            while ((line = leaderboardStreamReader.ReadLine()) != null)
             {
                 if (!string.IsNullOrEmpty(line))
                 {
-                    leaderboard.add(new Player(line.Split(',')[0], int.Parse(line.Split(',')[1]));
+                    leaderboard.add(new Player(line.Split(',')[0], int.Parse(line.Split(',')[1])));
                 }
             }
 
