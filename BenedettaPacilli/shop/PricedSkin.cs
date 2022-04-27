@@ -3,26 +3,18 @@ using System.Drawing;
 public class PricedSkin : Skin
 {
     private int _price;
+    
+    public int Price { get => _price; set => _price = value; }
 
     public PricedSkin(string name, Image image, int width, int height, int price):base(name, image, width, height)
     {
-        _price = price;
+        Price = price;
     }
 
-    public int GetPrice()
-    {
-        return _price;
-    }
-
-    public void SetPrice(int price)
-    {
-        _price = price;
-    }
-
-   public override bool Equals(object obj)
+    public override bool Equals(object obj)
     {
         PricedSkin other = (PricedSkin)obj;
-        return base.Equals(other) & _price == other._price;
+        return base.Equals(other) & Price == other.Price;
     }
 
     public override int GetHashCode()
