@@ -24,4 +24,9 @@ public class PricedSkin : Skin
         PricedSkin other = (PricedSkin)obj;
         return base.Equals(other) & _price == other._price;
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }
