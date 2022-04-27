@@ -29,5 +29,10 @@ namespace InfiniteMap
         {
             ribbonPaintEventArgs.Graphics.DrawImage(image, Position.X, Position.Y, 1920, 1080);
         }
+
+        public void UpdatePosition()
+        {
+            Position.X = Position.X - 1;
+        }
     }
 }
