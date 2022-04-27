@@ -1,27 +1,28 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ObstacleFactory
 {
-	public class FixedObstacle
+    public class FixedObstacle
 	{
-		private Image _skin;
-		private int _x;
-		private int _y;
+		private Image skin;
+		private int x;
+		private int y;
 		public const int MovingFactor = 2;
 
 		public FixedObstacle(int x, int y, Image skin)
 		{
-			_x = x;
-			_y = y;
-			_skin = skin;
+			x = x;
+			y = y;
+			skin = skin;
 		}
 
-		public GetSkin() => _skin;
+        public GetSkin() => skin;
 
-		private void updatePosition()
+        private void updatePosition()
 		{
-			_x = _x - MovingFactor;
-			_y = _y;
+			x = x - MovingFactor;
+			y = y;
 		}
 
 		public override bool equals(object obj)
@@ -33,7 +34,7 @@ namespace ObstacleFactory
 				return false;
 			}
 
-			return _x.Equals(other._x) & _y.Equals(other._y) & _skin.Equals(other.GetSkin);
+			return x.Equals(other.x) & y.Equals(other.y) & skin.Equals(other.GetSkin);
 		}
 
 		public override int GetHashCode() => base.GetHashCode();
