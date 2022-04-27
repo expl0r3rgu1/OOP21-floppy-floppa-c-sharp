@@ -22,7 +22,7 @@ namespace Character
         /// <summary>
         /// if it is true the character is immune from death, its default value is false
         /// </summary>
-        public static bool immortal = false;
+        public static bool Immortal = false;
         private readonly Skin _skin;
         private bool _dead;
         private bool _jumping;
@@ -45,17 +45,17 @@ namespace Character
         /// <summary>
         /// Makes the status of the character as dead
         /// </summary>
-        public void Die() => _dead = immortal ? false : true;
+        public void Die() => _dead = Immortal ? false : true;
 
         /// <summary>
         /// Method to make the character immortal
         /// </summary>
-        public static void SetImmortal() => immortal = true;
+        public static void SetImmortal() => Immortal = true;
 
         /// <summary>
         /// Method to make the character to its normal state
         /// </summary>
-        public static void UnSetImmortal() => immortal = false;
+        public static void UnSetImmortal() => Immortal = false;
 
         /// <summary>
         /// Getter of the character skin
