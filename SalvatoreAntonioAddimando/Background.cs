@@ -32,7 +32,7 @@ namespace InfiniteMap
 
         public void UpdatePosition()
         {
-            Position.X = Position.X - 1;
+            Position.X = Position.X - 2;
         }
     }
 }
