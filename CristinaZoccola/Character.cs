@@ -22,29 +22,29 @@ namespace Character
         /// if it is true the character is immune from death, its default value is false
         /// </summary>
         public static bool Immortal = false;
-        private readonly Skin _skin;
-        private bool _dead;
-        private bool _jumping;
-        private readonly Timer _timer;
+        private readonly Skin skin;
+        private bool dead;
+        private bool jumping;
+        private readonly Timer timer;
 
         /// <param name="position">the initial spawning position of the character</param>
         /// <param name="skin">the skin of the character</param>
         public Character(Position position, Skin skin) : base(position)
         {
-            _skin = skin;
-            _dead = false;
-            _jumping = false;
-            _timer = new Timer(500);
-            _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            this.skin = skin;
+            dead = false;
+            jumping = false;
+            timer = new Timer(500);
+            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
         }
 
         /// <returns>true if the character is dead</returns>
-        public bool IsDead() => _dead;
+        public bool IsDead() => dead;
 
         /// <summary>
         /// Makes the status of the character as dead
         /// </summary>
-        public void Die() => _dead = Immortal ? false : true;
+        public void Die() => dead = Immortal ? false : true;
 
         /// <summary>
         /// Method to make the character immortal
@@ -60,19 +60,19 @@ namespace Character
         /// Getter of the character skin
         /// </summary>
         /// <returns>the character skin</returns>
-        public Skin GetSkin() => _skin;
+        public Skin GetSkin() => skin;
 
         /// <summary>
         /// Makes the character jump
         /// </summary>
         public void Jump()
         {
-            if (!_jumping)
+            if (!jumping)
             {
-                _timer.Start();
-                _jumping = true;
+                timer.Start();
+                jumping = true;
             }
-            _timer.Start();
+            timer.Start();
         }
 
         /// <summary>
@@ -86,9 +86,9 @@ namespace Character
             foreach(FixedObstacle fixedObstacle in fixedObstacleList)
             {
                 int characterX = GetPosition().GetX();
-                int characterWiderX = characterX + _skin.GetWidth();
+                int characterWiderX = characterX + skin.GetWidth();
                 int characterY = GetPosition().GetY();
-                int characterLowerY = characterY + _skin.GetHeight();
+                int characterLowerY = characterY + skin.GetHeight();
                 int obstacleX = fixedObstacle.GetPosition().GetX();
                 int obstacleWiderX = obstacleX + fixedObstacle.GetSkin().GetWidth();
                 int obstacleUpperY = fixedObstacle.GetPosition().GetY() + (int)space_between_pipes / 2;
@@ -179,7 +179,7 @@ namespace Character
         public void CollideBorders()
         {
             int characterY = GetPosition().GetY();
-            int characterLowerY = characterY + _skin.GetHeight();
+            int characterLowerY = characterY + skin.GetHeight();
             int upperBorder = 0;
             int lowerBorder = 1080;
 
@@ -200,9 +200,9 @@ namespace Character
         private bool CheckCollision(int x, int y, int height, int width)
         {
             int characterX = GetPosition().GetX();
-            int characterWiderX = characterX + _skin.GetWidth();
+            int characterWiderX = characterX + skin.GetWidth();
             int characterY = GetPosition().GetY();
-            int characterLowerY = characterY + _skin.GetHeight();
+            int characterLowerY = characterY + skin.GetHeight();
             int entityWiderX = x + width;
             int entityLowerY = y + height;
 
@@ -222,9 +222,9 @@ namespace Character
         {
             int x = GetPosition().GetX();
             int y = GetPosition().GetY();
-            int width = _skin.GetWidth();
-            int height = _skin.GetHeight();
-            Image image = _skin.GetImage();
+            int width = skin.GetWidth();
+            int height = skin.GetHeight();
+            Image image = skin.GetImage();
 
             ribbonElementPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
 
@@ -237,7 +237,7 @@ namespace Character
         private void UpdatePosition()
         {
             int movingFactor = 2;
-            int value = _jumping ? -2 : 1;
+            int value = jumping ? -2 : 1;
             GetPosition().SetY(GetPosition().GetY() + value * movingFactor);
         }
 
@@ -248,8 +248,8 @@ namespace Character
         /// <param name="e"></param>
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            _jumping = false;
-            _timer.Stop();
+            jumping = false;
+            timer.Stop();
         }
 
     }
