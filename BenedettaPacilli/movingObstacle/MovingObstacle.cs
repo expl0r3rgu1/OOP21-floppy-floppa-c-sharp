@@ -1,5 +1,6 @@
 using System.Timers;
 
+namespace ObstacleFactory {
 public class MovingObstacle : Movable
 {
 	private Timer _timer;
@@ -36,4 +37,5 @@ public class MovingObstacle : Movable
     {
         return base.GetHashCode();
     }
+}
 }
