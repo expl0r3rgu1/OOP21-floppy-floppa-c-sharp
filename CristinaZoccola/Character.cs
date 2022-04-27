@@ -8,7 +8,7 @@ using Utilities;
 //using namespace of Malus
 //using namespace of Booster
 
-namespace Character
+namespace CharacterSpace
 {
     /// <summary>
     /// A class that implements the character, it keeps track of its current status
