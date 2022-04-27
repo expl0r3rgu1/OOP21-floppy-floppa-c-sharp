@@ -16,14 +16,18 @@
             set { personalBest = value; }
         }
 
-        public Player(string nickname)
+        public Player(string nickname, int personalBest)
         {
             this.nickname = nickname;
+            if (personalBest >= 0)
+            {
+                this.personalBest = personalBest;
+            }
         }
 
         public string ToString()
         {
-			return nickname + "," + personalBest;
+            return nickname + "," + personalBest;
         }
     }
 }
