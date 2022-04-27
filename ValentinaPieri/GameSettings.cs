@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
 {
-    class GameSettings
+    public class GameSettings
     {
         private ScrollingBackground scollingBackground;
         private Skin skin;
