@@ -4,11 +4,7 @@ public class PurchaseStatus<X>
     private bool _purchased;
 
     public X X { get => _x; set => _x = value; }
-    
-    public bool Purchased { get => _purchased; set => _purchased = true; }
 
-    public void ResetPurchase()
-    {
-        Purchased = false;
-    }
+    public bool Purchased { get => _purchased; set => _purchased = value; }
+
 }
