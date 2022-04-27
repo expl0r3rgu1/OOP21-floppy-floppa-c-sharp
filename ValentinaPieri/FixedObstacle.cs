@@ -5,9 +5,7 @@ namespace ObstacleFactory
 {
     public class FixedObstacle
 	{
-		private Image skin;
-		private int x;
-		private int y;
+		private readonly Skin skin;
 		public const int MovingFactor = 2;
 
 		public Skin Skin => skin;
