@@ -84,14 +84,14 @@ namespace Character
             int space_between_pipes = 300;
             foreach(FixedObstacle fixedObstacle in fixedObstacleList)
             {
-                int characterX = GetPosition().GetX();
-                int characterWiderX = characterX + Skin.GetWidth();
-                int characterY = GetPosition().GetY();
-                int characterLowerY = characterY + Skin.GetHeight();
-                int obstacleX = fixedObstacle.GetPosition().GetX();
-                int obstacleWiderX = obstacleX + fixedObstacle.GetSkin().GetWidth();
-                int obstacleUpperY = fixedObstacle.GetPosition().GetY() + (int)space_between_pipes / 2;
-                int obstacleLowerY = fixedObstacle.GetPosition().GetY() + (int)space_between_pipes / 2;
+                int characterX = Position.X;
+                int characterWiderX = characterX + Skin.Width;
+                int characterY = Position.Y;
+                int characterLowerY = characterY + Skin.Height;
+                int obstacleX = fixedObstacle.Position.X;
+                int obstacleWiderX = obstacleX + fixedObstacle.Skin.Width;
+                int obstacleUpperY = fixedObstacle.Position.Y + (int)space_between_pipes / 2;
+                int obstacleLowerY = fixedObstacle.Position.Y + (int)space_between_pipes / 2;
 
                 if((characterY >= obstacleX && characterX <= obstacleWiderX) 
                     || (characterWiderX >= obstacleUpperY && characterLowerY <= obstacleWiderX))
@@ -115,10 +115,10 @@ namespace Character
         {
             foreach(MovingObstacle movingObstacle in movingObstacleList)
             {
-                int x = movingObstacle.GetPosition().GetX();
-                int y = movingObstacle.GetPosition().GetY();
-                int height = movingObstacle.GetSkin().GetHeight();
-                int width = movingObstacle.GetSkin().GetWidth();
+                int x = movingObstacle.Position.X;
+                int y = movingObstacle.Position.Y;
+                int height = movingObstacle.Skin.Height;
+                int width = movingObstacle.Skin.Width;
 
                 if(CheckCollision(x, y, height, width))
                 {
@@ -137,10 +137,10 @@ namespace Character
         {
             foreach(Malus malus in malusList)
             {
-                int x = malus.GetPosition().GetX();
-                int y = malus.GetPosition().GetY();
-                int height = malus.GetSkin().GetHeight();
-                int width = malus.GetSkin().GetWidth();
+                int x = malus.Position.X;
+                int y = malus.Position.Y;
+                int height = malus.Skin.Height;
+                int width = malus.Skin.Width;
 
                 if (CheckCollision(x, y, height, width))
                 {
@@ -159,10 +159,10 @@ namespace Character
         {
             foreach(Booster booster in boosterList)
             {
-                int x = booster.GetPosition().GetX();
-                int y = booster.GetPosition().GetY();
-                int height = booster.GetSkin().GetHeight();
-                int width = booster.GetSkin().GetWidth();
+                int x = booster.Position.X;
+                int y = booster.Position.Y;
+                int height = booster.Skin.Height;
+                int width = booster.Skin.Width;
 
                 if (CheckCollision(x, y, height, width))
                 {
@@ -177,8 +177,8 @@ namespace Character
         /// </summary>
         public void CollideBorders()
         {
-            int characterY = GetPosition().GetY();
-            int characterLowerY = characterY + Skin.GetHeight();
+            int characterY = Position.Y;
+            int characterLowerY = characterY + Skin.Height;
             int upperBorder = 0;
             int lowerBorder = 1080;
 
@@ -198,10 +198,10 @@ namespace Character
         /// <returns>true if the character collides with an entity</returns>
         private bool CheckCollision(int x, int y, int height, int width)
         {
-            int characterX = GetPosition().GetX();
-            int characterWiderX = characterX + Skin.GetWidth();
-            int characterY = GetPosition().GetY();
-            int characterLowerY = characterY + Skin.GetHeight();
+            int characterX = Position.X;
+            int characterWiderX = characterX + Skin.Width;
+            int characterY = Position.Y;
+            int characterLowerY = characterY + Skin.Height;
             int entityWiderX = x + width;
             int entityLowerY = y + height;
 
@@ -219,11 +219,11 @@ namespace Character
         /// <inheritdoc />
         public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
         {
-            int x = GetPosition().GetX();
-            int y = GetPosition().GetY();
-            int width = Skin.GetWidth();
-            int height = Skin.GetHeight();
-            Image image = Skin.GetImage();
+            int x = Position.X;
+            int y = Position.Y;
+            int width = Skin.Width;
+            int height = Skin.Height;
+            Image image = Skin.Image;
 
             ribbonElementPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
 
@@ -237,7 +237,7 @@ namespace Character
         {
             int movingFactor = 2;
             int value = jumping ? -2 : 1;
-            GetPosition().SetY(GetPosition().GetY() + value * movingFactor);
+            Position.Y += value * movingFactor;
         }
 
         /// <summary>
