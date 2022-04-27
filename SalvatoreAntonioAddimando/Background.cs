@@ -34,5 +34,10 @@ namespace InfiniteMap
         {
             Position.X = Position.X - 2;
         }
+
+        public bool IsOffStageLeft()
+        {
+            return (Position.X <= -1 * 1920);
+        }
     }
 }
