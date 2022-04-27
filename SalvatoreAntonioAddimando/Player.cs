@@ -4,7 +4,7 @@ namespace LeaderboardSpace
 {
     public class Player : IComparable
     {
-        private sealed string nickname;
+        private readonly string nickname;
         private int personalBest;
 
         public string Nickname

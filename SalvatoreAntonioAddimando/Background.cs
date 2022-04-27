@@ -4,8 +4,8 @@ namespace InfiniteMap
 {
     class Background : Movable
     {
-        private sealed string name;
-        private sealed Image image;
+        private readonly string name;
+        private readonly Image image;
         public string Name { get => name; set => name = value; }
         public Image Image { get => image; set => image = value; }
 
