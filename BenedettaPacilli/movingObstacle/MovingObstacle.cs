@@ -3,11 +3,11 @@ using System.Timers;
 public class MovingObstacle : Movable
 {
 	private Timer _timer;
-	private Image _skin;
+	private Skin _skin;
 	private int _direction = -1;
 	private const int _movingFactor = 2;
 
-    public Image Skin { get => _skin; set => _skin = value; }
+    public Skin Skin { get => _skin; set => _skin = value; }
 
     public MovingObstacle(Position position, Image skin):base(position)
 	{
