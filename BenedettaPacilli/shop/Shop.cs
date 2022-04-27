@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 
+namespace Shop {
+
 public class Shop
 {
     private int _skinsNum;
@@ -215,4 +217,6 @@ public class Shop
 		}
 		return line;
 	}
+}
+
 }
