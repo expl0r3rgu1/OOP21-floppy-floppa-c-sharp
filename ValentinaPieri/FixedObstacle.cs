@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ObstacleFactory
 {
@@ -19,6 +20,17 @@ namespace ObstacleFactory
 		{
 			Position.X = Position.X - MovingFactor;
 			Position.Y = Position.Y;
+		}
+
+		public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+		{
+			int space_between_pipes = 300;
+			int screen_size_width = 1080;
+			int screen_size_height = 980;
+
+			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + (int)space_between_pipes / 2, screen_size_width / 10, screen_size_height - (Position.Y + (int)space_between_pipes / 2));
+
+			UpdatePosition();
 		}
 
 		public override bool equals(object obj)
