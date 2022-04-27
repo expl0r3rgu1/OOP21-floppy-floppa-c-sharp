@@ -2,6 +2,7 @@
 using System.Timers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 {
@@ -155,7 +156,15 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
 
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
         {
-            throw new System.NotImplementedException();
+            int x = GetPosition().GetX();
+            int y = GetPosition().GetY();
+            int width = _skin.GetWidth();
+            int height = _skin.GetHeight();
+            Image image = _skin.GetImage();
+
+            ribbonPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
+
+            UpdatePosition();
         }
 
         private void UpdatePosition()
