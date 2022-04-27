@@ -22,6 +22,14 @@ namespace LeaderboardSpace
             leaderboard = new ArrayList<Player>();
         }
 
+        private void skipToLeaderboardStart(StreamReader streamReader)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                streamReader.ReadLine();
+            }
+        }
+
         private void createLeaderboardFile()
         {
             File.Create(leaderboardFilePath);
