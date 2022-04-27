@@ -18,4 +18,10 @@ public class PricedBackground : Background
     {
         _price = price;
     }
+
+    public override bool Equals(object obj)
+    {
+        PricedBackground other = (PricedBackground)obj;
+        return base.Equals(other) & _price == other._price;
+    }
 }
