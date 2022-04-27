@@ -1,24 +1,29 @@
 ﻿namespace LeaderboardSpace
 {
-	public class Player
-	{
-		private sealed string nickname;
-		private int personalBest;
+    public class Player
+    {
+        private sealed string nickname;
+        private int personalBest;
 
-		public string Nickname
-		{
-			get { return nickname; }
-		}
+        public string Nickname
+        {
+            get { return nickname; }
+        }
 
-		public int PersonalBest
-		{
-			get { return personalBest; }
-			set { personalBest = value; }
-		}
+        public int PersonalBest
+        {
+            get { return personalBest; }
+            set { personalBest = value; }
+        }
 
-		public Player(string nickname)
-		{
-			this.nickname = nickname;
-		}
-	}
+        public Player(string nickname)
+        {
+            this.nickname = nickname;
+        }
+
+        public string ToString()
+        {
+			return nickname + "," + personalBest;
+        }
+    }
 }
