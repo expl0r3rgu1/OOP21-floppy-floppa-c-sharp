@@ -1,6 +1,4 @@
 using System.Timers;
-using System.Drawing;
-using System;
 
 public class MovingObstacle : Movable
 {

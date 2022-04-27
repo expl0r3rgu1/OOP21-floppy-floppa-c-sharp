@@ -1,5 +1,3 @@
-using System.Drawing;
-
 public class PricedSkin : Skin
 {
     private int _price;
