@@ -9,22 +9,22 @@ namespace Utilities
     /// </summary>
 	public abstract class Movable
 	{
-	    private Position _position;
+	    private Position position;
 
         /// <param name="position">the initial spawning position of the entity</param>
-        public Movable(Position position) => _position = position;
+        public Movable(Position position) => this.position = position;
 
         /// <summary>
         /// Getter of the entity position
         /// </summary>
         /// <returns>the current position of the entity</returns>
-	    public Position GetPosition() => _position;
+	    public Position GetPosition() => position;
 
         /// <summary>
         /// Setter of the entity position
         /// </summary>
         /// <param name="position">the new position of the entity</param>
-	    public void SetPosition(Position position) => _position = position;
+	    public void SetPosition(Position position) => this.position = position;
 
         /// <summary>
         /// A method that will be used to animate all the entities on the map
@@ -36,13 +36,13 @@ namespace Utilities
         public override bool Equals(object obj)
         {
             return obj is Movable movable &&
-                   EqualityComparer<Position>.Default.Equals(_position, movable._position);
+                   EqualityComparer<Position>.Default.Equals(position, movable.position);
         }
 
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return HashCode.Combine(_position);
+            return HashCode.Combine(position);
         }
     }
 }
