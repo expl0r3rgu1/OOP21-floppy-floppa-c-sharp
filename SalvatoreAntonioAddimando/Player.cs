@@ -1,6 +1,8 @@
-﻿namespace LeaderboardSpace
+﻿using System;
+
+namespace LeaderboardSpace
 {
-    public class Player
+    public class Player : IComparable
     {
         private sealed string nickname;
         private int personalBest;
@@ -28,6 +30,15 @@
         public string ToString()
         {
             return nickname + "," + personalBest;
+        }
+
+        public int CompareTo(object obj)
+        {
+			if (obj == null) return 1;
+
+			Player other = obj as Player;
+
+			return other.PersonalBest - this.personalBest;
         }
     }
 }
