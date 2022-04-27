@@ -27,14 +27,19 @@ namespace Character
         private bool jumping;
         private readonly Timer timer;
 
+        /// <summary>
+        /// The skin of the character
+        /// </summary>
+        public Skin Skin => skin;
+
         /// <param name="position">the initial spawning position of the character</param>
         /// <param name="skin">the skin of the character</param>
         public Character(Position position, Skin skin) : base(position)
         {
             this.skin = skin;
-            dead = false;
-            jumping = false;
-            timer = new Timer(500);
+            this.dead = false;
+            this.jumping = false;
+            this.timer = new Timer(500);
             timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
         }
 
@@ -55,12 +60,6 @@ namespace Character
         /// Method to make the character to its normal state
         /// </summary>
         public static void UnSetImmortal() => Immortal = false;
-
-        /// <summary>
-        /// Getter of the character skin
-        /// </summary>
-        /// <returns>the character skin</returns>
-        public Skin GetSkin() => skin;
 
         /// <summary>
         /// Makes the character jump
@@ -86,9 +85,9 @@ namespace Character
             foreach(FixedObstacle fixedObstacle in fixedObstacleList)
             {
                 int characterX = GetPosition().GetX();
-                int characterWiderX = characterX + skin.GetWidth();
+                int characterWiderX = characterX + Skin.GetWidth();
                 int characterY = GetPosition().GetY();
-                int characterLowerY = characterY + skin.GetHeight();
+                int characterLowerY = characterY + Skin.GetHeight();
                 int obstacleX = fixedObstacle.GetPosition().GetX();
                 int obstacleWiderX = obstacleX + fixedObstacle.GetSkin().GetWidth();
                 int obstacleUpperY = fixedObstacle.GetPosition().GetY() + (int)space_between_pipes / 2;
@@ -179,7 +178,7 @@ namespace Character
         public void CollideBorders()
         {
             int characterY = GetPosition().GetY();
-            int characterLowerY = characterY + skin.GetHeight();
+            int characterLowerY = characterY + Skin.GetHeight();
             int upperBorder = 0;
             int lowerBorder = 1080;
 
@@ -200,9 +199,9 @@ namespace Character
         private bool CheckCollision(int x, int y, int height, int width)
         {
             int characterX = GetPosition().GetX();
-            int characterWiderX = characterX + skin.GetWidth();
+            int characterWiderX = characterX + Skin.GetWidth();
             int characterY = GetPosition().GetY();
-            int characterLowerY = characterY + skin.GetHeight();
+            int characterLowerY = characterY + Skin.GetHeight();
             int entityWiderX = x + width;
             int entityLowerY = y + height;
 
@@ -222,9 +221,9 @@ namespace Character
         {
             int x = GetPosition().GetX();
             int y = GetPosition().GetY();
-            int width = skin.GetWidth();
-            int height = skin.GetHeight();
-            Image image = skin.GetImage();
+            int width = Skin.GetWidth();
+            int height = Skin.GetHeight();
+            Image image = Skin.GetImage();
 
             ribbonElementPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
 
