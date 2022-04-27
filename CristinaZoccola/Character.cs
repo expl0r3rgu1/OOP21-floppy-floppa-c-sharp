@@ -158,6 +158,13 @@ namespace OOP21_floppy_floppa_c_sharp.CristinaZoccola
             throw new System.NotImplementedException();
         }
 
+        private void UpdatePosition()
+        {
+            int movingFactor = 2;
+            int value = _jumping ? -2 : 1;
+            GetPosition().SetY(GetPosition().GetY() + value * movingFactor);
+        }
+
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             _jumping = false;
