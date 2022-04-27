@@ -58,7 +58,6 @@ namespace Utilities
         {
             return HashCode.Combine(Name, Image, Width, Height);
         }
-
     }
 }
 

@@ -250,6 +250,5 @@ namespace Character
             jumping = false;
             timer.Stop();
         }
-
     }
 }
