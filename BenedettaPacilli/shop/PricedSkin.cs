@@ -18,4 +18,10 @@ public class PricedSkin : Skin
     {
         _price = price;
     }
+
+   public override bool Equals(object obj)
+    {
+        PricedSkin other = (PricedSkin)obj;
+        return base.Equals(other) & _price == other._price;
+    }
 }
