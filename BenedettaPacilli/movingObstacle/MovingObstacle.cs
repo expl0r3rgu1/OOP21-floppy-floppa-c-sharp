@@ -29,7 +29,7 @@ public class MovingObstacle : Movable
     public override bool Equals(object obj)
     {
 		MovingObstacle other = (MovingObstacle)obj;
-        return base.Equals(other) & this._skin = other._skin;
+        return base.Equals(other) && this._skin = other._skin;
     }
 
     public override int GetHashCode()

@@ -14,7 +14,7 @@ public class PricedBackground : Background
     public override bool Equals(object obj)
     {
         PricedBackground other = (PricedBackground)obj;
-        return base.Equals(other) & Price == other.Price;
+        return base.Equals(other) && Price == other.Price;
     }
 
     public override int GetHashCode()

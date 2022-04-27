@@ -12,7 +12,7 @@ public class PricedSkin : Skin
     public override bool Equals(object obj)
     {
         PricedSkin other = (PricedSkin)obj;
-        return base.Equals(other) & Price == other.Price;
+        return base.Equals(other) && Price == other.Price;
     }
 
     public override int GetHashCode()
