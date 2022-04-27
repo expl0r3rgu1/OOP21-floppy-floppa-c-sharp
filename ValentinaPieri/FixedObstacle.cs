@@ -33,16 +33,16 @@ namespace ObstacleFactory
 			UpdatePosition();
 		}
 
-		public override bool equals(object obj)
+		public override bool Equals(object obj)
 		{
-			FixedObstacle other = (FixedObstacle)obj;
+			FixedObstacle other = obj as FixedObstacle;
 
 			if (other == null)
 			{
 				return false;
 			}
 
-			return x.Equals(other.x) & y.Equals(other.y) & skin.Equals(other.GetSkin);
+			return base.Equals(obj) && skin.Equals(other.skin);
 		}
 
 		public override int GetHashCode() => base.GetHashCode();
