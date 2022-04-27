@@ -9,27 +9,27 @@ namespace Utilities
 	/// </summary>
 	public class Skin
 	{
-		private string _name;
-		private Image _image;
-		private int _width;
-		private int _height;
+		private string name;
+		private Image image;
+		private int width;
+		private int height;
 
 		/// <summary>
 		/// The name of the skin
 		/// </summary>
-        public string Name { get => _name; set => _name = value; }
+        public string Name { get => name; set => name = value; }
 		/// <summary>
 		/// The image of the skin
 		/// </summary>
-        public Image Image { get => _image; set => _image = value; }
+        public Image Image { get => image; set => image = value; }
 		/// <summary>
 		/// The width of the skin
 		/// </summary>
-        public int Width { get => _width; set => _width = value; }
+        public int Width { get => width; set => width = value; }
 		/// <summary>
 		/// The height of the skin
 		/// </summary>
-        public int Height { get => _height; set => _height = value; }
+        public int Height { get => height; set => height = value; }
 
         /// <param name="name">the name of the skin</param>
         /// <param name="image">the image of the skin</param>
