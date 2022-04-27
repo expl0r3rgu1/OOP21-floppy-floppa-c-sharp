@@ -1,3 +1,4 @@
+namespace Shop {
 public class PricedSkin : Skin
 {
     private int _price;
@@ -19,4 +20,5 @@ public class PricedSkin : Skin
     {
         return base.GetHashCode();
     }
+}
 }
