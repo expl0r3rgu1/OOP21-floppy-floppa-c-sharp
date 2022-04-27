@@ -6,8 +6,8 @@ namespace InfiniteMap
     {
         private readonly string name;
         private readonly Image image;
-        public string Name { get => name; set => name = value; }
-        public Image Image { get => image; set => image = value; }
+        public string Name { get => name; }
+        public Image Image { get => image; }
 
         public Background(string name, Image image)
         {
