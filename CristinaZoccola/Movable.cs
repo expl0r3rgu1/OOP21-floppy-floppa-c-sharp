@@ -11,20 +11,13 @@ namespace Utilities
 	{
 	    private Position position;
 
+        /// <summary>
+        /// The position of the entity
+        /// </summary>
+        public Position Position { get => position; set => position = value; }
+
         /// <param name="position">the initial spawning position of the entity</param>
-        public Movable(Position position) => this.position = position;
-
-        /// <summary>
-        /// Getter of the entity position
-        /// </summary>
-        /// <returns>the current position of the entity</returns>
-	    public Position GetPosition() => position;
-
-        /// <summary>
-        /// Setter of the entity position
-        /// </summary>
-        /// <param name="position">the new position of the entity</param>
-	    public void SetPosition(Position position) => this.position = position;
+        public Movable(Position position) => Position = position;
 
         /// <summary>
         /// A method that will be used to animate all the entities on the map
@@ -36,13 +29,13 @@ namespace Utilities
         public override bool Equals(object obj)
         {
             return obj is Movable movable &&
-                   EqualityComparer<Position>.Default.Equals(position, movable.position);
+                   EqualityComparer<Position>.Default.Equals(Position, movable.Position);
         }
 
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return HashCode.Combine(position);
+            return HashCode.Combine(Position);
         }
     }
 }
