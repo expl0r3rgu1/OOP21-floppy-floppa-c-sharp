@@ -8,4 +8,14 @@ public class PricedSkin : Skin
     {
         _price = price;
     }
+
+    public int GetPrice()
+    {
+        return _price;
+    }
+
+    public void SetPrice(int price)
+    {
+        _price = price;
+    }
 }
