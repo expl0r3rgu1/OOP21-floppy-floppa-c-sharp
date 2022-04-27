@@ -14,7 +14,7 @@ namespace LeaderboardSpace
 
         public Leaderboard()
         {
-            if(!File.Exists(leaderboardFilePath))
+            if (!File.Exists(leaderboardFilePath))
             {
                 createLeaderboardFile();
             }
@@ -47,6 +47,16 @@ namespace LeaderboardSpace
         private void createLeaderboardFile()
         {
             File.Create(leaderboardFilePath);
+        }
+
+        public void writeToFile()
+        {
+            StreamWriter leaderboardStreamWriter = File.AppendText(leaderboardFilePath);
+
+            foreach (Player player in leaderboard)
+            {
+                leaderboardStreamWriter.WriteLine(player.ToString());
+            }
         }
     }
 }
