@@ -91,5 +91,10 @@ namespace LeaderboardSpace
 
             leaderboard.Insert(index, newPlayer);
         }
+
+        public void clearLeaderboard()
+        {
+            leaderboard.Clear();
+        }
     }
 }
