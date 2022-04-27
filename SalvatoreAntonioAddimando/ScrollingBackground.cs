@@ -1,0 +1,7 @@
+namespace InfiniteMap
+{
+    class ScrollingBackground
+    {
+        
+    }
+}
