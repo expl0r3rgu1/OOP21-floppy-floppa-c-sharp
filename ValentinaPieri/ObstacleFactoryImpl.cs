@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Drawing;
+using ObstacleFactory;
 
-public class ObstacleFactoryImpl
+namespace ObstacleFactory
 {
-    public FixedObstacle fixedObstacleFactory(Position _position, Image _image) => new FixedObstacle(_position, _image);
+    public class ObstacleFactoryImpl
+    {
+        public FixedObstacle FixedObstacleFactory(Position position, Skin skin) => new FixedObstacle(position, skin);
 
-    public MovingObstacle movingObstacleFactory(Position _position, Image _image) => new MovingObstacle(_position, _image);
+        public MovingObstacle MovingObstacleFactory(Position position, Skin skin) => new MovingObstacle(position, skin);
+    }
+
 }
