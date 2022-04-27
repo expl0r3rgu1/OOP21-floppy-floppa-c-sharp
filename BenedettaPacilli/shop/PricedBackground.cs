@@ -1,5 +1,5 @@
 using System.Drawing;
-
+namespace Shop {
 public class PricedBackground : Background
 {
     private int _price;
@@ -21,4 +21,5 @@ public class PricedBackground : Background
     {
         return base.GetHashCode();
     }
+}
 }
