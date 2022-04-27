@@ -10,17 +10,15 @@ namespace ObstacleFactory
 
 		public Skin Skin => skin;
 
-		public FixedObstacle(int x, int y, Image skin)
+		public FixedObstacle(Position position, Skin skin) : base(position)
 		{
-			x = x;
-			y = y;
-			skin = skin;
+			this.skin = skin;
 		}
 
-        private void updatePosition()
+		pprivate void UpdatePosition()
 		{
-			x = x - MovingFactor;
-			y = y;
+			Position.X = Position.X - MovingFactor;
+			Position.Y = Position.Y;
 		}
 
 		public override bool equals(object obj)
