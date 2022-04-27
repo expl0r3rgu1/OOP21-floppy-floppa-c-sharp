@@ -20,6 +20,20 @@ namespace LeaderboardSpace
             }
 
             leaderboard = new ArrayList<Player>();
+
+            StreamReader leaderboardStreamReader = new StreamReader(leaderboardFilePath);
+
+            skipToLeaderboardStart(leaderboardStreamReader);
+
+            while ((string line = leaderboardStreamReader.ReadLine()) != null)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    leaderboard.add(new Player(line.Split(',')[0], int.Parse(line.Split(',')[1]));
+                }
+            }
+
+            leaderboardStreamReader.Close();
         }
 
         private void skipToLeaderboardStart(StreamReader streamReader)
