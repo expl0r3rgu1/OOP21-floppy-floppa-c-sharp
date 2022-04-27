@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+using System.Drawing;
 using Utilities.Movable;
 
 namespace InfiniteMap
@@ -21,6 +23,11 @@ namespace InfiniteMap
             super(position);
             this.name = name;
             this.image = image;
+        }
+
+        public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+        {
+            ribbonPaintEventArgs.Graphics.DrawImage(image, Position().X(), Position().Y(), 1920, 1080);
         }
     }
 }
