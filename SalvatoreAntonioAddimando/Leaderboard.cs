@@ -1,3 +1,4 @@
+using System.Collections;
 using System.IO;
 
 namespace LeaderboardSpace
@@ -57,6 +58,17 @@ namespace LeaderboardSpace
             {
                 leaderboardStreamWriter.WriteLine(player.ToString());
             }
+        }
+
+        private void binarySearchInsert(Player newPlayer)
+        {
+            int index = leaderboard.BinarySearch(newPlayer);
+
+            if(index < 0) {
+                index = ~index;
+            }
+
+            leaderboard.Insert(index, newPlayer);
         }
     }
 }
