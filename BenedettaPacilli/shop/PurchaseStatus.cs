@@ -1,3 +1,4 @@
+namespace Shop {
 public class PurchaseStatus<X>
 {
     private X _x;
@@ -7,4 +8,5 @@ public class PurchaseStatus<X>
 
     public bool Purchased { get => _purchased; set => _purchased = value; }
 
+}
 }
