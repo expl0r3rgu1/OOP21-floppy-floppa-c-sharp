@@ -27,12 +27,12 @@ namespace LeaderboardSpace
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return nickname + "," + personalBest;
         }
 
-        public int CompareTo(object obj)
+        public override int CompareTo(object obj)
         {
 			if (obj == null) return 1;
 
