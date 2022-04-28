@@ -1,5 +1,6 @@
 using System.Drawing;
-namespace Shop {
+namespace ShopSpace
+{
 public class PricedBackground : Background
 {
     private int price;

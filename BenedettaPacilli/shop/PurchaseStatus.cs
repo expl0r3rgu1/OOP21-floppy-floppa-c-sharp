@@ -1,4 +1,5 @@
-namespace Shop {
+namespace ShopSpace
+{
 public class PurchaseStatus<X>
 {
     private X x;

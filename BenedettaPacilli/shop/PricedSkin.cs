@@ -1,4 +1,5 @@
-namespace Shop {
+namespace ShopSpace
+{
 public class PricedSkin : Skin
 {
     private int price;

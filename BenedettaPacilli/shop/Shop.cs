@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
 
-namespace Shop {
+namespace ShopSpace
+{
 
 public class Shop
 {
