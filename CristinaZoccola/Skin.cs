@@ -37,26 +37,26 @@ namespace Utilities
         /// <param name="height">the height of the skin</param>
         public Skin(string name, Image image, int width, int height)
 		{
-			Name = name;
-			Image = image;
-			Width = width;
-			Height = height;
+			this.name = name;
+			this.image = image;
+			this.width = width;
+			this.height = height;
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
         {
             return obj is Skin skin &&
-                   Name == skin.Name &&
-                   EqualityComparer<Image>.Default.Equals(Image, skin.Image) &&
-                   Width == skin.Width &&
-                   Height == skin.Height;
+                   this.name == skin.Name &&
+                   EqualityComparer<Image>.Default.Equals(this.image, skin.Image) &&
+                   this.width == skin.Width &&
+                   this.height == skin.Height;
         }
 
 		/// <inheritdoc />
 		public override int GetHashCode()
         {
-            return HashCode.Combine(Name, Image, Width, Height);
+            return HashCode.Combine(this.name, this.image, this.width, this.height);
         }
     }
 }
