@@ -17,7 +17,7 @@ namespace Utilities
         public Position Position { get => position; set => position = value; }
 
         /// <param name="position">the initial spawning position of the entity</param>
-        public Movable(Position position) => Position = position;
+        public Movable(Position position) => this.position = position;
 
         /// <summary>
         /// A method that will be used to animate all the entities on the map
@@ -29,13 +29,13 @@ namespace Utilities
         public override bool Equals(object obj)
         {
             return obj is Movable movable &&
-                   EqualityComparer<Position>.Default.Equals(Position, movable.Position);
+                   EqualityComparer<Position>.Default.Equals(this.position, movable.Position);
         }
 
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return HashCode.Combine(Position);
+            return HashCode.Combine(this.position);
         }
     }
 }
