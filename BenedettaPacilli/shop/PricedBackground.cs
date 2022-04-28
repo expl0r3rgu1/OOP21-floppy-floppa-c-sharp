@@ -19,10 +19,5 @@ namespace ShopSpace
             PricedBackground other = (PricedBackground)obj;
             return base.Equals(other) && Price == other.Price;
         }
-
-        public int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }
