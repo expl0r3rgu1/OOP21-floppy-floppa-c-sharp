@@ -73,12 +73,12 @@ public class Shop
         bool state = false;
         foreach (var status in purchaseStatusList)
         {
-            if (status.X.Equals(o))
+            if (status.Item.Equals(o))
             {
-                if (!status.Purchased && status.X.Price <= coins)
+                if (!status.Purchased && status.Item.Price <= coins)
                 {
                     status.Purchased = true;
-                    coins = coins - status.X.Price;
+                    coins = coins - status.Item.Price;
                     state = true;
                     break;
                 }
@@ -92,12 +92,12 @@ public class Shop
         bool state = false;
         foreach (var status in purchaseStatusList)
         {
-            if (status.X.Equals(o))
+            if (status.Item.Equals(o))
             {
-                if (!status.Purchased && status.X.Price <= coins)
+                if (!status.Purchased && status.Item.Price <= coins)
                 {
                     status.Purchased = true;
-                    coins = coins - status.X.Price;
+                    coins = coins - status.Item.Price;
                     state = true;
                     break;
                 }
@@ -173,11 +173,11 @@ public class Shop
 	
 	public void FileUpdate()
 	{
-		string[] lines = File.ReadAllLines(savings);
+		string[] lines = File.ReadAllLines(savingsFileName);
 
-		if(!skins.isEmpty() && !sceneries.isEmpty())
+		if(skins.Count != 0 && sceneries.Count != 0)
 		{
-			lines[0] = coins;
+			lines[0] = coins.ToString();
 			lines[1] = OverwritePurchaseStatusLine(skins);
 			lines[2] = OverwritePurchaseStatusLine(sceneries);
 		}else 
@@ -187,10 +187,10 @@ public class Shop
 			lines[2] = "1,0,0,0,0";
 		}
 
-		File.WriteAllLines(savings, lines);
+		File.WriteAllLines(savingsFileName, lines);
 	}
 
-	private string OverwritePurchaseStatusLine(List<PurchaseStatus<X>> purchaseStatusList)
+	private string OverwritePurchaseStatusLine<X>(List<PurchaseStatus<X>> purchaseStatusList)
 	{
 		string line = "";
 
