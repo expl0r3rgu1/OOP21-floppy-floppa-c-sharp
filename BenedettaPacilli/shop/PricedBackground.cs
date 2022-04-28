@@ -1,4 +1,5 @@
 using System.Drawing;
+
 namespace ShopSpace
 {
 public class PricedBackground : Background

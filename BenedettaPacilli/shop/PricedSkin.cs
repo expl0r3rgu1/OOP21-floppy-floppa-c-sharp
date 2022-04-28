@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace ShopSpace
 {
 public class PricedSkin : Skin
