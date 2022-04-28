@@ -1,18 +1,17 @@
 namespace ShopSpace
 {
-public class PurchaseStatus<X>
-{
-    private X x;
-    private bool purchased;
+    public class PurchaseStatus<X>
+    {
+        private X item;
+        private bool purchased;
 
-    public X X { get => x; set => x = value; }
+        public bool Purchased { get => purchased; set => purchased = value; }
+            public X Item { get => item; set => item = value; }
 
-    public bool Purchased { get => purchased; set => purchased = value; }
-
-    public PurchaseStatus(X x, bool purchased)
-        {
-            this.x = x;
-            this.purchased = purchased;
-        }
-}
+            public PurchaseStatus(X item, bool purchased)
+            {
+                this.item = item;
+                this.purchased = purchased;
+            }
+    }
 }
