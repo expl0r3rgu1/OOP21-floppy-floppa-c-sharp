@@ -5,7 +5,10 @@ using System;
 
 namespace ShopSpace
 {
-
+    /// <summary>
+    /// A class that keeps track of the items' current purchase status and that has
+    /// methods to purchase the items
+    /// </summary>
     public class Shop
     {
         private readonly int skinsNum;
@@ -19,21 +22,36 @@ namespace ShopSpace
         private readonly List<PurchaseStatus<PricedBackground>> sceneries;
         private const Image imagePlaceholder = null;
 
+        /// <summary>
+        /// Can return the current coins amount or set a new amount for the coins field
+        /// </summary>
         public int Coins { get => coins; set => coins = (value < 0) ? 0 : value; }
 
+        /// <summary>
+        /// Returns the list of purchase statuses of skins
+        /// </summary>
         public List<PurchaseStatus<PricedSkin>> Skins => skins;
 
+        /// <summary>
+        /// Returns the list of purchase statuses of backgrounds
+        /// </summary>
         public List<PurchaseStatus<PricedBackground>> Sceneries => sceneries;
 
+        /// <summary>
+        /// Returns the number of Skin objects
+        /// </summary>
         public int SkinsNum => skinsNum;
 
+        /// <summary>
+        /// Returns the number of Background objects
+        /// </summary>
         public int SceneriesNum => sceneriesNum;
 
         public Shop()
         {
-            Coins = 0;
-            Skins = new List<PurchaseStatus<PricedSkin>>();
-            Sceneries = new List<PurchaseStatus<PricedBackground>>();
+            coins = 0;
+            skins = new List<PurchaseStatus<PricedSkin>>();
+            sceneries = new List<PurchaseStatus<PricedBackground>>();
             skinInitialize = new List<string>
             {
                 "Floppa", "Sogga", "Capibara", "Quokka", "Buding",
@@ -43,8 +61,8 @@ namespace ShopSpace
                 "Classic", "Beach", "Woods", "Space", "NeonCity",
             };
 
-            SkinsNum = skinInitialize.Count;
-            SceneriesNum = backgroundInitialize.Count;
+            skinsNum = skinInitialize.Count;
+            sceneriesNum = backgroundInitialize.Count;
 
             prices = new List<int>
             {
@@ -56,6 +74,13 @@ namespace ShopSpace
             GetFileInfo();
         }
 
+        /// <summary>
+        /// Depending on the class of the parameter, the method passes, to another
+        /// method, the parameter object together with the corresponding list of purchase 
+        /// statuses
+        /// </summary>
+        /// <param name="o"> the object to be purchased</param>
+        /// <returns> true if the given object gets purchased, false otherwise</returns>
         public bool Buy(object o)
         {
             if (o.GetType().Equals(PricedSkin.getType()))
@@ -68,6 +93,13 @@ namespace ShopSpace
             }
         }
 
+        /// <summary>
+        ///  Finds the Object o in the List list and, if the current coins are enough and 
+        ///  the item hasn't been previously purchased, it purchases it
+        /// </summary>
+        /// <param name="o"> the object to be purchased</param>
+        /// <param name="purchaseStatusList"> List of purchase statuses of PricedSkin items</param>
+        /// <returns> true if the given object gets purchased, false otherwise</returns>
         private bool FindAndBuySkins(object o, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
         {
             bool state = false;
@@ -87,6 +119,13 @@ namespace ShopSpace
             return state;
         }
 
+        /// <summary>
+        /// Finds the Object o in the List list and, if the current coins are enough and 
+        /// the item hasn't been previously purchased, it purchases it
+        /// </summary>
+        /// <param name="o"> the object to be purchased</param>
+        /// <param name="purchaseStatusList"> List of purchase statuses of PricedBackground items</param>
+        /// <returns> true if the given object gets purchased, false otherwise</returns>
         private bool FindAndBuySceneries(object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
         {
             bool state = false;
@@ -106,6 +145,10 @@ namespace ShopSpace
             return state;
         }
 
+        /// <summary>
+        /// Through a Scanner, the method reads the savings file to get the coins amount, 
+        /// the initial purchase status of all skins and sceneries
+        /// </summary>
         private void GetFileInfo()
         {
             StreamReader shopStreamReader = new StreamReader(savingsFileName);
@@ -134,6 +177,12 @@ namespace ShopSpace
             shopStreamReader.Close();
         }
 
+        /// <summary>
+        /// Creates skinsNum PurchaseStatus of PricedSkin objects and initializes them, 
+        /// checks the line, word by word, to get the current PurchaseStatus
+        /// </summary>
+        /// <param name="line"> one line of the savings file</param>
+        /// <param name="purchaseStatusList"> List of purchase statuses of PricedSkin items</param>
         private void GetSkinsInfo(string line, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
         {
             string[] lineWords = line.Split(",");
@@ -152,7 +201,14 @@ namespace ShopSpace
 		    }
         }
 
-	    private void GetSceneriesInfo(string line, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
+        /// <summary>
+        /// Creates sceneriesNum PurchaseStatus of PricedBackground objects and 
+        /// initializes them, checks the line, word by word, to get the current 
+        /// PurchaseStatus
+        /// </summary>
+        /// <param name="line"> one line of the savings file</param>
+        /// <param name="purchaseStatusList"> List of purchase statuses of PricedBackground items</param>
+        private void GetSceneriesInfo(string line, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
         {
 
             string[] lineWords = line.Split(",");
@@ -170,8 +226,11 @@ namespace ShopSpace
 			    purchaseStatusList.Add(purchaseStatus);
 		    }
         }
-	
-	    public void FileUpdate()
+
+        /// <summary>
+        ///  A method that updates the savings file at the end of a game
+        /// </summary>
+        public void FileUpdate()
 	    {
 		    string[] lines = File.ReadAllLines(savingsFileName);
 
@@ -188,8 +247,15 @@ namespace ShopSpace
 		    }
 
 		    File.WriteAllLines(savingsFileName, lines);
-	    }
+        }
 
+        /// <summary>
+        /// The method creates the new line of information for the savings file
+        /// </summary>
+        /// <typeparam name="X"> The items type</typeparam>
+        /// <param name="purchaseStatusList"> List of purchase statuses of generic X items</param>
+        /// <returns> the line that will be overwritten over an old line to update the 
+        /// savings file</returns>
 	    private string OverwritePurchaseStatusLine<X>(List<PurchaseStatus<X>> purchaseStatusList)
 	    {
 		    string line = "";
@@ -218,5 +284,18 @@ namespace ShopSpace
 		    }
 		    return line;
 	    }
+
+        /// <summary>
+        /// Used to clear data from the lists of Purchase Statuses.
+        /// </summary>
+        public void ClearSavings()
+        {
+            coins = 0;
+            skins.ForEach(status => status.Purchased = false);
+            skins[0].Purchased = true;
+
+            sceneries.ForEach(status => status.Purchased = false);
+            sceneries[0].Purchased = true;
+        }
     }
 }
