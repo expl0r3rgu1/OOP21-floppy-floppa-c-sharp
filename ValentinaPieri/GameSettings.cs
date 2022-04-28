@@ -3,7 +3,7 @@ using InfiniteMap;
 using LeaderboardSpace;
 using System.Drawing;
 
-namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
+namespace Utilities
 {
     /// <summary>
     /// GameSettings is the class that sets the Skin for the Character and the
