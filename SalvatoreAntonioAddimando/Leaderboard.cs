@@ -3,16 +3,25 @@ using System.IO;
 
 namespace LeaderboardSpace
 {
+    /// <summary>
+    /// The list of Player instances ordered by Player.PersonalBest
+    /// </summary>
     class Leaderboard
     {
         private const string leaderboardFilePath = "savings";
         private List<Player> leaderboardList;
 
+        /// <summary>
+        /// The List of Player instances the played the game
+        /// </summary>
         public List<Player> LeaderboardList
         {
             get { return leaderboardList; }
         }
 
+        /// <summary>
+        /// Initialized the Leaderboard by reading the savings file
+        /// </summary>
         public Leaderboard()
         {
             if (!File.Exists(leaderboardFilePath))
@@ -51,6 +60,9 @@ namespace LeaderboardSpace
             File.Create(leaderboardFilePath);
         }
 
+        /// <summary>
+        /// Saves the current Leaderboard List in the savings file
+        /// </summary>
         public void WriteToFile()
         {
             StreamWriter leaderboardStreamWriter = File.AppendText(leaderboardFilePath);
@@ -61,6 +73,10 @@ namespace LeaderboardSpace
             }
         }
 
+        /// <summary>
+        /// Updates the Leaderboard List with a new Player
+        /// </summary>
+        /// <param name="newPlayer">A new Player or an already existing Player with a different Player.personalBest(Score)</param>
         public void Update(Player newPlayer)
         {
             int playerIndexInLeaderboard = leaderboardList.IndexOf(newPlayer);
@@ -93,6 +109,9 @@ namespace LeaderboardSpace
             leaderboardList.Insert(index, newPlayer);
         }
 
+        /// <summary>
+        /// Clears the Leaderboard List
+        /// </summary>
         public void ClearLeaderboard()
         {
             leaderboardList.Clear();
