@@ -9,5 +9,10 @@ public class PurchaseStatus<X>
 
     public bool Purchased { get => purchased; set => purchased = value; }
 
+    public PurchaseStatus(X x, bool purchased)
+        {
+            this.x = x;
+            this.purchased = purchased;
+        }
 }
 }
