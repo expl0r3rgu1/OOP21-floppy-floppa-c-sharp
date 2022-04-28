@@ -39,13 +39,13 @@ public class MovingObstacle : Movable
 		timer.Stop();
 	}
 
-    public override bool Equals(object obj)
+    public bool Equals(object obj)
     {
 		MovingObstacle other = (MovingObstacle)obj;
         return base.Equals(other) && this.skin = other.skin;
     }
 
-    public override int GetHashCode()
+    public int GetHashCode()
     {
         return base.GetHashCode();
     }
