@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace LeaderboardSpace
@@ -6,11 +6,11 @@ namespace LeaderboardSpace
     class Leaderboard
     {
         private const string leaderboardFilePath = "savings";
-        private ArrayList<Player> leaderboard;
+        private List<Player> leaderboardList;
 
-        public ArrayList<Player> Leaderboard
+        public List<Player> LeaderboardList
         {
-            get { return leaderboard; }
+            get { return leaderboardList; }
         }
 
         public Leaderboard()
@@ -20,17 +20,18 @@ namespace LeaderboardSpace
                 CreateLeaderboardFile();
             }
 
-            leaderboard = new ArrayList<Player>();
+            leaderboardList = new List<Player>();
 
             StreamReader leaderboardStreamReader = new StreamReader(leaderboardFilePath);
 
             SkipToLeaderboardStart(leaderboardStreamReader);
+            string line = null;
 
             while ((line = leaderboardStreamReader.ReadLine()) != null)
             {
                 if (!string.IsNullOrEmpty(line))
                 {
-                    leaderboard.add(new Player(line.Split(',')[0], int.Parse(line.Split(',')[1])));
+                    leaderboardList.Add(new Player(line.Split(',')[0], int.Parse(line.Split(',')[1])));
                 }
             }
 
@@ -54,7 +55,7 @@ namespace LeaderboardSpace
         {
             StreamWriter leaderboardStreamWriter = File.AppendText(leaderboardFilePath);
 
-            foreach (Player player in leaderboard)
+            foreach (Player player in leaderboardList)
             {
                 leaderboardStreamWriter.WriteLine(player.ToString());
             }
@@ -62,14 +63,14 @@ namespace LeaderboardSpace
 
         public void Update(Player newPlayer)
         {
-            int playerIndexInLeaderboard = leaderboard.IndexOf(newPlayer);
+            int playerIndexInLeaderboard = leaderboardList.IndexOf(newPlayer);
             bool playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
 
             if (playerAlreadyPresent)
             {
-                if (newPlayer.PersonalBest > leaderboard[playerIndexInLeaderboard].PersonalBest)
+                if (newPlayer.PersonalBest > leaderboardList[playerIndexInLeaderboard].PersonalBest)
                 {
-                    leaderboard.RemoveAt(playerIndexInLeaderboard);
+                    leaderboardList.RemoveAt(playerIndexInLeaderboard);
 
                     BinarySearchInsert(newPlayer);
                 }
@@ -82,19 +83,19 @@ namespace LeaderboardSpace
 
         private void BinarySearchInsert(Player newPlayer)
         {
-            int index = leaderboard.BinarySearch(newPlayer);
+            int index = leaderboardList.BinarySearch(newPlayer);
 
             if (index < 0)
             {
                 index = ~index;
             }
 
-            leaderboard.Insert(index, newPlayer);
+            leaderboardList.Insert(index, newPlayer);
         }
 
         public void ClearLeaderboard()
         {
-            leaderboard.Clear();
+            leaderboardList.Clear();
         }
     }
 }
