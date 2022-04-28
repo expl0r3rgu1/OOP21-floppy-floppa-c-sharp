@@ -136,39 +136,38 @@ public class Shop
 
     private void GetSkinsInfo(string line, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
     {
-
-        string[] lineWords = line.split(",");
+        string[] lineWords = line.Split(",");
 
         for (int i = 0; i < skinsNum; i++)
         {
             PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
-				new PricedSkin(skinInitialize.get(i), imagePlaceholder, 100, 100, prices.get(i)), false);
+				new PricedSkin(skinInitialize[i], imagePlaceholder, 100, 100, prices[i]), false);
         
 			if(lineWords[i].Equals("1"))
 			{
 				purchaseStatus.Purchased = true;
 			}
-		
-			purchaseStatusList.add(purchaseStatus);
+		    
+			purchaseStatusList.Add(purchaseStatus);
 		}
     }
 
 	private void GetSceneriesInfo(string line, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
     {
 
-        string[] lineWords = line.split(",");
+        string[] lineWords = line.Split(",");
 
         for (int i = 0; i < sceneriesNum; i++)
         {
             PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
-				new PricedBackground(skinInitialize.get(i), imagePlaceholder, prices.get(i)), false);
+				new PricedBackground(skinInitialize[i], imagePlaceholder, prices[i]), false);
         
 			if(lineWords[i].Equals("1"))
 			{
 				purchaseStatus.Purchased = true;
 			}
 		
-			purchaseStatusList.add(purchaseStatus);
+			purchaseStatusList.Add(purchaseStatus);
 		}
     }
 	
