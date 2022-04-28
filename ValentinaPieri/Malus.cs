@@ -1,11 +1,10 @@
-﻿using floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.test;
-using System;
+﻿using Utilities;
 
 namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
 {
     public abstract class Malus : Movable
     {
-        private Skin skin;
+        private readonly Skin skin;
 
         public Skin Skin => skin;
 
