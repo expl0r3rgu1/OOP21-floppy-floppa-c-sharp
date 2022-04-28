@@ -1,9 +1,9 @@
 ﻿using Utilities;
 using System.Timers;
-using StateChanger_Malus;
+using StateChanger;
 using System.Windows.Forms;
 
-namespace StateChanger_Malus
+namespace StateChanger
 {
 	/// <summary>
 	/// A class that extends Malus class and implements an entity that makes appear a
@@ -14,11 +14,11 @@ namespace StateChanger_Malus
 	{
 		private bool collided = false;
 		private readonly Timer timer;
-		private const int MovingFactor = 2;
-		private readonly int skin_dimension = 50;
-		private readonly int space_between_pipes = 300;
-		private readonly int screen_size_width = 1080;
-		private readonly int screen_size_height = 980;
+		private const int movingFactor = 2;
+		private readonly int skinDimension = 50;
+		private readonly int spaceBetweenPipes = 300;
+		private readonly int screenSizeWidth = 1080;
+		private readonly int screenSizeHeight = 980;
 
 		/// <param name="position">the BlackStain initial Position</param>
 		/// <param name="skin">the BlackStain Skin</param>
@@ -33,7 +33,7 @@ namespace StateChanger_Malus
 		{
 			timer.Start();
 			this.collided = true;
-            Position.X = Position.X - skin_dimension;
+            Position.X = Position.X - skinDimension;
 			Position.Y = Position.Y;
 		}
 
@@ -44,7 +44,7 @@ namespace StateChanger_Malus
 		/// </summary>
 		private void UpdatePositionX()
 		{
-			Position.X = Position.X - 3 * MovingFactor;
+			Position.X = Position.X - 3 * movingFactor;
 			Position.Y = Position.Y;
 		}
 
@@ -57,7 +57,7 @@ namespace StateChanger_Malus
 
 			if (collided)
 			{
-				ribbonPaintEventArgs.Graphics.DrawImage(Skin.Image, 0, 0, screen_size_width, screen_size_height);
+				ribbonPaintEventArgs.Graphics.DrawImage(Skin.Image, 0, 0, screenSizeWidth, screenSizeHeight);
 			}
 		}
 
