@@ -10,8 +10,8 @@ namespace StateChanger_Malus
 	/// </summary>
     public class CoinsReducer : Malus
     {
-        private const int MovingFactor = 2;
-        private int PlayPanel_reducerTimes = 0;
+        private const int movingFactor = 2;
+        private int playPanelReducerTimes = 0;
 
         /// <param name="position">the CoinsReducer initial Position</param>
 		/// <param name="skin">the CoinsReducer Skin</param>
@@ -20,7 +20,7 @@ namespace StateChanger_Malus
         /// <inheritdoc />
         public override void ChangeState()
         {
-            PlayPanel_reducerTimes++;
+            playPanelReducerTimes++;
             MoveOffScreen();
         }
 
@@ -31,7 +31,7 @@ namespace StateChanger_Malus
 		/// </summary>
         private void UpdatePositionX()
         {
-            Position.X = Position.X - 3 * MovingFactor;
+            Position.X = Position.X - 3 * movingFactor;
             Position.Y = Position.Y;
         }
 
