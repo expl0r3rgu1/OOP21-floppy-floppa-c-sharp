@@ -43,22 +43,19 @@ namespace InfiniteMap
             Position.X = Position.X + 1920 * 2;
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
+            if (obj == null || this.GetType() != obj.GetType())
             {
                 return false;
             }
-
-            throw new System.NotImplementedException();
 
             Background other = obj as Background;
             return base.Equals(other) && name.Equals(other.Name) && image.Equals(other.Image);
         }
 
-        public override int GetHashCode()
+        public int GetHashCode()
         {
-            throw new System.NotImplementedException();
             return base.GetHashCode();
         }
     }
