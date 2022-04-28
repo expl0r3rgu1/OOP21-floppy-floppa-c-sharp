@@ -148,24 +148,6 @@ namespace CharacterSpace
             }
         }
 
-        // CollideBooster is commented because the Booster class is not implemented
-       /*public void CollideBooster(List<Booster> boosterList)
-       {
-            foreach(Booster booster in boosterList)
-            {
-                int x = booster.Position.X;
-                int y = booster.Position.Y;
-                int height = booster.Skin.Height;
-                int width = booster.Skin.Width;
-
-                if (CheckCollision(x, y, height, width))
-                {
-                    booster.ChangeState();
-                    break;
-                }
-            }
-       }*/
-
         /// <summary>
         /// Checks if the character collides with the borders of the map
         /// </summary>
