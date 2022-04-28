@@ -8,26 +8,26 @@ namespace ShopSpace
 
     public class Shop
     {
-        private int skinsNum;
-        private int sceneriesNum;
+        private readonly int skinsNum;
+        private readonly int sceneriesNum;
         private int coins;
         private const string savingsFileName = "savings";
         private readonly List<string> skinInitialize;
         private readonly List<string> backgroundInitialize;
         private readonly List<int> prices;
-        private  List<PurchaseStatus<PricedSkin>> skins;
-        private  List<PurchaseStatus<PricedBackground>> sceneries;
+        private readonly List<PurchaseStatus<PricedSkin>> skins;
+        private readonly List<PurchaseStatus<PricedBackground>> sceneries;
         private const Image imagePlaceholder = null;
 
         public int Coins { get => coins; set => coins = (value < 0) ? 0 : value; }
 
-        public List<PurchaseStatus<PricedSkin>> Skins { get => skins; private set => skins = value; }
+        public List<PurchaseStatus<PricedSkin>> Skins => skins;
 
-        public List<PurchaseStatus<PricedBackground>> Sceneries { get => sceneries; private set => sceneries = value; }
+        public List<PurchaseStatus<PricedBackground>> Sceneries => sceneries;
 
-        public int SkinsNum { get => skinsNum; private set => skinsNum = value; }
+        public int SkinsNum => skinsNum;
 
-        public int SceneriesNum { get => sceneriesNum; private set => sceneriesNum = value; }
+        public int SceneriesNum => sceneriesNum;
 
         public Shop()
         {
@@ -138,7 +138,7 @@ namespace ShopSpace
         {
             string[] lineWords = line.Split(",");
 
-            for (int i = 0; i < skinsNum; i++)
+            for (int i = 0; i < SkinsNum; i++)
             {
                 PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 				    new PricedSkin(skinInitialize[i], imagePlaceholder, 100, 100, prices[i]), false);
@@ -157,7 +157,7 @@ namespace ShopSpace
 
             string[] lineWords = line.Split(",");
 
-            for (int i = 0; i < sceneriesNum; i++)
+            for (int i = 0; i < SceneriesNum; i++)
             {
                 PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
 				    new PricedBackground(skinInitialize[i], imagePlaceholder, prices[i]), false);
@@ -175,11 +175,11 @@ namespace ShopSpace
 	    {
 		    string[] lines = File.ReadAllLines(savingsFileName);
 
-		    if(skins.Count != 0 && sceneries.Count != 0)
+		    if(Skins.Count != 0 && Sceneries.Count != 0)
 		    {
 			    lines[0] = coins.ToString();
-			    lines[1] = OverwritePurchaseStatusLine(skins);
-			    lines[2] = OverwritePurchaseStatusLine(sceneries);
+			    lines[1] = OverwritePurchaseStatusLine(Skins);
+			    lines[2] = OverwritePurchaseStatusLine(Sceneries);
 		    }else 
 		    {
 			    lines[0] = "0";
