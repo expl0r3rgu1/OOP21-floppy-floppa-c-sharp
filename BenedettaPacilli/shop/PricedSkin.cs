@@ -14,13 +14,13 @@ public class PricedSkin : Skin
         Price = price;
     }
 
-    public override bool Equals(object obj)
+    public bool Equals(object obj)
     {
         PricedSkin other = (PricedSkin)obj;
         return base.Equals(other) && Price == other.Price;
     }
 
-    public override int GetHashCode()
+    public int GetHashCode()
     {
         return base.GetHashCode();
     }
