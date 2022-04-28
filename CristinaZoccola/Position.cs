@@ -24,22 +24,22 @@ namespace Utilities
         /// <param name="y">the y coordinate on the map</param>
         public Position(int x, int y)
 		{
-			X = x;
-			Y = y;
+			this.x = x;
+			this.y = y;
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
         {
             return obj is Position position &&
-                   X == position.X &&
-                   Y == position.Y;
+                   this.x == position.X &&
+                   this.y == position.Y;
         }
 
 		/// <inheritdoc />
 		public override int GetHashCode()
         {
-            return HashCode.Combine(X, Y);
+            return HashCode.Combine(this.x, this.y);
         }
     }
 }
