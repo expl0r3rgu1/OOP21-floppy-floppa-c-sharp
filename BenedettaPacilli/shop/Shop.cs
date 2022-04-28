@@ -56,19 +56,19 @@ public class Shop
         GetFileInfo();
     }
 
-    public bool Buy(Object o)
+    public bool Buy(object o)
     {
-        if (o.getType().Name == "PricedSkin")
+        if (o.GetType().Equals(PricedSkin.getType()))
         {
-            FindAndBuySkins(o, Skins);
+            return FindAndBuySkins(o, Skins);
         }
         else
         {
-            FindAndBuySceneries(o, Sceneries);
+            return FindAndBuySceneries(o, Sceneries);
         }
     }
 
-    private bool FindAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
+    private bool FindAndBuySkins(object o, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
     {
         bool state = false;
         foreach (var status in purchaseStatusList)
@@ -87,7 +87,7 @@ public class Shop
         return state;
     }
 
-    private bool FindAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
+    private bool FindAndBuySceneries(object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
     {
         bool state = false;
         foreach (var status in purchaseStatusList)
