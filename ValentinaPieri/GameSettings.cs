@@ -15,7 +15,7 @@ namespace Utilities
         private Skin skin;
         private Player player;
         private readonly Image image = null;
-        private readonly int skin_dimension = 50;
+        private readonly int skinDimension = 50;
 
         /// <summary>
         /// The Skin of the entity
@@ -35,7 +35,7 @@ namespace Utilities
         public GameSettings()
         {
             this.scollingBackground = new ScrollingBackground("Default", image);
-            this.skin = new Skin("Floppa", image, skin_dimension, skin_dimension);
+            this.skin = new Skin("Floppa", image, skinDimension, skinDimension);
         }
 
     }
