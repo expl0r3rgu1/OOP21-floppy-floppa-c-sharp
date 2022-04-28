@@ -11,7 +11,6 @@ public class Shop
     private int sceneriesNum;
     private int coins;
     private const string savingsFileName = "savings";
-	private File savings;
     private readonly List<string> skinInitialize;
     private readonly List<string> backgroundInitialize;
     private readonly List<int> prices;
@@ -51,7 +50,7 @@ public class Shop
             0, 50, 100, 200, 500,
         };
 
-		savings = File.Create(savingsFileName);
+		File.Create(savingsFileName);
 
         GetFileInfo();
     }
