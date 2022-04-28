@@ -1,6 +1,6 @@
 ﻿using Utilities;
 
-namespace StateChanger_Malus
+namespace StateChanger
 {
     /// <summary>
     /// A class that implements an object that hampers the character in different ways
