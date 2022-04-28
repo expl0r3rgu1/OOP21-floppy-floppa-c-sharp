@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Drawing;
+using System;
 
 namespace ShopSpace
 {
@@ -110,11 +111,12 @@ public class Shop
         StreamReader shopStreamReader = new StreamReader(savingsFileName);
 
         int counter = 0;
+        string line = string.Empty;
         while ((line = shopStreamReader.ReadLine()) != null)
         {
             if (counter == 0)
             {
-                coins = line;
+                coins = Int32.Parse(line);
             }
             else if (counter == 1)
             {
