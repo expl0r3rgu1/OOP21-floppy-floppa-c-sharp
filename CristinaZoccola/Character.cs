@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Utilities;
 using ObstacleFactory;
-//using namespace of Malus
-//using namespace of Booster
+using StateChanger;
 
 namespace CharacterSpace
 {
