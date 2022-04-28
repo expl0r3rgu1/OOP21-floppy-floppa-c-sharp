@@ -3,26 +3,26 @@ using Utilities;
 
 namespace ShopSpace
 {
-public class PricedSkin : Skin
-{
-    private int price;
+    public class PricedSkin : Skin
+    {
+        private int price;
     
-    public int Price { get => price; set => price = value; }
+        public int Price { get => price; set => price = value; }
 
-    public PricedSkin(string name, Image image, int width, int height, int price):base(name, image, width, height)
-    {
-        Price = price;
-    }
+        public PricedSkin(string name, Image image, int width, int height, int price):base(name, image, width, height)
+        {
+            Price = price;
+        }
 
-    public bool Equals(object obj)
-    {
-        PricedSkin other = (PricedSkin)obj;
-        return base.Equals(other) && Price == other.Price;
-    }
+        public bool Equals(object obj)
+        {
+            PricedSkin other = (PricedSkin)obj;
+            return base.Equals(other) && Price == other.Price;
+        }
 
-    public int GetHashCode()
-    {
-        return base.GetHashCode();
+        public int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
-}
 }
