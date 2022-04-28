@@ -1,7 +1,6 @@
-﻿using floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.test;
-using Utilities;
+﻿using Utilities;
 
-namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
+namespace StateChanger_Malus
 {
     /// <summary>
     /// A class that implements an object that hampers the character in different ways
