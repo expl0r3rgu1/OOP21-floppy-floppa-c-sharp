@@ -198,7 +198,7 @@ public class Shop
 		{
 			if(purchaseStatus.Purchased)
 			{
-				if (line.isEmpty())
+				if (string.IsNullOrEmpty(line))
 				{
 					line += "1";
 				}else
@@ -207,7 +207,7 @@ public class Shop
 				}
 			} else
 			{
-				if (line.isEmpty())
+				if (string.IsNullOrEmpty(line))
 				{
 					line += "0";
 				} else 
