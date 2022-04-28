@@ -1,19 +1,18 @@
-﻿using floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.test;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Utilities;
 using System.Windows.Forms;
 
 namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
 {
     public class CoinsReducer : Malus
     {
-        public const int MovingFactor = 2;
+        private const int MovingFactor = 2;
+        private int PlayPanel_reducerTimes = 0;
 
-        public CoinsReducer(Position position, Skin skin) : base(position, skin);
+        public CoinsReducer(Position position, Skin skin) : base(position, skin) { }
 
         public override void ChangeState()
         {
+            PlayPanel_reducerTimes++;
             MoveOffScreen();
         }
 
@@ -25,7 +24,7 @@ namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
 
         public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
         {
-            ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
+            ribbonPaintEventArgs.Graphics.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
 
             UpdatePositionX();
         }
