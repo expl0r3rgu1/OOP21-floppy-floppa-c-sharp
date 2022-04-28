@@ -1,4 +1,6 @@
 using System.Timers;
+using System.Windows.Forms;
+using Utilities;
 
 namespace ObstacleFactory {
 public class MovingObstacle : Movable
@@ -10,7 +12,7 @@ public class MovingObstacle : Movable
 
     public Skin Skin { get => skin; set => skin = value; }
 
-    public MovingObstacle(Position position, Image skin):base(position)
+    public MovingObstacle(Position position, Skin skin):base(position)
 	{
 		skin = skin;
 
@@ -31,9 +33,10 @@ public class MovingObstacle : Movable
 		UpdatePosition();
 	}
 	
-	private void OnTimedEvent(Object sender, ElapsedEventArgs e)
+	private void OnTimedEvent(object sender, ElapsedEventArgs e)
 	{
 		direction = -direction;
+		timer.Stop();
 	}
 
     public override bool Equals(object obj)
