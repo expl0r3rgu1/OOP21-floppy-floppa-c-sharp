@@ -148,13 +148,9 @@ namespace CharacterSpace
             }
         }
 
-        /// <summary>
-        /// Checks if the character collides with a booster, if it happens it will apply 
-        /// the effects of that booster
-        /// </summary>
-        /// <param name="boosterList">a list of the boosters that the character could collide</param>
-        public void CollideBooster(List<Booster> boosterList)
-        {
+        // CollideBooster is commented because the Booster class is not implemented
+       /*public void CollideBooster(List<Booster> boosterList)
+       {
             foreach(Booster booster in boosterList)
             {
                 int x = booster.Position.X;
@@ -168,7 +164,7 @@ namespace CharacterSpace
                     break;
                 }
             }
-        }
+       }*/
 
         /// <summary>
         /// Checks if the character collides with the borders of the map
