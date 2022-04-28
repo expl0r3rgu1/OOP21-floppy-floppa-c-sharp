@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Utilities;
+using InfiniteMap;
+using LeaderboardSpace;
 using System.Drawing;
 
 namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
@@ -22,7 +24,6 @@ namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
             this.scollingBackground = new ScrollingBackground("Default", image);
             this.skin = new Skin("Floppa", image, skin_dimension, skin_dimension);
         }
-
 
     }
 }
