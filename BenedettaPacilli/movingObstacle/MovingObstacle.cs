@@ -14,11 +14,8 @@ public class MovingObstacle : Movable
 	{
 		skin = skin;
 
-		timer = new Timer
-		{
-			Interval = 1000
-		};
-		timer.Start;
+		timer = new Timer(1000);
+		timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 	}
 
 	private void UpdatePosition()
@@ -34,11 +31,10 @@ public class MovingObstacle : Movable
 		UpdatePosition();
 	}
 	
-	//TODO
-	/*@Override
-	public void actionPerformed(ActionEvent e) {
-		this.direction = -this.direction;
-	}*/
+	private void OnTimedEvent(Object sender, ElapsedEventArgs e)
+	{
+		direction = -direction;
+	}
 
     public override bool Equals(object obj)
     {
