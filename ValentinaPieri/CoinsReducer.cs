@@ -1,8 +1,8 @@
 ﻿using Utilities;
-using StateChanger_Malus;
+using StateChanger;
 using System.Windows.Forms;
 
-namespace StateChanger_Malus
+namespace StateChanger
 {
     /// <summary>
     /// A class that extends Malus class and implements an entity that randomly takes
