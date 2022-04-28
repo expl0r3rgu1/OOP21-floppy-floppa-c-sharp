@@ -1,9 +1,9 @@
 namespace Shop {
 public class PricedSkin : Skin
 {
-    private int _price;
+    private int price;
     
-    public int Price { get => _price; set => _price = value; }
+    public int Price { get => price; set => price = value; }
 
     public PricedSkin(string name, Image image, int width, int height, int price):base(name, image, width, height)
     {

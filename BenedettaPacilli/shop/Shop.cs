@@ -6,51 +6,51 @@ namespace Shop {
 
 public class Shop
 {
-    private int _skinsNum;
-    private int _sceneriesNum;
-    private int _coins;
-    private sealed const string _savingsFileName = "savings";
-	private File _savings;
-    private sealed List<string> _skinInitialize;
-    private sealed List<string> _backgroundInitialize;
-    private sealed List<int> _prices;
-    private sealed List<PurchaseStatus<PricedSkin>> _skins;
-    private sealed List<PurchaseStatus<PricedBackground>> _sceneries;
-    private sealed const Image _imagePlaceholder = null;
+    private int skinsNum;
+    private int sceneriesNum;
+    private int coins;
+    private sealed const string savingsFileName = "savings";
+	private File savings;
+    private sealed List<string> skinInitialize;
+    private sealed List<string> backgroundInitialize;
+    private sealed List<int> prices;
+    private sealed List<PurchaseStatus<PricedSkin>> skins;
+    private sealed List<PurchaseStatus<PricedBackground>> sceneries;
+    private sealed const Image imagePlaceholder = null;
 
-    public int Coins { get => _coins; set => _coins = (value < 0) ? 0 : value; }
+    public int Coins { get => coins; set => coins = (value < 0) ? 0 : value; }
 
-    public List<PurchaseStatus<PricedSkin>> Skins { get => _skins; private set => _skins = value; }
+    public List<PurchaseStatus<PricedSkin>> Skins { get => skins; private set => skins = value; }
 
-    public List<PurchaseStatus<PricedBackground>> Sceneries { get => _sceneries; private set => _sceneries = value; }
+    public List<PurchaseStatus<PricedBackground>> Sceneries { get => sceneries; private set => sceneries = value; }
 
-    public int SkinsNum { get => _skinsNum; private set => _skinsNum = value; }
+    public int SkinsNum { get => skinsNum; private set => skinsNum = value; }
 
-    public int SceneriesNum { get => _sceneriesNum; private set => _sceneriesNum = value; }
+    public int SceneriesNum { get => sceneriesNum; private set => sceneriesNum = value; }
 
     public Shop()
     {
         Coins = 0;
         Skins = new List<PurchaseStatus<PricedSkin>>();
         Sceneries = new List<PurchaseStatus<PricedBackground>>();
-        _skinInitialize = new List<string>
+        skinInitialize = new List<string>
         {
             "Floppa", "Sogga", "Capibara", "Quokka", "Buding",
         };
-        _backgroundInitialize = new List<string>
+        backgroundInitialize = new List<string>
         {
             "Classic", "Beach", "Woods", "Space", "NeonCity",
         };
 
-        SkinsNum = _skinInitialize.Count;
-        SceneriesNum = _backgroundInitialize.Count;
+        SkinsNum = skinInitialize.Count;
+        SceneriesNum = backgroundInitialize.Count;
 
-        _prices = new List<int>
+        prices = new List<int>
         {
             0, 50, 100, 200, 500,
         };
 
-		_savings = File.Create(_savingsFileName);
+		savings = File.Create(savingsFileName);
 
         GetFileInfo();
     }
@@ -74,10 +74,10 @@ public class Shop
         {
             if (status.X.Equals(o))
             {
-                if (!status.Purchased && status.X.Price <= _coins)
+                if (!status.Purchased && status.X.Price <= coins)
                 {
                     status.Purchased = true;
-                    _coins = _coins - status.X.Price;
+                    coins = coins - status.X.Price;
                     state = true;
                     break;
                 }
@@ -93,10 +93,10 @@ public class Shop
         {
             if (status.X.Equals(o))
             {
-                if (!status.Purchased && status.X.Price <= _coins)
+                if (!status.Purchased && status.X.Price <= coins)
                 {
                     status.Purchased = true;
-                    _coins = _coins - status.X.Price;
+                    coins = coins - status.X.Price;
                     state = true;
                     break;
                 }
@@ -107,14 +107,14 @@ public class Shop
 
     private void GetFileInfo()
     {
-        StreamReader shopStreamReader = new StreamReader(_savingsFileName);
+        StreamReader shopStreamReader = new StreamReader(savingsFileName);
 
         int counter = 0;
         while ((line = shopStreamReader.ReadLine()) != null)
         {
             if (counter == 0)
             {
-                _coins = line;
+                coins = line;
             }
             else if (counter == 1)
             {
@@ -137,10 +137,10 @@ public class Shop
 
         string[] lineWords = line.split(",");
 
-        for (int i = 0; i < SkinsNum; i++)
+        for (int i = 0; i < skinsNum; i++)
         {
             PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
-				new PricedSkin(_skinInitialize.get(i), _imagePlaceholder, 100, 100, _prices.get(i)), false);
+				new PricedSkin(skinInitialize.get(i), imagePlaceholder, 100, 100, prices.get(i)), false);
         
 			if(lineWords[i].Equals("1"))
 			{
@@ -156,10 +156,10 @@ public class Shop
 
         string[] lineWords = line.split(",");
 
-        for (int i = 0; i < _backgroundNum; i++)
+        for (int i = 0; i < sceneriesNum; i++)
         {
             PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
-				new PricedBackground(_skinInitialize.get(i), _imagePlaceholder, _prices.get(i)), false);
+				new PricedBackground(skinInitialize.get(i), imagePlaceholder, prices.get(i)), false);
         
 			if(lineWords[i].Equals("1"))
 			{
@@ -172,13 +172,13 @@ public class Shop
 	
 	public void FileUpdate()
 	{
-		string[] lines = File.ReadAllLines(_savings);
+		string[] lines = File.ReadAllLines(savings);
 
-		if(!_skins.isEmpty() && !_sceneries.isEmpty())
+		if(!skins.isEmpty() && !sceneries.isEmpty())
 		{
-			lines[0] = _coins;
-			lines[1] = OverwritePurchaseStatusLine(_skins);
-			lines[2] = OverwritePurchaseStatusLine(_sceneries);
+			lines[0] = coins;
+			lines[1] = OverwritePurchaseStatusLine(skins);
+			lines[2] = OverwritePurchaseStatusLine(sceneries);
 		}else 
 		{
 			lines[0] = "0";
@@ -186,7 +186,7 @@ public class Shop
 			lines[2] = "1,0,0,0,0";
 		}
 
-		File.WriteAllLines(_savings, lines);
+		File.WriteAllLines(savings, lines);
 	}
 
 	private string OverwritePurchaseStatusLine(List<PurchaseStatus<X>> purchaseStatusList)

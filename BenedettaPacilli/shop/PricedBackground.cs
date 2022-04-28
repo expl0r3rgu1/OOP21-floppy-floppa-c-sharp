@@ -2,9 +2,9 @@ using System.Drawing;
 namespace Shop {
 public class PricedBackground : Background
 {
-    private int _price;
+    private int price;
 
-    public int Price { get => _price; set => _price = value; }
+    public int Price { get => price; set => price = value; }
 
     public PricedBackground(string name, Image image, int price) : base(name, image)
     {

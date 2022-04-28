@@ -1,12 +1,12 @@
 namespace Shop {
 public class PurchaseStatus<X>
 {
-    private X _x;
-    private bool _purchased;
+    private X x;
+    private bool purchased;
 
-    public X X { get => _x; set => _x = value; }
+    public X X { get => x; set => x = value; }
 
-    public bool Purchased { get => _purchased; set => _purchased = value; }
+    public bool Purchased { get => purchased; set => purchased = value; }
 
 }
 }
