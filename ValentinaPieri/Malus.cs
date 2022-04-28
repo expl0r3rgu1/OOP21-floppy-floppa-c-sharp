@@ -1,4 +1,5 @@
-﻿using Utilities;
+﻿using floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.test;
+using Utilities;
 
 namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
 {
@@ -14,17 +15,18 @@ namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
         /// </summary>
         public Skin Skin => skin;
 
-        /// <param name="position">the malus initial position</param>
-        /// <param name="skin">the malus skin</param>
+        /// <param name="position">the malus initial Position</param>
+        /// <param name="skin">the malus Skin</param>
         protected Malus(Position position, Skin skin) : base(position) => this.skin = skin;
 
         /// <summary>
-        /// changeState is the method that changes a state of the Character or of the game
+        /// ChangeState is the method that changes a state of the Character or of the game
         /// </summary>
         public abstract void ChangeState();
 
         /// <summary>
-        /// moveOffScreen is the method that spawns the Malus out of the Screen after been used one time
+        /// MoveOffScreen is the method that spawns the Malus out of the Screen 
+        /// after been used one time
         /// </summary>
         public void MoveOffScreen()
         {
