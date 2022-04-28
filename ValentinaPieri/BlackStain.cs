@@ -1,8 +1,9 @@
 ﻿using Utilities;
 using System.Timers;
+using StateChanger_Malus;
 using System.Windows.Forms;
 
-namespace floppy_floppa_c_sharp.OOP21_floppy_floppa_c_sharp.ValentinaPieri
+namespace StateChanger_Malus
 {
 	/// <summary>
 	/// A class that extends Malus class and implements an entity that makes appear a
