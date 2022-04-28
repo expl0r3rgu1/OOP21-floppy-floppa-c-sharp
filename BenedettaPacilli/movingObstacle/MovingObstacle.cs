@@ -6,13 +6,13 @@ namespace ObstacleFactory {
 	public class MovingObstacle : Movable
 	{
 		private Timer timer;
-		private Skin skin;
+		private readonly Skin skin;
 		private int direction = -1;
 		private const int movingFactor = 2;
 
-		public Skin Skin { get => skin; set => skin = value; }
+        public Skin Skin => skin;
 
-		public MovingObstacle(Position position, Skin skin):base(position)
+        public MovingObstacle(Position position, Skin skin):base(position)
 		{
 			skin = skin;
 
@@ -42,7 +42,7 @@ namespace ObstacleFactory {
 		public bool Equals(object obj)
 		{
 			MovingObstacle other = (MovingObstacle)obj;
-			return base.Equals(other) && this.skin = other.skin;
+			return base.Equals(other) && this.Skin = other.Skin;
 		}
 
 		public int GetHashCode()
