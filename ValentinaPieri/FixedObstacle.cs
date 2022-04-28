@@ -10,10 +10,10 @@ namespace ObstacleFactory
 	public class FixedObstacle : Movable
 	{
 		private readonly Skin skin;
-		public const int MovingFactor = 2;
-        private readonly int space_between_pipes = 300;
-        private readonly int screen_size_width = 1080;
-        private readonly int screen_size_height = 980;
+		public const int movingFactor = 2;
+        private readonly int spaceBetweenPipes = 300;
+        private readonly int screenSizeWidth = 1080;
+        private readonly int screenSizeHeight = 980;
 
 		/// <summary>
 		/// The Skin of the entity
@@ -33,14 +33,14 @@ namespace ObstacleFactory
 		/// </summary>
 		private void UpdatePosition()
 		{
-			Position.X = Position.X - MovingFactor;
+			Position.X = Position.X - movingFactor;
 			Position.Y = Position.Y;
 		}
 
 		/// <inheritdoc />
 		public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
 		{
-			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + (int)space_between_pipes / 2, screen_size_width / 10, screen_size_height - (Position.Y + (int)space_between_pipes / 2));
+			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + (int)spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + (int)spaceBetweenPipes / 2));
 
 			UpdatePosition();
 		}
