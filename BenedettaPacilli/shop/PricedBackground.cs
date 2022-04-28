@@ -14,13 +14,13 @@ public class PricedBackground : Background
         Price = price;
     }
 
-    public override bool Equals(object obj)
+    public bool Equals(object obj)
     {
         PricedBackground other = (PricedBackground)obj;
         return base.Equals(other) && Price == other.Price;
     }
 
-    public override int GetHashCode()
+    public int GetHashCode()
     {
         return base.GetHashCode();
     }
