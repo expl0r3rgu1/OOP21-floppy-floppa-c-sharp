@@ -47,11 +47,11 @@ namespace LeaderboardSpace
         /// <inheritdoc/>
         public int CompareTo(object obj)
         {
-			if (obj == null) return 1;
+            if (obj == null) return 1;
 
-			Player other = obj as Player;
+            Player other = obj as Player;
 
-			return other.PersonalBest - this.personalBest;
+            return other.PersonalBest - this.personalBest;
         }
     }
 }
