@@ -10,14 +10,14 @@ public class Shop
     private int skinsNum;
     private int sceneriesNum;
     private int coins;
-    private sealed const string savingsFileName = "savings";
+    private const string savingsFileName = "savings";
 	private File savings;
-    private sealed List<string> skinInitialize;
-    private sealed List<string> backgroundInitialize;
-    private sealed List<int> prices;
-    private sealed List<PurchaseStatus<PricedSkin>> skins;
-    private sealed List<PurchaseStatus<PricedBackground>> sceneries;
-    private sealed const Image imagePlaceholder = null;
+    private readonly List<string> skinInitialize;
+    private readonly List<string> backgroundInitialize;
+    private readonly List<int> prices;
+    private  List<PurchaseStatus<PricedSkin>> skins;
+    private  List<PurchaseStatus<PricedBackground>> sceneries;
+    private const Image imagePlaceholder = null;
 
     public int Coins { get => coins; set => coins = (value < 0) ? 0 : value; }
 
