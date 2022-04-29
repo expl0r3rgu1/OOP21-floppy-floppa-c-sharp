@@ -17,7 +17,13 @@ namespace Test
         private readonly Skin skinFixedObstacle = new Skin("pipe", image, skinDimension, skinDimension);
         readonly private Skin skinMovingObstacle = new Skin("Bingus", image, skinDimension, skinDimension);
 
-        
+        public void TestFactoryFixedObstcle()
+        {
+            ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
+            FixedObstacle fixedO = new FixedObstacle(position, skinFixedObstacle);
+
+            
+        }
 
     }
 }
