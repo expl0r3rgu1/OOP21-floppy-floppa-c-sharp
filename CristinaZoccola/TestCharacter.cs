@@ -87,5 +87,12 @@ namespace Test
             characterList[value].CollideFixedObstacle(fixedObstacleList);
             Assert.IsTrue(characterList[value].IsDead());
         }
+
+        [Test]
+        public void CollideMovingEntityTest()
+        {
+            characterList[2].CollideMovingObstacle(movingObstacleList);
+            Assert.IsTrue(characterList[2].IsDead());
+        }
     }
 }
