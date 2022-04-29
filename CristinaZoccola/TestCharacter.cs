@@ -94,5 +94,13 @@ namespace Test
             characterList[2].CollideMovingObstacle(movingObstacleList);
             Assert.IsTrue(characterList[2].IsDead());
         }
+
+        [TestCase(3)]
+        [TestCase(4)]
+        public void CollideBordersTest(int value)
+        {
+            characterList[value].CollideBorders();
+            Assert.IsTrue(characterList[value].IsDead());
+        }
     }
 }
