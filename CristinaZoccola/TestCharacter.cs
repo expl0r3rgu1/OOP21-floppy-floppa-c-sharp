@@ -79,5 +79,13 @@ namespace Test
                 characterCollideLowerBorder
             };
         }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        public void CollideFixedObstacleTest(int value)
+        {
+            characterList[value].CollideFixedObstacle(fixedObstacleList);
+            Assert.IsTrue(characterList[value].IsDead());
+        }
     }
 }
