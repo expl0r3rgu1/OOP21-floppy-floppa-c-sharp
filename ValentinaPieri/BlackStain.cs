@@ -16,7 +16,6 @@ namespace StateChanger
 		private readonly Timer timer;
 		private const int movingFactor = 2;
 		private readonly int skinDimension = 50;
-		private readonly int spaceBetweenPipes = 300;
 		private readonly int screenSizeWidth = 1080;
 		private readonly int screenSizeHeight = 980;
 
