@@ -55,7 +55,7 @@ namespace ObstacleFactory
 				return false;
 			}
 
-			return base.Equals(obj) && skin.Equals(other.skin);
+			return base.Equals(other) && skin.Equals(other.skin);
 		}
 
 		/// <inheritdoc />
