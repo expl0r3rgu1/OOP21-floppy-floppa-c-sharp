@@ -20,6 +20,7 @@ namespace Test
         private Character characterCollideMovingEntity;
         private Character characterCollideUpperBorder;
         private Character characterCollideLowerBorder;
+        private List<Character> characterList;
         private List<FixedObstacle> fixedObstacleList;
         private FixedObstacle fixedObstacle;
         private List<MovingObstacle> movingObstacleList;
@@ -68,6 +69,15 @@ namespace Test
 
             characterCollideLowerBorderPosition = new Position(screenWidth / 2, screenHeight + 1);
             characterCollideLowerBorder = new Character(characterCollideLowerBorderPosition, skin);
+
+            characterList = new List<Character>
+            {
+                characterCollideUpperPipe,
+                characterCollideLowerPipe,
+                characterCollideMovingEntity,
+                characterCollideUpperBorder,
+                characterCollideLowerBorder
+            };
         }
     }
 }
