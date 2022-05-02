@@ -35,6 +35,7 @@ namespace Test
         private Position characterCollideUpperBorderPosition;
         private Position characterCollideLowerBorderPosition;
 
+
         [SetUp]
         public void SetUp()
         {
@@ -61,7 +62,7 @@ namespace Test
             characterCollideLowerPipePosition = new Position(screenWidth / 2, screenHeight * 4 / 5);
             characterCollideLowerPipe = new Character(characterCollideLowerPipePosition, skin);
 
-            characterCollideMovingEntityPosition = new Position(screenWidth + movingObstacleList[0].Skin.Width / 2, screenHeight + movingObstacleList[0].Skin.Height / 2);
+            characterCollideMovingEntityPosition = new Position(screenWidth / 2 + movingObstacleList[0].Skin.Width / 2, screenHeight / 2 + movingObstacleList[0].Skin.Height / 2);
             characterCollideMovingEntity = new Character(characterCollideMovingEntityPosition, skin);
 
             characterCollideUpperBorderPosition = new Position(skinWidth / 2, -1);
@@ -88,11 +89,11 @@ namespace Test
             Assert.IsTrue(characterList[value].IsDead());
         }
 
-        [Test]
-        public void CollideMovingEntityTest()
+        [TestCase(2)]
+        public void CollideMovingEntityTest(int value)
         {
-            characterList[2].CollideMovingObstacle(movingObstacleList);
-            Assert.IsTrue(characterList[2].IsDead());
+            characterList[value].CollideMovingObstacle(movingObstacleList);
+            Assert.IsTrue(characterList[value].IsDead());
         }
 
         [TestCase(3)]
