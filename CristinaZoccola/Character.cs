@@ -226,6 +226,11 @@ namespace CharacterSpace
             jumping = false;
             timer.Stop();
         }
+
+        class TestUpdatePosition
+        {
+
+        }
     }
 }
 
