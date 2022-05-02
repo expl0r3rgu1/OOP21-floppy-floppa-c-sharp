@@ -25,7 +25,7 @@ namespace ShopSpace
         }
 
         /// <inheritdoc/>
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             PricedBackground other = (PricedBackground)obj;
             return base.Equals(other) && Price == other.Price;
