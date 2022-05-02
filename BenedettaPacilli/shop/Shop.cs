@@ -83,7 +83,8 @@ namespace ShopSpace
         /// <returns> true if the given object gets purchased, false otherwise</returns>
         public bool Buy(object o)
         {
-            if (o.GetType().Equals(PricedSkin.getType()))
+            PricedSkin pricedSkin = new PricedSkin("name", imagePlaceholder, 0, 0, 0);
+            if (o.GetType().Equals(pricedSkin.GetType()))
             {
                 return FindAndBuySkins(o, Skins);
             }
