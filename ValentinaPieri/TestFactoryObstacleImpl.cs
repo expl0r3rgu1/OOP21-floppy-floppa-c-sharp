@@ -8,11 +8,10 @@ namespace Test
     [TestFixture]
     public class TestFactoryObstacleImpl
     {
-        static void Main() { }
 
         private const int screenSizeWidth = 1080;
         private const int screenSizeHeight = 980;
-        private const Image image = Image.FromFile("Blackstain.png");
+        private const Image image = null;
         private const int skinDimension = 50;
 
         private readonly Position position = new Position(screenSizeWidth, screenSizeHeight);
@@ -27,6 +26,14 @@ namespace Test
             FixedObstacle fixedO = new FixedObstacle(position, skinFixedObstacle);
 
             Assert.True(fixedO.Equals(factory.FixedObstacleFactory(position, skinFixedObstacle)));
+        }
+
+        public void TestFactoryMovingObstcle()
+        {
+            ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
+            MovingObstacle movingO = new MovingObstacle(position, skinFixedObstacle);
+
+            Assert.True(movingO.Equals(factory.MovingObstacleFactory(position, skinFixedObstacle)));
         }
 
     }
