@@ -229,7 +229,16 @@ namespace CharacterSpace
 
         class TestUpdatePosition
         {
-
+            private const int screenWidth = 1920;
+            private const int screenHeight = 1080;
+            private const int skinWidth = 20;
+            private const int skinHeight = 20;
+            private Position characterInitialPosition;
+            private Position characterAfterFallingPosition;
+            private Position characterAfterJumpingPosition;
+            private Image? imagePlaceHolder;
+            private Skin skin;
+            private Character character;
         }
     }
 }
