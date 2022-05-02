@@ -1,13 +1,13 @@
 using System.Windows.Forms;
 using System.Drawing;
-using Utilities.Movable;
+using Utilities;
 
 namespace InfiniteMap
 {
     /// <summary>
     ///  A still background that fills the whole screen
     /// <!summary>
-    class Background : Movable
+    public class Background : Movable
     {
         private readonly string name;
         private readonly Image image;
@@ -68,7 +68,7 @@ namespace InfiniteMap
         }
 
         /// <inheritdoc/>
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null || this.GetType() != obj.GetType())
             {
@@ -80,7 +80,7 @@ namespace InfiniteMap
         }
 
         /// <inheritdoc/>
-        public int GetHashCode()
+        public override int GetHashCode()
         {
             return base.GetHashCode();
         }
