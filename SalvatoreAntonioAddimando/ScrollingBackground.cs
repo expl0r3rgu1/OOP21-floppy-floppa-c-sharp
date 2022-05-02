@@ -7,7 +7,7 @@ namespace InfiniteMap
     /// <summary>
     /// A Decorator of Background that makes of two still Backgrounds a scrollable one
     /// </summary>
-    class ScrollingBackground
+    public class ScrollingBackground
     {
         private readonly Background backOne;
         private readonly Background backTwo;

@@ -7,7 +7,7 @@ namespace InfiniteMap
     /// <summary>
     ///  A still background that fills the whole screen
     /// <!summary>
-    class Background : Movable
+    public class Background : Movable
     {
         private readonly string name;
         private readonly Image image;
