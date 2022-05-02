@@ -25,7 +25,7 @@ namespace Test
         private FixedObstacle fixedObstacle;
         private List<MovingObstacle> movingObstacleList;
         private MovingObstacle movingObstacle;
-        private Image imagePlaceHolder;
+        private Image? imagePlaceHolder;
         private Skin skin;
         private Position fixedObstaclePosition;
         private Position movingObstaclePosition;
