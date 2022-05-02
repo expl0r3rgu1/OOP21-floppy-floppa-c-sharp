@@ -5,6 +5,7 @@ using System.Drawing;
 using Utilities;
 using ObstacleFactory;
 using StateChanger;
+using NUnit.Framework;
 
 namespace CharacterSpace
 {
@@ -227,6 +228,7 @@ namespace CharacterSpace
             timer.Stop();
         }
 
+        [TestFixture]
         class TestUpdatePosition
         {
             private const int screenWidth = 1920;
@@ -239,6 +241,8 @@ namespace CharacterSpace
             private Image? imagePlaceHolder;
             private Skin skin;
             private Character character;
+
+
         }
     }
 }
