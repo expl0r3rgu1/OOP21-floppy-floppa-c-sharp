@@ -22,7 +22,7 @@ namespace ObstacleFactory {
 		/// <param name="skin"> the obstacle Skin</param>
 		public MovingObstacle(Position position, Skin skin):base(position)
 		{
-			skin = skin;
+			this.skin = skin;
 
 			timer = new Timer(1000);
 			timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
@@ -38,7 +38,7 @@ namespace ObstacleFactory {
 		}
 
 		/// <inheritdoc/>
-		private override Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
+		public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
 		{
 			ribbonElementPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
 
@@ -57,14 +57,14 @@ namespace ObstacleFactory {
 		}
 
 		/// <inheritdoc/>
-		public bool Equals(object obj)
+		public override bool Equals(object obj)
 		{
 			MovingObstacle other = (MovingObstacle)obj;
-			return base.Equals(other) && this.Skin = other.Skin;
+			return base.Equals(other) && this.Skin == other.Skin;
 		}
 
 		/// <inheritdoc/>
-		public int GetHashCode()
+		public override int GetHashCode()
 		{
 			return base.GetHashCode();
 		}
