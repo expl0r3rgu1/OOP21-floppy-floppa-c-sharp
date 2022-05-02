@@ -31,8 +31,8 @@ namespace Test
         [Test]
         public void TestFactoryMovingObstcle()
         {
-            ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
-            MovingObstacle movingO = new MovingObstacle(position, skinMovingObstacle);
+            ObstacleFactoryImpl factory = new();
+            MovingObstacle movingO = new(position, skinMovingObstacle);
 
             Assert.True(movingO.Equals(factory.MovingObstacleFactory(position, skinMovingObstacle)));
         }
