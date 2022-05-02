@@ -255,6 +255,17 @@ namespace CharacterSpace
 
                 character = new Character(characterInitialPosition, skin);
             }
+
+            [Test]
+            public void UpdatePositionTest()
+            {
+                character.UpdatePosition();
+                Assert.IsTrue(character.Position.Equals(characterAfterFallingPosition));
+
+                character.Jump();
+                character.UpdatePosition();
+                Assert.IsTrue(character.Position.Equals(characterAfterJumpingPosition));
+            }
         }
     }
 }
