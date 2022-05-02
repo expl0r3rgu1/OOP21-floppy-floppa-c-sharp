@@ -14,9 +14,9 @@ namespace Test
         private const Image image = null;
         private const int skinDimension = 50;
 
-        private readonly Position position = new Position(screenSizeWidth, screenSizeHeight);
-        private readonly Skin skinFixedObstacle = new Skin("Blackstain.png", image, skinDimension, skinDimension);
-        readonly private Skin skinMovingObstacle = new Skin("Bingus", image, skinDimension, skinDimension);
+        private readonly Position position = new(screenSizeWidth, screenSizeHeight);
+        private readonly Skin skinFixedObstacle = new("Blackstain.png", image, skinDimension, skinDimension);
+        readonly private Skin skinMovingObstacle = new("Bingus", image, skinDimension, skinDimension);
 
         
         [Test]
