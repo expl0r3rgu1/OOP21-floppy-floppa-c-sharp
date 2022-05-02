@@ -256,6 +256,9 @@ namespace CharacterSpace
                 character = new Character(characterInitialPosition, skin);
             }
 
+            /// <summary>
+            /// Checks if the position is updated correctly when the character falls or jumps
+            /// </summary>
             [Test]
             public void UpdatePositionTest()
             {

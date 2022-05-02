@@ -81,6 +81,10 @@ namespace Test
             };
         }
 
+        /// <summary>
+        /// Checks if the character collides correctly with a fixed obstacle
+        /// </summary>
+        /// <param name="value">the position of the character in the list</param>
         [TestCase(0)]
         [TestCase(1)]
         public void CollideFixedObstacleTest(int value)
@@ -89,6 +93,11 @@ namespace Test
             Assert.IsTrue(characterList[value].IsDead());
         }
 
+        /// <summary>
+        /// Checks if the character collides correctly with a moving entity (moving obstacle, malus and booster), 
+        /// I only test with a moving obstacle
+        /// </summary>
+        /// <param name="value">the position of the character in the list</param>
         [TestCase(2)]
         public void CollideMovingEntityTest(int value)
         {
@@ -96,6 +105,10 @@ namespace Test
             Assert.IsTrue(characterList[value].IsDead());
         }
 
+        /// <summary>
+        /// Checks if the character collides correctly with the upper and lower border of the map
+        /// </summary>
+        /// <param name="value">the position of the character in the list</param>
         [TestCase(3)]
         [TestCase(4)]
         public void CollideBordersTest(int value)
