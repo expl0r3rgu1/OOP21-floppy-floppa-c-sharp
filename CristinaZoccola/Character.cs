@@ -235,6 +235,7 @@ namespace CharacterSpace
             private const int screenHeight = 1080;
             private const int skinWidth = 20;
             private const int skinHeight = 20;
+            private const int movingFactor = 2;
             private Position characterInitialPosition;
             private Position characterAfterFallingPosition;
             private Position characterAfterJumpingPosition;
@@ -242,7 +243,18 @@ namespace CharacterSpace
             private Skin skin;
             private Character character;
 
+            [SetUp]
+            public void SetUp()
+            {
+                imagePlaceHolder = null;
+                skin = new Skin("skin", imagePlaceHolder, skinWidth, skinHeight);
 
+                characterInitialPosition = new Position(screenWidth / 2, screenHeight / 2);
+                characterAfterFallingPosition = new Position(screenWidth / 2, screenHeight / 2 + movingFactor);
+                characterAfterJumpingPosition = new Position(screenWidth / 2, characterAfterFallingPosition.Y - movingFactor * 2);
+
+                character = new Character(characterInitialPosition, skin);
+            }
         }
     }
 }
