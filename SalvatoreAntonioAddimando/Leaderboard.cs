@@ -6,7 +6,7 @@ namespace LeaderboardSpace
     /// <summary>
     /// The list of Player instances ordered by Player.PersonalBest
     /// </summary>
-    class Leaderboard
+    public class Leaderboard
     {
         private const string leaderboardFilePath = "savings";
         private List<Player> leaderboardList;
