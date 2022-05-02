@@ -22,8 +22,8 @@ namespace Test
         [Test]
         public void TestFactoryFixedObstcle()
         {
-            ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
-            FixedObstacle fixedO = new FixedObstacle(position, skinFixedObstacle);
+            ObstacleFactoryImpl factory = new();
+            FixedObstacle fixedO = new(position, skinFixedObstacle);
 
             Assert.True(fixedO.Equals(factory.FixedObstacleFactory(position, skinFixedObstacle)));
         }
