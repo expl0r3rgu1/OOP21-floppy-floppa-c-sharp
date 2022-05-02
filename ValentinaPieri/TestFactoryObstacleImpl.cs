@@ -16,7 +16,7 @@ namespace Test
 
         private readonly Position position = new Position(screenSizeWidth, screenSizeHeight);
         private readonly Skin skinFixedObstacle = new Skin("Blackstain.png", image, skinDimension, skinDimension);
-        //readonly private Skin skinMovingObstacle = new Skin("Bingus", image, skinDimension, skinDimension);
+        readonly private Skin skinMovingObstacle = new Skin("Bingus", image, skinDimension, skinDimension);
 
         
         [Test]
@@ -28,12 +28,13 @@ namespace Test
             Assert.True(fixedO.Equals(factory.FixedObstacleFactory(position, skinFixedObstacle)));
         }
 
+        [Test]
         public void TestFactoryMovingObstcle()
         {
             ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
-            MovingObstacle movingO = new MovingObstacle(position, skinFixedObstacle);
+            MovingObstacle movingO = new MovingObstacle(position, skinMovingObstacle);
 
-            Assert.True(movingO.Equals(factory.MovingObstacleFactory(position, skinFixedObstacle)));
+            Assert.True(movingO.Equals(factory.MovingObstacleFactory(position, skinMovingObstacle)));
         }
 
     }
