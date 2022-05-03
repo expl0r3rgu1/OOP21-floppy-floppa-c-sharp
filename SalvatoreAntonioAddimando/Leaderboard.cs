@@ -26,7 +26,7 @@ namespace LeaderboardSpace
         {
             if (!File.Exists(leaderboardFilePath))
             {
-                CreateLeaderboardFile();
+                throw new FileNotFoundException("The savings file was not found");
             }
 
             leaderboardList = new List<Player>();
@@ -53,11 +53,6 @@ namespace LeaderboardSpace
             {
                 streamReader.ReadLine();
             }
-        }
-
-        private void CreateLeaderboardFile()
-        {
-            File.Create(leaderboardFilePath);
         }
 
         /// <summary>
