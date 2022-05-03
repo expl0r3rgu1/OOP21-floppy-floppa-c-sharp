@@ -1,5 +1,4 @@
-﻿using System;
-using Utilities;
+﻿using Utilities;
 using System.Windows.Forms;
 using NUnit.Framework;
 using System.Drawing;
@@ -35,8 +34,7 @@ namespace ObstacleFactory
 		/// </summary>
 		private void UpdatePosition()
 		{
-			Position.X = Position.X - movingFactor;
-			Position.Y = Position.Y;
+			Position = new Position(Position.X - movingFactor, Position.Y);
 		}
 
 		/// <inheritdoc />
@@ -68,33 +66,34 @@ namespace ObstacleFactory
 		{
 			private const int screenSizeWidth = 1080;
 			private const int screenSizeHeight = 980;
-			private const int skinDimension = 50;
 
 			private Image? imagePlaceHolder;
 			private Position position;
 			private Position halfPosition;
 			private Skin skin;
+			private FixedObstacle fixedObstacle1;
 
 			[SetUp]
 			public void SetUp()
             {
 				imagePlaceHolder = null;
 
-				position = new Position(screenSizeWidth, screenSizeHeight);
+				position = new Position(screenSizeWidth, screenSizeHeight / 2);
 				halfPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
-				skin = new Skin("pipe", imagePlaceHolder, skinDimension, skinDimension);
+				skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
+
+				fixedObstacle1 = new(this.position, this.skin);
 			}
 
 			[Test]
 			public void FixedObstacleMovement()
 			{
-				FixedObstacle fixedObstacle1 = new(this.position, this.skin);
 				fixedObstacle1.UpdatePosition();
-				Assert.True(fixedObstacle1.Position.X == (position.X - movingFactor));
+				Assert.True(fixedObstacle1.Position.X == (position.X));
 
-				FixedObstacle fixedObstacle2 = new(this.halfPosition, this.skin);
+				/*FixedObstacle fixedObstacle2 = new(this.halfPosition, this.skin);
 				fixedObstacle2.UpdatePosition();
-				Assert.True(fixedObstacle2.Position.X == (halfPosition.X - movingFactor));
+				Assert.True(fixedObstacle2.Position.X == (halfPosition.X - movingFactor));*/
 			}
 
 		}
