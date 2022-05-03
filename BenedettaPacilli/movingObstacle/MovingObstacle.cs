@@ -35,8 +35,7 @@ namespace ObstacleFactory {
 		/// </summary>
 		private void UpdatePosition()
 		{
-			Position.X = Position.X - 3 * movingFactor;
-			Position.Y = Position.Y + direction * movingFactor;
+			Position = new Position(Position.X - 3 * movingFactor, Position.Y + direction * movingFactor);
 		}
 
 		/// <inheritdoc/>
