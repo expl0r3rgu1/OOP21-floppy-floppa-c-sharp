@@ -12,9 +12,9 @@ namespace ObstacleFactory
 	{
 		private readonly Skin skin;
 		public const int movingFactor = 2;
-        private readonly int spaceBetweenPipes = 300;
-        private readonly int screenSizeWidth = 1080;
-        private readonly int screenSizeHeight = 980;
+		private readonly int spaceBetweenPipes = 300;
+		private readonly int screenSizeWidth = 1080;
+		private readonly int screenSizeHeight = 980;
 
 		/// <summary>
 		/// The Skin of the entity
@@ -55,7 +55,7 @@ namespace ObstacleFactory
 				return false;
 			}
 
-			return base.Equals(other) && skin.Equals(other.skin);
+			return base.Equals(obj) && skin.Equals(other.skin);
 		}
 
 		/// <inheritdoc />
@@ -71,25 +71,23 @@ namespace ObstacleFactory
 			private Position position;
 			private Position halfPosition;
 			private Skin skin;
-			private FixedObstacle fixedObstacle1;
 
 			[SetUp]
 			public void SetUp()
-            {
+			{
 				imagePlaceHolder = null;
 
 				position = new Position(screenSizeWidth, screenSizeHeight / 2);
 				halfPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
 				skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
-
-				fixedObstacle1 = new(this.position, this.skin);
 			}
 
 			[Test]
 			public void FixedObstacleMovement()
 			{
+				FixedObstacle fixedObstacle1 = new(this.position, this.skin);
 				fixedObstacle1.UpdatePosition();
-				Assert.True(fixedObstacle1.Position.X == (position.X));
+				Assert.True(fixedObstacle1.Position.X == (position.X - movingFactor));
 
 				/*FixedObstacle fixedObstacle2 = new(this.halfPosition, this.skin);
 				fixedObstacle2.UpdatePosition();
