@@ -81,6 +81,7 @@ namespace ObstacleFactory {
 			private readonly Position HALFWAY_POSITION = new Position((int) (1920 / 2), (int) (1080 / 2));
 			private readonly Skin SKIN = new Skin("name", imagePlaceholder, POSITION.X, POSITION.Y);
 
+			[Test]
 			public void MovingObstacleMovement()
 			{
 				MovingObstacle movingObstacle = new MovingObstacle(POSITION, SKIN);
