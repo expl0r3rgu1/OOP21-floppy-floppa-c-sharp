@@ -65,6 +65,20 @@ namespace StateChanger
                 skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
             }
 
+            [Test]
+            public void CoinsReducerMalusMovement()
+            {
+                CoinsReducer coinsReducer1 = new(this.position, this.skin);
+                coinsReducer1.UpdatePositionX();
+                Assert.True(coinsReducer1.Position.X == position.X - 3 * movingFactor);
+                Assert.True(coinsReducer1.Position.Y == position.Y);
+
+                CoinsReducer coinsReducer2 = new(this.halfwayPosition, this.skin);
+                coinsReducer2.UpdatePositionX();
+                Assert.True(coinsReducer2.Position.X == halfwayPosition.X - 3 * movingFactor);
+                Assert.True(coinsReducer2.Position.Y == halfwayPosition.Y);
+
+            }
         }
 
     }
