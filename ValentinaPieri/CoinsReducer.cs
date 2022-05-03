@@ -62,7 +62,7 @@ namespace StateChanger
 
                 position = new Position(screenSizeWidth, screenSizeHeight / 2);
                 halfwayPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
-                skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
+                skin = new Skin("coinsreducer", imagePlaceHolder, position.X, position.Y);
             }
 
             [Test]
