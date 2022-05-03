@@ -13,6 +13,9 @@ namespace ShopSpace
         private const string savingsFilePath = "savings";
         private const string savingsFileStartContent = "0\n0,0,0,0,0\n0,0,0,0,0";
 
+        /// <summary>
+        /// Checks if the Shop correctly reads info from the savings file. 
+        /// </summary>
         [Test]
         public void FileReading()
         {
@@ -41,6 +44,10 @@ namespace ShopSpace
             }
         }
 
+        /// <summary>
+        /// Checks if the Shop correctly buys items
+        /// </summary>
+        [Test]
         public void Buying()
         {
             this.CreateSavingsFile();
