@@ -15,71 +15,42 @@ namespace Test
         private const int screenHeight = 1080;
         private const int skinWidth = 20;
         private const int skinHeight = 20;
-        private Character characterCollideUpperPipe;
-        private Character characterCollideLowerPipe;
-        private Character characterCollideMovingEntity;
-        private Character characterCollideUpperBorder;
-        private Character characterCollideLowerBorder;
-        private List<Character> characterList;
-        private List<FixedObstacle> fixedObstacleList;
-        private FixedObstacle fixedObstacle;
-        private List<MovingObstacle> movingObstacleList;
-        private MovingObstacle movingObstacle;
-        private Image? imagePlaceHolder;
-        private Skin skin;
-        private Position fixedObstaclePosition;
-        private Position movingObstaclePosition;
-        private Position characterCollideUpperPipePosition;
-        private Position characterCollideLowerPipePosition;
-        private Position characterCollideMovingEntityPosition;
-        private Position characterCollideUpperBorderPosition;
-        private Position characterCollideLowerBorderPosition;
 
+        private const Image? imagePlaceHolder = null;
+        private static readonly Skin skin = new("skin", imagePlaceHolder, skinWidth, skinHeight);
 
-        [SetUp]
-        public void SetUp()
+        private static readonly Position fixedObstaclePosition = new(screenWidth / 2, screenHeight / 2);
+        private static readonly FixedObstacle fixedObstacle = new ObstacleFactoryImpl().FixedObstacleFactory(fixedObstaclePosition, skin);
+        private readonly List<FixedObstacle> fixedObstacleList = new() { fixedObstacle };
+
+        private static readonly Position movingObstaclePosition = new(screenWidth / 2, screenHeight / 2);
+        private static readonly MovingObstacle movingObstacle = new ObstacleFactoryImpl().MovingObstacleFactory(movingObstaclePosition, skin);
+        private static readonly List<MovingObstacle> movingObstacleList = new() { movingObstacle };
+
+        private static readonly Position characterCollideUpperPipePosition = new(screenWidth / 2, screenHeight / 5);
+        private static readonly Character characterCollideUpperPipe = new(characterCollideUpperPipePosition, skin);
+
+        private static readonly Position characterCollideLowerPipePosition = new(screenWidth / 2, screenHeight * 4 / 5);
+        private static readonly Character characterCollideLowerPipe = new(characterCollideLowerPipePosition, skin);
+
+        private static  readonly Position characterCollideMovingEntityPosition = new(screenWidth / 2 + movingObstacleList[0].Skin.Width / 2,
+                                                                                        screenHeight / 2 + movingObstacleList[0].Skin.Height / 2);
+        private static readonly Character characterCollideMovingEntity = new(characterCollideMovingEntityPosition, skin);
+
+        private static readonly Position characterCollideUpperBorderPosition = new(skinWidth / 2, -1);
+        private static readonly Character characterCollideUpperBorder = new(characterCollideUpperBorderPosition, skin);
+
+        private static readonly Position characterCollideLowerBorderPosition = new(screenWidth / 2, screenHeight + 1);
+        private static readonly Character characterCollideLowerBorder = new(characterCollideLowerBorderPosition, skin);
+
+        private readonly List<Character> characterList = new()
         {
-            imagePlaceHolder = null;
-            skin = new Skin("skin", imagePlaceHolder, skinWidth, skinHeight);
-
-            fixedObstaclePosition = new Position(screenWidth / 2, screenHeight / 2);
-            fixedObstacle = new ObstacleFactoryImpl().FixedObstacleFactory(fixedObstaclePosition, skin);
-            fixedObstacleList = new List<FixedObstacle>()
-            {
-                fixedObstacle
-            };
-
-            movingObstaclePosition = new Position(screenWidth / 2, screenHeight / 2);
-            movingObstacle = new ObstacleFactoryImpl().MovingObstacleFactory(movingObstaclePosition, skin);
-            movingObstacleList = new List<MovingObstacle>()
-            {
-                movingObstacle
-            };
-
-            characterCollideUpperPipePosition = new Position(screenWidth / 2, screenHeight / 5);
-            characterCollideUpperPipe = new Character(characterCollideUpperPipePosition, skin);
-
-            characterCollideLowerPipePosition = new Position(screenWidth / 2, screenHeight * 4 / 5);
-            characterCollideLowerPipe = new Character(characterCollideLowerPipePosition, skin);
-
-            characterCollideMovingEntityPosition = new Position(screenWidth / 2 + movingObstacleList[0].Skin.Width / 2, screenHeight / 2 + movingObstacleList[0].Skin.Height / 2);
-            characterCollideMovingEntity = new Character(characterCollideMovingEntityPosition, skin);
-
-            characterCollideUpperBorderPosition = new Position(skinWidth / 2, -1);
-            characterCollideUpperBorder = new Character(characterCollideUpperBorderPosition, skin);
-
-            characterCollideLowerBorderPosition = new Position(screenWidth / 2, screenHeight + 1);
-            characterCollideLowerBorder = new Character(characterCollideLowerBorderPosition, skin);
-
-            characterList = new List<Character>
-            {
-                characterCollideUpperPipe,
-                characterCollideLowerPipe,
-                characterCollideMovingEntity,
-                characterCollideUpperBorder,
-                characterCollideLowerBorder
-            };
-        }
+            characterCollideUpperPipe,
+            characterCollideLowerPipe,
+            characterCollideMovingEntity,
+            characterCollideUpperBorder,
+            characterCollideLowerBorder
+        };
 
         /// <summary>
         /// Checks if the character collides correctly with a fixed obstacle
