@@ -45,8 +45,7 @@ namespace StateChanger
 		/// </summary>
 		private void UpdatePositionX()
 		{
-			Position.X = Position.X - 3 * movingFactor;
-			Position.Y = Position.Y;
+			Position = new(Position.X - 3 * movingFactor, Position.Y);
 		}
 
 		/// <inheritdoc />
