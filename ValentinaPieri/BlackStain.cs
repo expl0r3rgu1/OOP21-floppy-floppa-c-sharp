@@ -2,6 +2,7 @@
 using System.Timers;
 using StateChanger;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace StateChanger
 {
@@ -69,6 +70,19 @@ namespace StateChanger
 		{
 			this.collided = false;
 			this.timer.Stop();
+		}
+
+		[TestFixture]
+		class TestBlackStain
+		{
+			private const int screenSizeWidth = 1080;
+			private const int screenSizeHeight = 980;
+			private Image? imagePlaceHolder;
+
+			private Position position;
+			private Position halfwayPosition;
+			private Skin skin;
+
 		}
 
 	}
