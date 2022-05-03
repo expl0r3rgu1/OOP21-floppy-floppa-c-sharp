@@ -222,7 +222,7 @@ namespace CharacterSpace
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        private void OnTimedEvent(object? sender, ElapsedEventArgs? e)
         {
             jumping = false;
             timer.Stop();
@@ -238,13 +238,13 @@ namespace CharacterSpace
             private const int movingFactor = 2;
 
             private const Image? imagePlaceHolder = null;
-            private static readonly Skin skin = new Skin("skin", imagePlaceHolder, skinWidth, skinHeight);
+            private static readonly Skin skin = new("skin", imagePlaceHolder, skinWidth, skinHeight);
 
-            private static readonly Position characterInitialPosition = new Position(screenWidth / 2, screenHeight / 2);
-            private static readonly Position characterAfterFallingPosition = new Position(screenWidth / 2, screenHeight / 2 + movingFactor);
-            private readonly Position characterAfterJumpingPosition = new Position(screenWidth / 2, characterAfterFallingPosition.Y - movingFactor * 2);
+            private static readonly Position characterInitialPosition = new(screenWidth / 2, screenHeight / 2);
+            private static readonly Position characterAfterFallingPosition = new(screenWidth / 2, screenHeight / 2 + movingFactor);
+            private readonly Position characterAfterJumpingPosition = new(screenWidth / 2, characterAfterFallingPosition.Y - movingFactor * 2);
 
-            private readonly Character character = new Character(characterInitialPosition, skin);
+            private readonly Character character = new(characterInitialPosition, skin);
 
             /// <summary>
             /// Checks if the position is updated correctly when the character falls or jumps
