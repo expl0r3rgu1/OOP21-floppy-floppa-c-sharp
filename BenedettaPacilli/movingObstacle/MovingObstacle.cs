@@ -75,9 +75,26 @@ namespace ObstacleFactory {
 		public class TestMovingObstacle
         {
 			private const Image imagePlaceholder = null;
+			private const int movingFactor = 2;
+			private int direction = -1;
 			private static readonly Position POSITION = new Position(1920, (int) (1080 / 2));
 			private readonly Position HALFWAY_POSITION = new Position((int) (1920 / 2), (int) (1080 / 2));
 			private readonly Skin SKIN = new Skin("name", imagePlaceholder, POSITION.X, POSITION.Y);
+
+			public void MovingObstacleMovement()
+			{
+				MovingObstacle movingObstacle = new MovingObstacle(POSITION, SKIN);
+				movingObstacle.UpdatePosition();
+
+				Assert.IsTrue(movingObstacle.Position.X == (POSITION.X - 3 * movingFactor));
+				Assert.IsTrue(movingObstacle.Position.Y == (POSITION.Y + direction * movingFactor));
+
+				MovingObstacle movingObstacle1 = new MovingObstacle(HALFWAY_POSITION, SKIN);
+				movingObstacle1.UpdatePosition();
+
+				Assert.IsTrue(movingObstacle1.Position.X == (HALFWAY_POSITION.X - 3 * movingFactor));
+				Assert.IsTrue(movingObstacle.Position.Y == (HALFWAY_POSITION.Y + direction * movingFactor));
+			}
 		}
 
 	}
