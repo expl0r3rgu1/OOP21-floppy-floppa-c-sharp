@@ -97,12 +97,12 @@ namespace StateChanger
 			[Test]
 			public void BlackStainMalusMovement()
 			{
-				BlackStain blackStain1 = new BlackStain(this.position, this.skin);
+				BlackStain blackStain1 = new(this.position, this.skin);
 				blackStain1.UpdatePositionX();
 				Assert.True(blackStain1.Position.X == position.X - 3 * movingFactor);
 				Assert.True(blackStain1.Position.Y == position.Y);
 
-				BlackStain blackStain2 = new BlackStain(this.halfwayPosition, this.skin);
+				BlackStain blackStain2 = new(this.halfwayPosition, this.skin);
 				blackStain2.UpdatePositionX();
 				Assert.True(blackStain2.Position.X == halfwayPosition.X - 3 * movingFactor);
 				Assert.True(blackStain2.Position.Y == halfwayPosition.Y);
