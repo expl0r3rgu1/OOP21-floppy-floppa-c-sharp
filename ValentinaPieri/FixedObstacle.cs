@@ -1,6 +1,8 @@
 ﻿using System;
 using Utilities;
 using System.Windows.Forms;
+using NUnit.Framework;
+using System.Drawing;
 
 namespace ObstacleFactory
 {
@@ -60,6 +62,21 @@ namespace ObstacleFactory
 
 		/// <inheritdoc />
 		public override int GetHashCode() => base.GetHashCode();
+
+		[TestFixture]
+		class TestFixedObstacle
+		{
+			private const int screenSizeWidth = 1080;
+			private const int screenSizeHeight = 980;
+			private const Image image = null;
+			private const int skinDimension = 50;
+
+			private readonly Position position = new(screenSizeWidth, screenSizeHeight);
+			private readonly Position halfPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
+			private readonly Skin skin = new("pipe", image, skinDimension, skinDimension);
+
+
+		}
 
 	}
 
