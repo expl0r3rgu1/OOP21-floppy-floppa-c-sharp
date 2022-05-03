@@ -55,6 +55,16 @@ namespace StateChanger
             private Position halfwayPosition;
             private Skin skin;
 
+            [SetUp]
+            public void SetUp()
+            {
+                imagePlaceHolder = null;
+
+                position = new Position(screenSizeWidth, screenSizeHeight / 2);
+                halfwayPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
+                skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
+            }
+
         }
 
     }
