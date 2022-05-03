@@ -44,5 +44,18 @@ namespace StateChanger
             UpdatePositionX();
         }
 
+        [TestFixture]
+        class TestCoinsReducer
+        {
+            private const int screenSizeWidth = 1080;
+            private const int screenSizeHeight = 980;
+            private Image? imagePlaceHolder;
+
+            private Position position;
+            private Position halfwayPosition;
+            private Skin skin;
+
+        }
+
     }
 }
