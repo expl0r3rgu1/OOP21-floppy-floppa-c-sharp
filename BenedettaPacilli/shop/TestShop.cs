@@ -19,7 +19,7 @@ namespace ShopSpace
             {
                 if (i == 0)
                 {
-                    Assert.IsTrue(shop.Skins[i].Purchased)
+                    Assert.IsTrue(shop.Skins[i].Purchased);
                 } else
                 {
                     Assert.IsFalse(shop.Skins[i].Purchased);
