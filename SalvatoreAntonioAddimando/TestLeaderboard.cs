@@ -21,6 +21,23 @@ namespace Test
             Assert.IsTrue(leaderboard.LeaderboardList.Count == 0);
         }
 
+        [Test]
+        public void TestLeaderboardAddPlayer()
+        {
+            CreateSavingsFile();
+
+            Leaderboard leaderboard = new Leaderboard();
+
+            Assert.IsNotNull(leaderboard.LeaderboardList);
+            Assert.IsTrue(leaderboard.LeaderboardList.Count == 0);
+
+            Player newPlayer = new Player("expl0r3rgu1", 50);
+            leaderboard.Update(newPlayer);
+
+            Assert.IsTrue(leaderboard.LeaderboardList.Count == 1);
+            Assert.IsTrue(leaderboard.LeaderboardList.Contains(newPlayer));
+        }
+
         private void CreateSavingsFile()
         {
             StreamWriter sw = new StreamWriter(File.Create(savingsFilePath));
