@@ -38,6 +38,29 @@ namespace Test
             Assert.IsTrue(leaderboard.LeaderboardList.Contains(newPlayer));
         }
 
+        [Test]
+        public void TestLeaderboardUpdatePlayer()
+        {
+            CreateSavingsFile();
+
+            Leaderboard leaderboard = new Leaderboard();
+
+            Assert.IsNotNull(leaderboard.LeaderboardList);
+            Assert.IsTrue(leaderboard.LeaderboardList.Count == 0);
+
+            string nickname = "expl0r3rgu1";
+
+            Player player = new Player(nickname, 50);
+            leaderboard.Update(player);
+
+            Player updatedPlayer = new Player(nickname, 60);
+            leaderboard.Update(updatedPlayer);
+
+            Assert.IsTrue(leaderboard.LeaderboardList.Count == 1);
+            Assert.IsNotNull(leaderboard.LeaderboardList.Contains(player));
+            Assert.IsNotNull(leaderboard.LeaderboardList.Contains(updatedPlayer));
+        }
+
         private void CreateSavingsFile()
         {
             StreamWriter sw = new StreamWriter(File.Create(savingsFilePath));
