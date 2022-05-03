@@ -1,6 +1,8 @@
 using System.Timers;
 using System.Windows.Forms;
 using Utilities;
+using NUnit.Framework;
+using System.Drawing;
 
 namespace ObstacleFactory {
 	/// <summary>
@@ -20,7 +22,7 @@ namespace ObstacleFactory {
 
 		/// <param name="position"> the obstacle initial position</param>
 		/// <param name="skin"> the obstacle Skin</param>
-		public MovingObstacle(Position position, Skin skin):base(position)
+		public MovingObstacle(Position position, Skin skin) : base(position)
 		{
 			this.skin = skin;
 
@@ -44,7 +46,7 @@ namespace ObstacleFactory {
 
 			UpdatePosition();
 		}
-	
+
 		/// <summary>
 		/// The action performed when the Timer's interval has elapsed
 		/// </summary>
@@ -68,5 +70,15 @@ namespace ObstacleFactory {
 		{
 			return base.GetHashCode();
 		}
+
+		[TestFixture]
+		public class TestMovingObstacle
+        {
+			private const Image imagePlaceholder = null;
+			private static readonly Position POSITION = new Position(1920, (int) (1080 / 2));
+			private readonly Position HALFWAY_POSITION = new Position((int) (1920 / 2), (int) (1080 / 2));
+			private readonly Skin SKIN = new Skin("name", imagePlaceholder, POSITION.X, POSITION.Y);
+		}
+
 	}
 }
