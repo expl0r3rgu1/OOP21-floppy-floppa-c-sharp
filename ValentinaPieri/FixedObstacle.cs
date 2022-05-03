@@ -89,9 +89,9 @@ namespace ObstacleFactory
 				fixedObstacle1.UpdatePosition();
 				Assert.True(fixedObstacle1.Position.X == (position.X - movingFactor));
 
-				/*FixedObstacle fixedObstacle2 = new(this.halfPosition, this.skin);
+				FixedObstacle fixedObstacle2 = new(this.halfPosition, this.skin);
 				fixedObstacle2.UpdatePosition();
-				Assert.True(fixedObstacle2.Position.X == (halfPosition.X - movingFactor));*/
+				Assert.True(fixedObstacle2.Position.X == (halfPosition.X - movingFactor));
 			}
 
 		}
