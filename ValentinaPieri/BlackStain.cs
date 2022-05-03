@@ -3,6 +3,7 @@ using System.Timers;
 using StateChanger;
 using System.Windows.Forms;
 using System.Drawing;
+using NUnit.Framework;
 
 namespace StateChanger
 {
@@ -82,6 +83,16 @@ namespace StateChanger
 			private Position position;
 			private Position halfwayPosition;
 			private Skin skin;
+
+			[SetUp]
+			public void SetUp()
+			{
+				imagePlaceHolder = null;
+
+				position = new Position(screenSizeWidth, screenSizeHeight / 2);
+				halfwayPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
+				skin = new Skin("blackstain", imagePlaceHolder, position.X, position.Y);
+			}
 
 		}
 
