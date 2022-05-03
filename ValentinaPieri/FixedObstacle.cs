@@ -68,13 +68,34 @@ namespace ObstacleFactory
 		{
 			private const int screenSizeWidth = 1080;
 			private const int screenSizeHeight = 980;
-			private const Image image = null;
 			private const int skinDimension = 50;
 
-			private readonly Position position = new(screenSizeWidth, screenSizeHeight);
-			private readonly Position halfPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
-			private readonly Skin skin = new("pipe", image, skinDimension, skinDimension);
+			private Image? imagePlaceHolder;
+			private Position position;
+			private Position halfPosition;
+			private Skin skin;
 
+			[SetUp]
+			public void SetUp()
+            {
+				imagePlaceHolder = null;
+
+				position = new Position(screenSizeWidth, screenSizeHeight);
+				halfPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
+				skin = new Skin("pipe", imagePlaceHolder, skinDimension, skinDimension);
+			}
+
+			[Test]
+			public void FixedObstacleMovement()
+			{
+				FixedObstacle fixedObstacle1 = new(this.position, this.skin);
+				fixedObstacle1.UpdatePosition();
+				Assert.True(fixedObstacle1.Position.X == (position.X - movingFactor));
+
+				FixedObstacle fixedObstacle2 = new(this.halfPosition, this.skin);
+				fixedObstacle2.UpdatePosition();
+				Assert.True(fixedObstacle2.Position.X == (halfPosition.X - movingFactor));
+			}
 
 		}
 
