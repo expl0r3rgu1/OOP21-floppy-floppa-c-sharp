@@ -11,12 +11,11 @@ namespace Test
 
         private const int screenSizeWidth = 1080;
         private const int screenSizeHeight = 980;
-        private const Image image = null;
-        private const int skinDimension = 50;
+        private const Image imagePlaceHolder = null;
 
-        private readonly Position position = new(screenSizeWidth, screenSizeHeight);
-        private readonly Skin skinFixedObstacle = new("pipe", image, skinDimension, skinDimension);
-        private readonly Skin skinMovingObstacle = new("Bingus", image, skinDimension, skinDimension);
+        private static readonly Position position = new(screenSizeWidth, screenSizeHeight);
+        private readonly Skin skinFixedObstacle = new("Pipe", imagePlaceHolder, position.X, position.Y);
+        private readonly Skin skinMovingObstacle = new("Bingus", imagePlaceHolder, position.X, position.Y);
 
         
         [Test]
