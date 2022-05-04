@@ -109,7 +109,7 @@ namespace ShopSpace
                     if (!status.Purchased && status.Item.Price <= coins)
                     {
                         status.Purchased = true;
-                        coins = coins - status.Item.Price;
+                        coins -= status.Item.Price;
                         state = true;
                         break;
                     }
@@ -135,7 +135,7 @@ namespace ShopSpace
                     if (!status.Purchased && status.Item.Price <= coins)
                     {
                         status.Purchased = true;
-                        coins = coins - status.Item.Price;
+                        coins -= status.Item.Price;
                         state = true;
                         break;
                     }

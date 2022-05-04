@@ -10,7 +10,7 @@ namespace ShopSpace
     {
         private const int ENOUGH_COINS = 1000;
         private const int NOT_ENOUGH_COINS = 0;
-        private const string savingsFilePath = "savings";
+        private const string savingsFileName = "savings";
         private const string savingsFileStartContent = "0\n0,0,0,0,0\n0,0,0,0,0";
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace ShopSpace
 
         private void CreateSavingsFile()
         {
-            StreamWriter sw = new StreamWriter(File.Create(savingsFilePath));
+            StreamWriter sw = new StreamWriter(File.Create(savingsFileName));
             sw.WriteLine(savingsFileStartContent);
             sw.Close();
         }
