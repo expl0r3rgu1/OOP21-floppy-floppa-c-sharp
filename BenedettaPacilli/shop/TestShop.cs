@@ -11,7 +11,7 @@ namespace ShopSpace
         private const int ENOUGH_COINS = 1000;
         private const int NOT_ENOUGH_COINS = 0;
         private const string savingsFileName = "savings";
-        private const string savingsFileStartContent = "0\n0,0,0,0,0\n0,0,0,0,0";
+        private const string savingsFileStartContent = "0\n1,0,0,0,0\n1,0,0,0,0";
 
         /// <summary>
         /// Checks if the Shop correctly reads info from the savings file. 
