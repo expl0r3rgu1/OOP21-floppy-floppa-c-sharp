@@ -49,31 +49,22 @@ namespace StateChanger
         {
             private const int screenSizeWidth = 1080;
             private const int screenSizeHeight = 980;
-            private Image? imagePlaceHolder;
 
-            private Position position;
-            private Position halfwayPosition;
-            private Skin skin;
+            private const Image imagePlaceHolder = null;
+            private static readonly Position position = new(screenSizeWidth, screenSizeHeight / 2);
+            private static readonly Position halfwayPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
+            private readonly Skin skin = new("pipe", imagePlaceHolder, position.X, position.Y);
 
-            [SetUp]
-            public void SetUp()
-            {
-                imagePlaceHolder = null;
-
-                position = new Position(screenSizeWidth, screenSizeHeight / 2);
-                halfwayPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
-                skin = new Skin("coinsreducer", imagePlaceHolder, position.X, position.Y);
-            }
 
             [Test]
             public void CoinsReducerMalusMovement()
             {
-                CoinsReducer coinsReducer1 = new(this.position, this.skin);
+                CoinsReducer coinsReducer1 = new(position, this.skin);
                 coinsReducer1.UpdatePositionX();
                 Assert.True(coinsReducer1.Position.X == position.X - 3 * movingFactor);
                 Assert.True(coinsReducer1.Position.Y == position.Y);
 
-                CoinsReducer coinsReducer2 = new(this.halfwayPosition, this.skin);
+                CoinsReducer coinsReducer2 = new(halfwayPosition, this.skin);
                 coinsReducer2.UpdatePositionX();
                 Assert.True(coinsReducer2.Position.X == halfwayPosition.X - 3 * movingFactor);
                 Assert.True(coinsReducer2.Position.Y == halfwayPosition.Y);
