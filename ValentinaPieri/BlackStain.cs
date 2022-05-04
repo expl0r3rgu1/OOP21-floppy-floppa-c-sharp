@@ -77,31 +77,23 @@ namespace StateChanger
 		{
 			private const int screenSizeWidth = 1080;
 			private const int screenSizeHeight = 980;
-			private Image? imagePlaceHolder;
 
-			private Position position;
-			private Position halfwayPosition;
-			private Skin skin;
+			private const Image imagePlaceHolder = null;
+			private static readonly Position position = new(screenSizeWidth, screenSizeHeight / 2);
+			private static readonly Position halfwayPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
+			private readonly Skin skin = new("blackstains", imagePlaceHolder, position.X, position.Y);
 
-			[SetUp]
-			public void SetUp()
-			{
-				imagePlaceHolder = null;
 
-				position = new Position(screenSizeWidth, screenSizeHeight / 2);
-				halfwayPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
-				skin = new Skin("blackstain", imagePlaceHolder, position.X, position.Y);
-			}
 
 			[Test]
 			public void BlackStainMalusMovement()
 			{
-				BlackStain blackStain1 = new(this.position, this.skin);
+				BlackStain blackStain1 = new(position, this.skin);
 				blackStain1.UpdatePositionX();
 				Assert.True(blackStain1.Position.X == position.X - 3 * movingFactor);
 				Assert.True(blackStain1.Position.Y == position.Y);
 
-				BlackStain blackStain2 = new(this.halfwayPosition, this.skin);
+				BlackStain blackStain2 = new(halfwayPosition, this.skin);
 				blackStain2.UpdatePositionX();
 				Assert.True(blackStain2.Position.X == halfwayPosition.X - 3 * movingFactor);
 				Assert.True(blackStain2.Position.Y == halfwayPosition.Y);
