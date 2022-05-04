@@ -48,7 +48,7 @@ namespace ObstacleFactory
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			FixedObstacle other = obj as FixedObstacle;
+			FixedObstacle other = (FixedObstacle)obj;
 
 			if (other == null)
 			{
@@ -67,20 +67,11 @@ namespace ObstacleFactory
 			private const int screenSizeWidth = 1080;
 			private const int screenSizeHeight = 980;
 
-			private Image? imagePlaceHolder;
-			private Position position;
-			private Position halfPosition;
-			private Skin skin;
+			private const Image imagePlaceHolder = null;
+			private const Position position = new Position(screenSizeWidth, screenSizeHeight / 2);
+			private Position halfPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
+			private Skin skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
 
-			[SetUp]
-			public void SetUp()
-			{
-				imagePlaceHolder = null;
-
-				position = new Position(screenSizeWidth, screenSizeHeight / 2);
-				halfPosition = new Position(screenSizeWidth / 2, screenSizeHeight / 2);
-				skin = new Skin("pipe", imagePlaceHolder, position.X, position.Y);
-			}
 
 			[Test]
 			public void FixedObstacleMovement()
