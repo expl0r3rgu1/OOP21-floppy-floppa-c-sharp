@@ -40,7 +40,7 @@ namespace ObstacleFactory
 		/// <inheritdoc />
 		public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
 		{
-			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + (int)spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + (int)spaceBetweenPipes / 2));
+			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + spaceBetweenPipes / 2));
 
 			UpdatePosition();
 		}
