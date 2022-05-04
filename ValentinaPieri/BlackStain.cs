@@ -66,7 +66,7 @@ namespace StateChanger
 		/// <summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public void OnTimedEvent(object sender, ElapsedEventArgs e)
+		public void OnTimedEvent(object? sender, ElapsedEventArgs? e)
 		{
 			this.collided = false;
 			this.timer.Stop();
