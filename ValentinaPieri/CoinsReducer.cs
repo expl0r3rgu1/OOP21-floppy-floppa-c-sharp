@@ -53,7 +53,7 @@ namespace StateChanger
             private const Image imagePlaceHolder = null;
             private static readonly Position position = new(screenSizeWidth, screenSizeHeight / 2);
             private static readonly Position halfwayPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
-            private readonly Skin skin = new("pipe", imagePlaceHolder, position.X, position.Y);
+            private readonly Skin skin = new("coinsreducer", imagePlaceHolder, position.X, position.Y);
 
 
             [Test]
