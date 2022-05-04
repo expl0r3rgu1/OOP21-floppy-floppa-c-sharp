@@ -15,7 +15,7 @@ namespace ObstacleFactory
         /// <param name="position"> - the position for a FixedObstacle</param>
         /// <param name="skin">     - the skin for a FixedObstacle</param>
         /// <returns>FixedObstacle</returns>
-        public FixedObstacle FixedObstacleFactory(Position position, Skin skin) => new FixedObstacle(position, skin);
+        public FixedObstacle FixedObstacleFactory(Position position, Skin skin) => new(position, skin);
 
         /// <summary>
         /// MovingObstacleFactory is a method that creates a factory using position and
@@ -24,7 +24,7 @@ namespace ObstacleFactory
         /// <param name="position"> - the position for a MovingObstacle</param>
         /// <param name="skin">     - the skin for a MovingObstacle</param>
         /// <returns>MovingObstacle</returns>
-        public MovingObstacle MovingObstacleFactory(Position position, Skin skin) => new MovingObstacle(position, skin);
+        public MovingObstacle MovingObstacleFactory(Position position, Skin skin) => new(position, skin);
     }
 
 }
