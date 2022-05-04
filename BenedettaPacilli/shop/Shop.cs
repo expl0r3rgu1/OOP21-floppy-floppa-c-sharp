@@ -69,8 +69,6 @@ namespace ShopSpace
                 0, 50, 100, 200, 500,
             };
 
-		    File.Create(savingsFileName);
-
             GetFileInfo();
         }
 
