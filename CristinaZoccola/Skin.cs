@@ -44,7 +44,7 @@ namespace Utilities
 		}
 
 		/// <inheritdoc />
-		public override bool Equals(object obj)
+		public override bool Equals(object? obj)
         {
             return obj is Skin skin &&
                    this.name == skin.Name &&
