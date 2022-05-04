@@ -215,7 +215,7 @@ namespace ShopSpace
             for (int i = 0; i < SceneriesNum; i++)
             {
                 PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
-				    new PricedBackground(skinInitialize[i], imagePlaceholder, prices[i]), false);
+				    new PricedBackground(backgroundInitialize[i], imagePlaceholder, prices[i]), false);
         
 			    if(lineWords[i].Equals("1"))
 			    {
