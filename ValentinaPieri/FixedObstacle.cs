@@ -69,7 +69,7 @@ namespace ObstacleFactory
 
 			private const Image imagePlaceHolder = null;
 			private static readonly Position position = new(screenSizeWidth, screenSizeHeight / 2);
-			private readonly Position halfPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
+			private static readonly Position halfPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
 			private readonly Skin skin = new("pipe", imagePlaceHolder, position.X, position.Y);
 
 
