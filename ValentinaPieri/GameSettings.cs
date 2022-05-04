@@ -14,7 +14,7 @@ namespace Utilities
         private ScrollingBackground scollingBackground;
         private Skin skin;
         private Player player;
-        private readonly Image image = null;
+        private const Image imagePlaceHolder = null;
         private readonly int skinDimension = 50;
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace Utilities
 
         public GameSettings()
         {
-            this.scollingBackground = new ScrollingBackground("Default", image);
-            this.skin = new Skin("Floppa", image, skinDimension, skinDimension);
+            this.scollingBackground = new ScrollingBackground("Default", imagePlaceHolder);
+            this.skin = new Skin("Floppa", imagePlaceHolder, skinDimension, skinDimension);
         }
 
     }
