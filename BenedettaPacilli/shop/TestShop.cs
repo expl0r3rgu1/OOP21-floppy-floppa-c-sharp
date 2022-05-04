@@ -19,6 +19,7 @@ namespace ShopSpace
         [Test]
         public void FileReading()
         {
+            CreateSavingsFile();
             Shop shop = new Shop();
 
             for(int i = 0; i < shop.SkinsNum; i++)
