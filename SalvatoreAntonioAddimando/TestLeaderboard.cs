@@ -8,7 +8,7 @@ namespace Test
     public class TestLeaderboard
     {
         private const string savingsFilePath = "savings";
-        private const string savingsFileStartContent = "0\n0,0,0,0,0\n0,0,0,0,0";
+        private const string savingsFileStartContent = "0\n1,0,0,0,0\n1,0,0,0,0";
 
         [Test]
         public void TestLeaderboardInitialization()
