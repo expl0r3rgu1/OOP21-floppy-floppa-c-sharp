@@ -72,7 +72,7 @@ namespace ObstacleFactory
 
 			private const Image imagePlaceHolder = null;
 			private static readonly Position position = new(screenSizeWidth, screenSizeHeight / 2);
-			private static readonly Position halfPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
+			private static readonly Position halfwayPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
 			private readonly Skin skin = new("pipe", imagePlaceHolder, position.X, position.Y);
 
 			/// <summary>
@@ -85,9 +85,9 @@ namespace ObstacleFactory
 				fixedObstacle1.UpdatePosition();
 				Assert.True(fixedObstacle1.Position.X == (position.X - movingFactor));
 
-				FixedObstacle fixedObstacle2 = new(halfPosition, this.skin);
+				FixedObstacle fixedObstacle2 = new(halfwayPosition, this.skin);
 				fixedObstacle2.UpdatePosition();
-				Assert.True(fixedObstacle2.Position.X == (halfPosition.X - movingFactor));
+				Assert.True(fixedObstacle2.Position.X == (halfwayPosition.X - movingFactor));
 			}
 
 		}
