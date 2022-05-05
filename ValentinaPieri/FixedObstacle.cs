@@ -61,6 +61,9 @@ namespace ObstacleFactory
 		/// <inheritdoc />
 		public override int GetHashCode() => base.GetHashCode();
 
+		/// <summary>
+		/// TestFixedObstacle is a class that tests the UpdatePosition of FixedObstacle
+		/// </summary>
 		[TestFixture]
 		class TestFixedObstacle
 		{
@@ -72,7 +75,9 @@ namespace ObstacleFactory
 			private static readonly Position halfPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
 			private readonly Skin skin = new("pipe", imagePlaceHolder, position.X, position.Y);
 
-
+			/// <summary>
+			/// Check if the moving pattern of the fixed obstacle works correctly
+			/// </summary>
 			[Test]
 			public void FixedObstacleMovement()
 			{
