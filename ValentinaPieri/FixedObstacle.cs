@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using NUnit.Framework;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace ObstacleFactory
 {
@@ -45,26 +46,19 @@ namespace ObstacleFactory
 			UpdatePosition();
 		}
 
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			FixedObstacle other = (FixedObstacle)obj;
+        /// <inheritdoc />
+        public override bool Equals(object? obj) => obj is FixedObstacle obstacle &&
+                   base.Equals(obj) &&
+                   EqualityComparer<Skin>.Default.Equals(skin, obstacle.skin);
 
-			if (other == null)
-			{
-				return false;
-			}
+        /// <inheritdoc />
+        public override int GetHashCode() => base.GetHashCode();
 
-			return base.Equals(obj) && skin.Equals(other.skin);
-		}
 
-		/// <inheritdoc />
-		public override int GetHashCode() => base.GetHashCode();
-
-		/// <summary>
-		/// TestFixedObstacle is a class that tests the UpdatePosition of FixedObstacle
-		/// </summary>
-		[TestFixture]
+        /// <summary>
+        /// TestFixedObstacle is a class that tests the UpdatePosition of FixedObstacle
+        /// </summary>
+        [TestFixture]
 		class TestFixedObstacle
 		{
 			private const int screenSizeWidth = 1080;
