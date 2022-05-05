@@ -84,7 +84,6 @@ namespace InfiniteMap
             }
             catch (NullReferenceException e)
             {
-
                 return false;
             }
         }
