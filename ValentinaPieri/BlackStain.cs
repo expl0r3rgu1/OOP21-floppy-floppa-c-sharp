@@ -72,6 +72,9 @@ namespace StateChanger
 			this.timer.Stop();
 		}
 
+		/// <summary>
+		/// TestBlackStain is a class that tests the UpdatePositionX of BlackStain
+		/// </summary>
 		[TestFixture]
 		class TestBlackStain
 		{
@@ -83,8 +86,9 @@ namespace StateChanger
 			private static readonly Position halfwayPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
 			private readonly Skin skin = new("blackstains", imagePlaceHolder, position.X, position.Y);
 
-
-
+			/// <summary>
+			/// Check if the moving pattern of the malus works correctly
+			/// </summary>
 			[Test]
 			public void BlackStainMalusMovement()
 			{
