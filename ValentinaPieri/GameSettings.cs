@@ -13,7 +13,7 @@ namespace Utilities
     {
         private ScrollingBackground scollingBackground;
         private Skin skin;
-        private Player player;
+        private Player? player;
         private const Image imagePlaceHolder = null;
         private readonly int skinDimension = 50;
 
@@ -30,7 +30,7 @@ namespace Utilities
         /// <summary>
         /// The Player of the entity
         /// </summary>
-        public Player Player { get => player; set => player = value; }
+        public Player? Player { get => player; set => player = value; }
 
         public GameSettings()
         {
