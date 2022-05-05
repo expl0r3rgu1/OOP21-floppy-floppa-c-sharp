@@ -8,8 +8,8 @@ namespace ShopSpace
     [TestFixture]
     public class TestShop
     {
-        private const int ENOUGH_COINS = 1000;
-        private const int NOT_ENOUGH_COINS = 0;
+        private const int enough_coins = 1000;
+        private const int not_enough_coins = 0;
         private const string savingsFileName = "savings";
         private const string savingsFileStartContent = "0\n1,0,0,0,0\n1,0,0,0,0";
 
@@ -54,7 +54,7 @@ namespace ShopSpace
             this.CreateSavingsFile();
             Shop shop = new Shop();
 
-            shop.Coins = NOT_ENOUGH_COINS;
+            shop.Coins = not_enough_coins;
             for (int i = 1; i < shop.SkinsNum; i++)
             {
                 shop.Buy(shop.Skins[i].Item);
@@ -66,7 +66,7 @@ namespace ShopSpace
                 Assert.IsFalse(shop.Sceneries[i].Purchased);
             }
 
-            shop.Coins = ENOUGH_COINS;
+            shop.Coins = enough_coins;
             int prevCoins = shop.Coins;
             for (int i = 1; i < shop.SkinsNum; i++)
             {
@@ -76,7 +76,7 @@ namespace ShopSpace
                 Assert.IsTrue(shop.Skins[i].Purchased);
             }
 
-            shop.Coins = ENOUGH_COINS;
+            shop.Coins = enough_coins;
             prevCoins = shop.Coins;
             for (int i = 1; i < shop.SceneriesNum; i++)
             {
