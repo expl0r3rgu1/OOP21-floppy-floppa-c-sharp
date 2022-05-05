@@ -43,6 +43,9 @@ namespace StateChanger
             UpdatePositionX();
         }
 
+        /// <summary>
+		/// TestCoinsReducer is a class that tests the UpdatePositionX of CoinsReducer
+		/// </summary>
         [TestFixture]
         class TestCoinsReducer
         {
@@ -54,7 +57,9 @@ namespace StateChanger
             private static readonly Position halfwayPosition = new(screenSizeWidth / 2, screenSizeHeight / 2);
             private readonly Skin skin = new("coinsreducer", imagePlaceHolder, position.X, position.Y);
 
-
+            /// <summary>
+            /// Check if the moving pattern of the malus works correctly
+            /// </summary>
             [Test]
             public void CoinsReducerMalusMovement()
             {
