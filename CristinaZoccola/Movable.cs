@@ -26,7 +26,7 @@ namespace Utilities
 	    public abstract void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is Movable movable &&
                    EqualityComparer<Position>.Default.Equals(this.position, movable.Position);
@@ -37,5 +37,6 @@ namespace Utilities
         {
             return HashCode.Combine(this.position);
         }
+
     }
 }

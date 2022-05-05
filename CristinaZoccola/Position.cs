@@ -29,7 +29,7 @@ namespace Utilities
 		}
 
 		/// <inheritdoc />
-		public override bool Equals(object obj)
+		public override bool Equals(object? obj)
         {
             return obj is Position position &&
                    this.x == position.X &&
