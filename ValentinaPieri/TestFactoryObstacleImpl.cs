@@ -5,6 +5,9 @@ using Utilities;
 
 namespace Test
 {
+    /// <summary>
+    /// TestFactoryObstacleImpl is a class that tests ObstacleFactoryImpl
+    /// </summary>
     [TestFixture]
     public class TestFactoryObstacleImpl
     {
