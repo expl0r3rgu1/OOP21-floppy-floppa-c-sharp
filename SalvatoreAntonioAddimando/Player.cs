@@ -53,5 +53,24 @@ namespace LeaderboardSpace
 
             return other.PersonalBest - this.personalBest;
         }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            Player other = obj as Player;
+
+            return this.nickname.Equals(other.Nickname);
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Drawing;
 using Utilities;
 using ObstacleFactory;
 using StateChanger;
+using NUnit.Framework;
 
 namespace CharacterSpace
 {
@@ -221,10 +222,43 @@ namespace CharacterSpace
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        private void OnTimedEvent(object? sender, ElapsedEventArgs? e)
         {
             jumping = false;
             timer.Stop();
+        }
+
+        [TestFixture]
+        class TestUpdatePosition
+        {
+            private const int screenWidth = 1920;
+            private const int screenHeight = 1080;
+            private const int skinWidth = 20;
+            private const int skinHeight = 20;
+            private const int movingFactor = 2;
+
+            private const Image? imagePlaceHolder = null;
+            private static readonly Skin skin = new("skin", imagePlaceHolder, skinWidth, skinHeight);
+
+            private static readonly Position characterInitialPosition = new(screenWidth / 2, screenHeight / 2);
+            private static readonly Position characterAfterFallingPosition = new(screenWidth / 2, screenHeight / 2 + movingFactor);
+            private readonly Position characterAfterJumpingPosition = new(screenWidth / 2, characterAfterFallingPosition.Y - movingFactor * 2);
+
+            private readonly Character character = new(characterInitialPosition, skin);
+
+            /// <summary>
+            /// Checks if the position is updated correctly when the character falls or jumps
+            /// </summary>
+            [Test]
+            public void UpdatePositionTest()
+            {
+                character.UpdatePosition();
+                Assert.IsTrue(character.Position.Equals(characterAfterFallingPosition));
+
+                character.Jump();
+                character.UpdatePosition();
+                Assert.IsTrue(character.Position.Equals(characterAfterJumpingPosition));
+            }
         }
     }
 }

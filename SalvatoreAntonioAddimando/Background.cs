@@ -1,6 +1,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using Utilities;
+using System;
 
 namespace InfiniteMap
 {
@@ -76,7 +77,15 @@ namespace InfiniteMap
             }
 
             Background other = obj as Background;
-            return base.Equals(other) && name.Equals(other.Name) && image.Equals(other.Image);
+
+            try
+            {
+                return base.Equals(other) && name.Equals(other.Name) && image.Equals(other.Image);
+            }
+            catch (NullReferenceException e)
+            {
+                return false;
+            }
         }
 
         /// <inheritdoc/>
