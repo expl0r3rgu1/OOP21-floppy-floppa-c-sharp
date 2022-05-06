@@ -1,5 +1,4 @@
 using System.Timers;
-using System.Windows.Forms;
 using Utilities;
 using NUnit.Framework;
 using System.Drawing;
@@ -40,9 +39,9 @@ namespace ObstacleFactory {
 		}
 
 		/// <inheritdoc/>
-		public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
+		public override void Animate(Graphics canvas)
 		{
-			ribbonElementPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
+			canvas.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
 
 			UpdatePosition();
 		}
