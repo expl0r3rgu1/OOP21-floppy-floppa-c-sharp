@@ -194,7 +194,7 @@ namespace CharacterSpace
         }
 
         /// <inheritdoc />
-        public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
+        public override void Animate(Graphics canvas)
         {
             int x = Position.X;
             int y = Position.Y;
@@ -202,7 +202,7 @@ namespace CharacterSpace
             int height = Skin.Height;
             Image image = Skin.Image;
 
-            ribbonElementPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
+            canvas.DrawImage(image, x, y, width, height);
 
             UpdatePosition();
         }
