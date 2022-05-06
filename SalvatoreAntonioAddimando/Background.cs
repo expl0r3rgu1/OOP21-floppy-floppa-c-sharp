@@ -69,23 +69,11 @@ namespace InfiniteMap
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj == null || this.GetType() != obj.GetType())
-            {
-                return false;
-            }
-
-            Background other = obj as Background;
-
-            try
-            {
-                return base.Equals(other) && name.Equals(other.Name) && image.Equals(other.Image);
-            }
-            catch (NullReferenceException e)
-            {
-                return false;
-            }
+            return obj is Background background &&
+                   base.Equals(obj) &&
+                   name == background.Name;
         }
 
         /// <inheritdoc/>

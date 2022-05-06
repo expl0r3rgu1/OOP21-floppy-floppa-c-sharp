@@ -45,26 +45,23 @@ namespace LeaderboardSpace
         }
 
         /// <inheritdoc/>
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
-            if (obj == null) return 1;
+            Player? other = obj as Player;
 
-            Player other = obj as Player;
+            if(other != null)
+            {
+                return other.PersonalBest - this.personalBest;
+            }
 
-            return other.PersonalBest - this.personalBest;
+            return 1;
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-
-            Player other = obj as Player;
-
-            return this.nickname.Equals(other.Nickname);
+            return obj is Player player &&
+                   nickname == player.Nickname;
         }
 
         /// <inheritdoc/>
