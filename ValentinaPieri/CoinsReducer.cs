@@ -1,5 +1,4 @@
 ﻿using Utilities;
-using System.Windows.Forms;
 using System.Drawing;
 using NUnit.Framework;
 
@@ -36,9 +35,9 @@ namespace StateChanger
         }
 
         /// <inheritdoc />
-        public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+        public override void Animate(Graphics canvas)
         {
-            ribbonPaintEventArgs.Graphics.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
+            canvas.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
 
             UpdatePositionX();
         }
