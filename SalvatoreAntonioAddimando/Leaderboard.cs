@@ -34,7 +34,7 @@ namespace LeaderboardSpace
             StreamReader leaderboardStreamReader = new StreamReader(leaderboardFilePath);
 
             SkipToLeaderboardStart(leaderboardStreamReader);
-            string line = null;
+            string? line = null;
 
             while ((line = leaderboardStreamReader.ReadLine()) != null)
             {
