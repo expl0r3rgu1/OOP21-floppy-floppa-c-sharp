@@ -13,8 +13,8 @@ namespace Utilities
     {
         private ScrollingBackground scollingBackground;
         private Skin skin;
-        private Player player;
-        private readonly Image image = null;
+        private Player? player;
+        private const Image imagePlaceHolder = null;
         private readonly int skinDimension = 50;
 
         /// <summary>
@@ -30,12 +30,12 @@ namespace Utilities
         /// <summary>
         /// The Player of the entity
         /// </summary>
-        public Player Player { get => player; set => player = value; }
+        public Player? Player { get => player; set => player = value; }
 
         public GameSettings()
         {
-            this.scollingBackground = new ScrollingBackground("Default", image);
-            this.skin = new Skin("Floppa", image, skinDimension, skinDimension);
+            this.scollingBackground = new ScrollingBackground("Default", imagePlaceHolder);
+            this.skin = new Skin("Floppa", imagePlaceHolder, skinDimension, skinDimension);
         }
 
     }
