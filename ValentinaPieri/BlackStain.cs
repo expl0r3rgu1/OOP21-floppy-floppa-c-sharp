@@ -1,7 +1,6 @@
 ﻿using Utilities;
 using System.Timers;
 using StateChanger;
-using System.Windows.Forms;
 using System.Drawing;
 using NUnit.Framework;
 
@@ -49,15 +48,15 @@ namespace StateChanger
 		}
 
 		/// <inheritdoc />
-		public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+		public override void Animate(Graphics canvas)
 		{
-			ribbonPaintEventArgs.Graphics.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
+			canvas.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
 
 			UpdatePositionX();
 
 			if (collided)
 			{
-				ribbonPaintEventArgs.Graphics.DrawImage(Skin.Image, 0, 0, screenSizeWidth, screenSizeHeight);
+				canvas.DrawImage(Skin.Image, 0, 0, screenSizeWidth, screenSizeHeight);
 			}
 		}
 
