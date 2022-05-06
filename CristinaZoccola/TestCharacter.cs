@@ -16,7 +16,7 @@ namespace Test
         private const int skinWidth = 20;
         private const int skinHeight = 20;
 
-        private const Image? imagePlaceHolder = null;
+        private const Image imagePlaceHolder = null;
         private static readonly Skin skin = new("skin", imagePlaceHolder, skinWidth, skinHeight);
 
         private static readonly Position fixedObstaclePosition = new(screenWidth / 2, screenHeight / 2);
