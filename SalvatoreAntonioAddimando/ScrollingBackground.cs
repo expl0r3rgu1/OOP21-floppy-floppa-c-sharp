@@ -1,4 +1,3 @@
-using System.Windows.Forms;
 using System.Drawing;
 using Utilities;
 
@@ -24,10 +23,10 @@ namespace InfiniteMap
         ///  Animates the two Background instances, updates their Position and moves them to the right edge of the screen when if Background.isOffStageLeft() returns true
         /// </summary>
         /// <param name="ribbonPaintEventArgs">A RibbonElementPaintEventArgs canvas to animate the two Background instances onto</param>
-        public void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+        public void Animate(Graphics canvas)
         {
-            backOne.Animate(ribbonPaintEventArgs);
-            backTwo.Animate(ribbonPaintEventArgs);
+            backOne.Animate(canvas);
+            backTwo.Animate(canvas);
 
             backOne.UpdatePosition();
             backTwo.UpdatePosition();
