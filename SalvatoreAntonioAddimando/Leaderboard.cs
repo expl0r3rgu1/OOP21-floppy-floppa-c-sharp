@@ -9,7 +9,7 @@ namespace LeaderboardSpace
     public class Leaderboard
     {
         private const string leaderboardFilePath = "savings";
-        private List<Player> leaderboardList;
+        private readonly List<Player> leaderboardList;
 
         /// <summary>
         /// The List of Player instances the played the game
@@ -34,7 +34,7 @@ namespace LeaderboardSpace
             StreamReader leaderboardStreamReader = new StreamReader(leaderboardFilePath);
 
             SkipToLeaderboardStart(leaderboardStreamReader);
-            string? line = null;
+            string? line;
 
             while ((line = leaderboardStreamReader.ReadLine()) != null)
             {
@@ -75,7 +75,7 @@ namespace LeaderboardSpace
         public void Update(Player newPlayer)
         {
             int playerIndexInLeaderboard = leaderboardList.IndexOf(newPlayer);
-            bool playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
+            bool playerAlreadyPresent = playerIndexInLeaderboard != -1;
 
             if (playerAlreadyPresent)
             {
