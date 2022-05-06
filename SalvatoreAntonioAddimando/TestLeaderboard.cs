@@ -15,7 +15,7 @@ namespace Test
         {
             CreateSavingsFile();
 
-            Leaderboard leaderboard = new Leaderboard();
+            Leaderboard leaderboard = new();
 
             Assert.IsNotNull(leaderboard.LeaderboardList);
             Assert.IsTrue(leaderboard.LeaderboardList.Count == 0);
@@ -26,12 +26,12 @@ namespace Test
         {
             CreateSavingsFile();
 
-            Leaderboard leaderboard = new Leaderboard();
+            Leaderboard leaderboard = new();
 
             Assert.IsNotNull(leaderboard.LeaderboardList);
             Assert.IsTrue(leaderboard.LeaderboardList.Count == 0);
 
-            Player newPlayer = new Player("expl0r3rgu1", 50);
+            Player newPlayer = new("expl0r3rgu1", 50);
             leaderboard.Update(newPlayer);
 
             Assert.IsTrue(leaderboard.LeaderboardList.Count == 1);
@@ -43,17 +43,17 @@ namespace Test
         {
             CreateSavingsFile();
 
-            Leaderboard leaderboard = new Leaderboard();
+            Leaderboard leaderboard = new();
 
             Assert.IsNotNull(leaderboard.LeaderboardList);
             Assert.IsTrue(leaderboard.LeaderboardList.Count == 0);
 
             string nickname = "expl0r3rgu1";
 
-            Player player = new Player(nickname, 50);
+            Player player = new(nickname, 50);
             leaderboard.Update(player);
 
-            Player updatedPlayer = new Player(nickname, 60);
+            Player updatedPlayer = new(nickname, 60);
             leaderboard.Update(updatedPlayer);
 
             Assert.IsTrue(leaderboard.LeaderboardList.Count == 1);
@@ -63,7 +63,7 @@ namespace Test
 
         private void CreateSavingsFile()
         {
-            StreamWriter sw = new StreamWriter(File.Create(savingsFilePath));
+            StreamWriter sw = new(File.Create(savingsFilePath));
             sw.WriteLine(savingsFileStartContent);
             sw.Close();
         }
