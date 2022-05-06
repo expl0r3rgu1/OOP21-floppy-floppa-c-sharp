@@ -81,7 +81,7 @@ namespace ShopSpace
         /// <returns> true if the given object gets purchased, false otherwise</returns>
         public bool Buy(object o)
         {
-            PricedSkin pricedSkin = new PricedSkin("name", imagePlaceholder, 0, 0, 0);
+            PricedSkin pricedSkin = new ("name", imagePlaceholder, 0, 0, 0);
             if (o.GetType().Equals(pricedSkin.GetType()))
             {
                 return FindAndBuySkins(o, Skins);
@@ -99,7 +99,7 @@ namespace ShopSpace
         /// <param name="o"> the object to be purchased</param>
         /// <param name="purchaseStatusList"> List of purchase statuses of PricedSkin items</param>
         /// <returns> true if the given object gets purchased, false otherwise</returns>
-        private bool FindAndBuySkins(object o, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
+        private bool FindAndBuySkins(object? o, List<PurchaseStatus<PricedSkin>> purchaseStatusList)
         {
             bool state = false;
             foreach (var status in purchaseStatusList)
@@ -125,7 +125,7 @@ namespace ShopSpace
         /// <param name="o"> the object to be purchased</param>
         /// <param name="purchaseStatusList"> List of purchase statuses of PricedBackground items</param>
         /// <returns> true if the given object gets purchased, false otherwise</returns>
-        private bool FindAndBuySceneries(object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
+        private bool FindAndBuySceneries(object? o, List<PurchaseStatus<PricedBackground>> purchaseStatusList)
         {
             bool state = false;
             foreach (var status in purchaseStatusList)
@@ -150,10 +150,10 @@ namespace ShopSpace
         /// </summary>
         private void GetFileInfo()
         {
-            StreamReader shopStreamReader = new StreamReader(savingsFileName);
+            StreamReader shopStreamReader = new (savingsFileName);
 
             int counter = 0;
-            string line = string.Empty;
+            string? line;
             while ((line = shopStreamReader.ReadLine()) != null)
             {
                 if (counter == 0)
@@ -188,8 +188,8 @@ namespace ShopSpace
 
             for (int i = 0; i < SkinsNum; i++)
             {
-                PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
-				    new PricedSkin(skinInitialize[i], imagePlaceholder, 100, 100, prices[i]), false);
+                PurchaseStatus<PricedSkin> purchaseStatus = new (new PricedSkin(skinInitialize[i], 
+                    imagePlaceholder, 100, 100, prices[i]), false);
         
 			    if(lineWords[i].Equals("1"))
 			    {
@@ -214,8 +214,8 @@ namespace ShopSpace
 
             for (int i = 0; i < SceneriesNum; i++)
             {
-                PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
-				    new PricedBackground(backgroundInitialize[i], imagePlaceholder, prices[i]), false);
+                PurchaseStatus<PricedBackground> purchaseStatus = new (new PricedBackground(backgroundInitialize[i], 
+                    imagePlaceholder, prices[i]), false);
         
 			    if(lineWords[i].Equals("1"))
 			    {
