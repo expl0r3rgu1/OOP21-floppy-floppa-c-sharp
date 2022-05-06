@@ -60,19 +60,8 @@ namespace LeaderboardSpace
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-
-            Player? other = obj as Player;
-
-            if(other != null)
-            {
-                return this.Nickname.Equals(other.Nickname);
-            }
-
-            return false;
+            return obj is Player player &&
+                   nickname == player.Nickname;
         }
 
         /// <inheritdoc/>
