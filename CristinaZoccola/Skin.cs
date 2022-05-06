@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace Utilities
 {
@@ -46,17 +47,32 @@ namespace Utilities
 		/// <inheritdoc />
 		public override bool Equals(object? obj)
         {
-            return obj is Skin skin &&
-                   this.name == skin.Name &&
-                   EqualityComparer<Image>.Default.Equals(this.image, skin.Image) &&
-                   this.width == skin.Width &&
-                   this.height == skin.Height;
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+				return obj is Skin skin &&
+				   this.name == skin.Name &&
+				   EqualityComparer<Image>.Default.Equals(this.image, skin.Image) &&
+				   this.width == skin.Width &&
+				   this.height == skin.Height;
+			} else
+            {
+				return false;
+            }
+				
         }
 
 		/// <inheritdoc />
 		public override int GetHashCode()
         {
-            return HashCode.Combine(this.name, this.image, this.width, this.height);
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+				return HashCode.Combine(this.name, this.image, this.width, this.height);
+            }
+            else
+            {
+				return HashCode.Combine(this.name, this.width, this.height);
+			}
+
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using System.Windows.Forms;
-using System.Timers;
+﻿using System.Timers;
 using System.Collections.Generic;
 using System.Drawing;
 using Utilities;
 using ObstacleFactory;
 using StateChanger;
 using NUnit.Framework;
+using System.Runtime.InteropServices;
 
 namespace CharacterSpace
 {
@@ -194,15 +194,17 @@ namespace CharacterSpace
         }
 
         /// <inheritdoc />
-        public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
+        public override void Animate(Graphics canvas)
         {
             int x = Position.X;
             int y = Position.Y;
             int width = Skin.Width;
             int height = Skin.Height;
             Image image = Skin.Image;
-
-            ribbonElementPaintEventArgs.Graphics.DrawImage(image, x, y, width, height);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                canvas.DrawImage(image, x, y, width, height);
+            }
 
             UpdatePosition();
         }
