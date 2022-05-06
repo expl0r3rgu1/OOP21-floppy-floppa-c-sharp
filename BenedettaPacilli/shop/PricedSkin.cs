@@ -27,10 +27,11 @@ namespace ShopSpace
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            PricedSkin other = (PricedSkin)obj;
-            return base.Equals(other) && Price == other.Price;
+            return obj is PricedSkin skin &&
+                   base.Equals(obj) &&
+                   Price == skin.Price;
         }
 
         /// <inheritdoc/>

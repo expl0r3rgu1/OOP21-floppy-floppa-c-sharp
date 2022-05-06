@@ -1,8 +1,9 @@
 using System.Timers;
-using System.Windows.Forms;
 using Utilities;
 using NUnit.Framework;
 using System.Drawing;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace ObstacleFactory {
 	/// <summary>
@@ -39,9 +40,12 @@ namespace ObstacleFactory {
 		}
 
 		/// <inheritdoc/>
-		public override void Animate(RibbonElementPaintEventArgs ribbonElementPaintEventArgs)
+		public override void Animate(Graphics canvas)
 		{
-			ribbonElementPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
+			if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+				canvas.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
+            }
 
 			UpdatePosition();
 		}
@@ -51,18 +55,20 @@ namespace ObstacleFactory {
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void OnTimedEvent(object sender, ElapsedEventArgs e)
+		private void OnTimedEvent(object? sender, ElapsedEventArgs? e)
 		{
 			direction = -direction;
 			timer.Stop();
 		}
 
 		/// <inheritdoc/>
-		public override bool Equals(object obj)
+		public override bool Equals(object? obj)
 		{
-			MovingObstacle other = (MovingObstacle)obj;
-			return base.Equals(other) && this.Skin == other.Skin;
+			return obj is MovingObstacle obstacle &&
+				   base.Equals(obj) &&
+				   EqualityComparer<Skin>.Default.Equals(Skin, obstacle.Skin);
 		}
+
 
 		/// <inheritdoc/>
 		public override int GetHashCode()
@@ -70,15 +76,15 @@ namespace ObstacleFactory {
 			return base.GetHashCode();
 		}
 
-		[TestFixture]
+        [TestFixture]
 		public class TestMovingObstacle
         {
 			private const Image imagePlaceholder = null;
 			private const int movingFactor = 2;
 			private int direction = -1;
-			private static readonly Position position = new Position(1920, (int) (1080 / 2));
-			private readonly Position halfwayPosition = new Position((int) (1920 / 2), (int) (1080 / 2));
-			private readonly Skin skin = new Skin("name", imagePlaceholder, position.X, position.Y);
+			private static readonly Position position = new (1920, (int) (1080 / 2));
+			private readonly Position halfwayPosition = new ((int) (1920 / 2), (int) (1080 / 2));
+			private readonly Skin skin = new ("name", imagePlaceholder, position.X, position.Y);
 
 			/// <summary>
 			/// Check if the moving pattern of the moving obstacle works correctly
@@ -86,13 +92,13 @@ namespace ObstacleFactory {
 			[Test]
 			public void MovingObstacleMovement()
 			{
-				MovingObstacle movingObstacle = new MovingObstacle(position, skin);
+				MovingObstacle movingObstacle = new (position, skin);
 				movingObstacle.UpdatePosition();
 
 				Assert.IsTrue(movingObstacle.Position.X == (position.X - 3 * movingFactor));
 				Assert.IsTrue(movingObstacle.Position.Y == (position.Y + direction * movingFactor));
 
-				MovingObstacle movingObstacle1 = new MovingObstacle(halfwayPosition, skin);
+				MovingObstacle movingObstacle1 = new (halfwayPosition, skin);
 				movingObstacle1.UpdatePosition();
 
 				Assert.IsTrue(movingObstacle1.Position.X == (halfwayPosition.X - 3 * movingFactor));

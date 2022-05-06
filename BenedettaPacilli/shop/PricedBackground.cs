@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using InfiniteMap;
+using Utilities;
 
 namespace ShopSpace
 {
@@ -25,10 +28,16 @@ namespace ShopSpace
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            PricedBackground other = (PricedBackground)obj;
-            return base.Equals(other) && Price == other.Price;
+            return obj is PricedBackground background &&
+                   base.Equals(obj) &&
+                   Price == background.Price;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
