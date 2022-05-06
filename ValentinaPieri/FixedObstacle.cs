@@ -39,9 +39,9 @@ namespace ObstacleFactory
 		}
 
 		/// <inheritdoc />
-		public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+		public override void Animate(Graphics canvas)
 		{
-			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + spaceBetweenPipes / 2));
+			canvas.DrawImage(skin.Image, Position.X, Position.Y + spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + spaceBetweenPipes / 2));
 
 			UpdatePosition();
 		}
