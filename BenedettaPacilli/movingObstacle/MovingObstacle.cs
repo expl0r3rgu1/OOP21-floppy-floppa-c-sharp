@@ -77,8 +77,8 @@ namespace ObstacleFactory {
 			private const int movingFactor = 2;
 			private int direction = -1;
 			private static readonly Position position = new Position(1920, (int) (1080 / 2));
-			private readonly Position halfway_position = new Position((int) (1920 / 2), (int) (1080 / 2));
-			private readonly Skin SKIN = new Skin("name", imagePlaceholder, position.X, position.Y);
+			private readonly Position halfwayPosition = new Position((int) (1920 / 2), (int) (1080 / 2));
+			private readonly Skin skin = new Skin("name", imagePlaceholder, position.X, position.Y);
 
 			/// <summary>
 			/// Check if the moving pattern of the moving obstacle works correctly
@@ -86,17 +86,17 @@ namespace ObstacleFactory {
 			[Test]
 			public void MovingObstacleMovement()
 			{
-				MovingObstacle movingObstacle = new MovingObstacle(position, SKIN);
+				MovingObstacle movingObstacle = new MovingObstacle(position, skin);
 				movingObstacle.UpdatePosition();
 
 				Assert.IsTrue(movingObstacle.Position.X == (position.X - 3 * movingFactor));
 				Assert.IsTrue(movingObstacle.Position.Y == (position.Y + direction * movingFactor));
 
-				MovingObstacle movingObstacle1 = new MovingObstacle(halfway_position, SKIN);
+				MovingObstacle movingObstacle1 = new MovingObstacle(halfwayPosition, skin);
 				movingObstacle1.UpdatePosition();
 
-				Assert.IsTrue(movingObstacle1.Position.X == (halfway_position.X - 3 * movingFactor));
-				Assert.IsTrue(movingObstacle.Position.Y == (halfway_position.Y + direction * movingFactor));
+				Assert.IsTrue(movingObstacle1.Position.X == (halfwayPosition.X - 3 * movingFactor));
+				Assert.IsTrue(movingObstacle.Position.Y == (halfwayPosition.Y + direction * movingFactor));
 			}
 		}
 
