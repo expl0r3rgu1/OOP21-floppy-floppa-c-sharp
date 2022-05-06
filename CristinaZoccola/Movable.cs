@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Drawing;
 
 namespace Utilities 
 {
@@ -23,7 +23,7 @@ namespace Utilities
         /// A method that will be used to animate all the entities on the map
         /// </summary>
         /// <param name="paintEventArgs">the object that will draw the entities on the map</param>
-	    public abstract void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs);
+	    public abstract void Animate(Graphics canvas);
 
         /// <inheritdoc />
         public override bool Equals(object? obj)
