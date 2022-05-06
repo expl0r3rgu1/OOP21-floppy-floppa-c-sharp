@@ -1,8 +1,8 @@
 ﻿using Utilities;
-using System.Windows.Forms;
 using NUnit.Framework;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace ObstacleFactory
 {
@@ -39,9 +39,12 @@ namespace ObstacleFactory
 		}
 
 		/// <inheritdoc />
-		public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+		public override void Animate(Graphics canvas)
 		{
-			ribbonPaintEventArgs.Graphics.DrawImage(skin.Image, Position.X, Position.Y + spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + spaceBetweenPipes / 2));
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+				canvas.DrawImage(skin.Image, Position.X, Position.Y + spaceBetweenPipes / 2, screenSizeWidth / 10, screenSizeHeight - (Position.Y + spaceBetweenPipes / 2));
+			}
 
 			UpdatePosition();
 		}
