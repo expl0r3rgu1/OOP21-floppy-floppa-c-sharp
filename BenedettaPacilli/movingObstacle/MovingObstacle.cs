@@ -1,6 +1,8 @@
 using System.Timers;
 using System.Windows.Forms;
 using Utilities;
+using NUnit.Framework;
+using System.Drawing;
 
 namespace ObstacleFactory {
 	/// <summary>
@@ -20,7 +22,7 @@ namespace ObstacleFactory {
 
 		/// <param name="position"> the obstacle initial position</param>
 		/// <param name="skin"> the obstacle Skin</param>
-		public MovingObstacle(Position position, Skin skin):base(position)
+		public MovingObstacle(Position position, Skin skin) : base(position)
 		{
 			this.skin = skin;
 
@@ -33,8 +35,7 @@ namespace ObstacleFactory {
 		/// </summary>
 		private void UpdatePosition()
 		{
-			Position.X = Position.X - 3 * movingFactor;
-			Position.Y = Position.Y + direction * movingFactor;
+			Position = new Position(Position.X - 3 * movingFactor, Position.Y + direction * movingFactor);
 		}
 
 		/// <inheritdoc/>
@@ -44,7 +45,7 @@ namespace ObstacleFactory {
 
 			UpdatePosition();
 		}
-	
+
 		/// <summary>
 		/// The action performed when the Timer's interval has elapsed
 		/// </summary>
@@ -68,5 +69,36 @@ namespace ObstacleFactory {
 		{
 			return base.GetHashCode();
 		}
+
+		[TestFixture]
+		public class TestMovingObstacle
+        {
+			private const Image imagePlaceholder = null;
+			private const int movingFactor = 2;
+			private int direction = -1;
+			private static readonly Position position = new Position(1920, (int) (1080 / 2));
+			private readonly Position halfwayPosition = new Position((int) (1920 / 2), (int) (1080 / 2));
+			private readonly Skin skin = new Skin("name", imagePlaceholder, position.X, position.Y);
+
+			/// <summary>
+			/// Check if the moving pattern of the moving obstacle works correctly
+			/// </summary>
+			[Test]
+			public void MovingObstacleMovement()
+			{
+				MovingObstacle movingObstacle = new MovingObstacle(position, skin);
+				movingObstacle.UpdatePosition();
+
+				Assert.IsTrue(movingObstacle.Position.X == (position.X - 3 * movingFactor));
+				Assert.IsTrue(movingObstacle.Position.Y == (position.Y + direction * movingFactor));
+
+				MovingObstacle movingObstacle1 = new MovingObstacle(halfwayPosition, skin);
+				movingObstacle1.UpdatePosition();
+
+				Assert.IsTrue(movingObstacle1.Position.X == (halfwayPosition.X - 3 * movingFactor));
+				Assert.IsTrue(movingObstacle.Position.Y == (halfwayPosition.Y + direction * movingFactor));
+			}
+		}
+
 	}
 }

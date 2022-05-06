@@ -69,8 +69,6 @@ namespace ShopSpace
                 0, 50, 100, 200, 500,
             };
 
-		    File.Create(savingsFileName);
-
             GetFileInfo();
         }
 
@@ -111,7 +109,7 @@ namespace ShopSpace
                     if (!status.Purchased && status.Item.Price <= coins)
                     {
                         status.Purchased = true;
-                        coins = coins - status.Item.Price;
+                        coins -= status.Item.Price;
                         state = true;
                         break;
                     }
@@ -137,7 +135,7 @@ namespace ShopSpace
                     if (!status.Purchased && status.Item.Price <= coins)
                     {
                         status.Purchased = true;
-                        coins = coins - status.Item.Price;
+                        coins -= status.Item.Price;
                         state = true;
                         break;
                     }
@@ -217,7 +215,7 @@ namespace ShopSpace
             for (int i = 0; i < SceneriesNum; i++)
             {
                 PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
-				    new PricedBackground(skinInitialize[i], imagePlaceholder, prices[i]), false);
+				    new PricedBackground(backgroundInitialize[i], imagePlaceholder, prices[i]), false);
         
 			    if(lineWords[i].Equals("1"))
 			    {
