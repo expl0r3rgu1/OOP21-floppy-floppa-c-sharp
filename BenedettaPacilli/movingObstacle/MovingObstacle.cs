@@ -3,6 +3,7 @@ using Utilities;
 using NUnit.Framework;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace ObstacleFactory {
 	/// <summary>
@@ -41,7 +42,10 @@ namespace ObstacleFactory {
 		/// <inheritdoc/>
 		public override void Animate(Graphics canvas)
 		{
-			canvas.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
+			if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+				canvas.DrawImage(skin.Image, Position.X, Position.Y, skin.Width, skin.Height);
+            }
 
 			UpdatePosition();
 		}
