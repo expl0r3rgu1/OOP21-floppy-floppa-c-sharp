@@ -5,6 +5,7 @@ using Utilities;
 using ObstacleFactory;
 using StateChanger;
 using NUnit.Framework;
+using System.Runtime.InteropServices;
 
 namespace CharacterSpace
 {
@@ -200,8 +201,10 @@ namespace CharacterSpace
             int width = Skin.Width;
             int height = Skin.Height;
             Image image = Skin.Image;
-
-            canvas.DrawImage(image, x, y, width, height);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                canvas.DrawImage(image, x, y, width, height);
+            }
 
             UpdatePosition();
         }
