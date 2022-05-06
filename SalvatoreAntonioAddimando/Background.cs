@@ -39,11 +39,11 @@ namespace InfiniteMap
         }
 
         /// <inheritdoc/>
-        public override void Animate(Graphics graphics)
+        public override void Animate(Graphics canvas)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                graphics.DrawImage(image, Position.X, Position.Y, 1920, 1080);
+                canvas.DrawImage(image, Position.X, Position.Y, 1920, 1080);
             }
         }
 
