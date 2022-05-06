@@ -1,6 +1,7 @@
 ﻿using Utilities;
 using System.Drawing;
 using NUnit.Framework;
+using System.Runtime.InteropServices;
 
 namespace StateChanger
 {
@@ -37,7 +38,10 @@ namespace StateChanger
         /// <inheritdoc />
         public override void Animate(Graphics canvas)
         {
-            canvas.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                canvas.DrawImage(Skin.Image, Position.X, Position.Y, Skin.Width, Skin.Height);
+            }
 
             UpdatePositionX();
         }
