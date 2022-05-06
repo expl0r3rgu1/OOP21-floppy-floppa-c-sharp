@@ -1,7 +1,6 @@
-using System.Windows.Forms;
 using System.Drawing;
 using Utilities;
-using System;
+using System.Runtime.InteropServices;
 
 namespace InfiniteMap
 {
@@ -40,9 +39,12 @@ namespace InfiniteMap
         }
 
         /// <inheritdoc/>
-        public override void Animate(RibbonElementPaintEventArgs ribbonPaintEventArgs)
+        public override void Animate(Graphics graphics)
         {
-            ribbonPaintEventArgs.Graphics.DrawImage(image, Position.X, Position.Y, 1920, 1080);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                graphics.DrawImage(image, Position.X, Position.Y, 1920, 1080);
+            }
         }
 
         /// <summary>
